@@ -1,0 +1,12 @@
+{
+  "id": "dev.notchkit.notes",
+  "name": "Catatan Cepat",
+  "version": "1.0.0",
+  "author": "NotchKit",
+  "description": "Tulis catatan singkat langsung dari notch. Tersimpan otomatis.",
+  "category": "Produktivitas",
+  "symbol": "note.text",
+  "permissions": [],
+  "refreshInterval": 5,
+  "order": 23
+}

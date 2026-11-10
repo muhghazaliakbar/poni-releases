@@ -1,0 +1,24 @@
+{
+  "id": "dev.notchkit.sysmon",
+  "name": "Monitor Sistem",
+  "version": "1.0.0",
+  "author": "NotchKit",
+  "description": "CPU, RAM, baterai, jaringan dan disk; satu metrik pilihan tampil di samping notch.",
+  "category": "Produktivitas",
+  "symbol": "gauge.with.dots.needle.67percent",
+  "permissions": ["system"],
+  "refreshInterval": 2,
+  "order": 22,
+  "settings": [
+    { "key": "compact", "type": "select", "label": "Di samping notch", "default": "none",
+      "options": [
+        { "value": "none", "label": "Jangan tampilkan" },
+        { "value": "cpu", "label": "CPU" },
+        { "value": "memory", "label": "RAM" },
+        { "value": "battery", "label": "Baterai" },
+        { "value": "network", "label": "Jaringan (unduh)" }
+      ] },
+    { "key": "cpuAlert", "type": "number", "label": "Peringatan CPU tinggi", "default": 90, "min": 50, "max": 100, "step": 5,
+      "help": "Pop-up bila CPU di atas persentase ini selama 10 detik (100 = mati)" }
+  ]
+}

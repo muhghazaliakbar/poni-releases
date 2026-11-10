@@ -1,0 +1,157 @@
+{
+  "name": "NotchKit Official",
+  "plugins": [
+    {
+      "id": "dev.notchkit.aiusage",
+      "name": "Pemakaian AI",
+      "version": "1.0.0",
+      "author": "NotchKit",
+      "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam, dibaca dari log lokal.",
+      "symbol": "sparkles",
+      "category": "Developer",
+      "permissions": [
+        "ai-usage"
+      ],
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/aiusage/main.js",
+          "sha256": "8439c2bc31cd1897551e80b52a0fb00a4e5c97de7ceb9cba10e64dd546debf21",
+          "size": 4067
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/aiusage/manifest.json",
+          "sha256": "46a08fe51c2b6c3e3fff8ee88a385da181965a60c69216b84ae9e73c20a0ab0f",
+          "size": 938
+        }
+      ]
+    },
+    {
+      "id": "dev.notchkit.countdown",
+      "name": "Hitung Mundur",
+      "version": "1.0.0",
+      "author": "NotchKit",
+      "description": "Hitung mundur ke tanggal penting: deadline, gajian, liburan, atau Lebaran.",
+      "symbol": "calendar.badge.clock",
+      "category": "Produktivitas",
+      "permissions": [],
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/countdown/main.js",
+          "sha256": "9f0cafac9992535418ebf8257295c1db68ff5b3ad3678a167393ed7dd3aa42b4",
+          "size": 2550
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/countdown/manifest.json",
+          "sha256": "9ca5ff4ca93ba391800bb58d6ea31710d17e8324da7b936ee48a7c070687d608",
+          "size": 332
+        }
+      ]
+    },
+    {
+      "id": "dev.notchkit.crypto",
+      "name": "Harga Kripto",
+      "version": "1.0.0",
+      "author": "NotchKit",
+      "description": "Harga BTC, ETH, SOL dalam Rupiah dengan perubahan 24 jam dari CoinGecko.",
+      "symbol": "bitcoinsign.circle.fill",
+      "category": "Keuangan",
+      "permissions": [
+        "network"
+      ],
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/crypto/main.js",
+          "sha256": "98079924abad18e02e1e1fd2c7a2b4faf1e49a127a143d70190220854779dd3c",
+          "size": 1879
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/crypto/manifest.json",
+          "sha256": "06c84eb8363d8ee9be46c7039c0507f9bd0a24e6e8b1d19919c7251e1fed2617",
+          "size": 334
+        }
+      ]
+    },
+    {
+      "id": "dev.notchkit.kurs",
+      "name": "Kurs Rupiah",
+      "version": "1.0.0",
+      "author": "NotchKit",
+      "description": "Kurs USD, SGD, EUR, JPY, MYR ke Rupiah. Diperbarui tiap jam.",
+      "symbol": "dollarsign.arrow.circlepath",
+      "category": "Keuangan",
+      "permissions": [
+        "network"
+      ],
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/kurs/main.js",
+          "sha256": "63736cb5a4e0bb997211114c27583f04300f97f8fd5bbb46397759ba1bea3fbe",
+          "size": 1586
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/kurs/manifest.json",
+          "sha256": "deeeed1bb46759dbcea4de7af483b855fb2c759e34a68d8e353144eea8bf8a39",
+          "size": 323
+        }
+      ]
+    },
+    {
+      "id": "dev.notchkit.notes",
+      "name": "Catatan Cepat",
+      "version": "1.0.0",
+      "author": "NotchKit",
+      "description": "Tulis catatan singkat langsung dari notch. Tersimpan otomatis.",
+      "symbol": "note.text",
+      "category": "Produktivitas",
+      "permissions": [],
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/notes/main.js",
+          "sha256": "4a2799351d5e07eaa864fd0c6c4de6c3b6b723b69d2be9dab55344da65d037ee",
+          "size": 1474
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/notes/manifest.json",
+          "sha256": "8eab8b1e8e8a8aff371b77cff4dd927f1a58f139d4f5a860549e93a9bec0a132",
+          "size": 305
+        }
+      ]
+    },
+    {
+      "id": "dev.notchkit.sysmon",
+      "name": "Monitor Sistem",
+      "version": "1.0.0",
+      "author": "NotchKit",
+      "description": "CPU, RAM, baterai, jaringan dan disk; satu metrik pilihan tampil di samping notch.",
+      "symbol": "gauge.with.dots.needle.67percent",
+      "category": "Produktivitas",
+      "permissions": [
+        "system"
+      ],
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/sysmon/main.js",
+          "sha256": "e54aac2e5cbbb1201a39b75a1bf14d8ed4e9b35928767d7f72f2e9aca0bd791e",
+          "size": 2968
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/sysmon/manifest.json",
+          "sha256": "af8d2a7a77fc873d3c0250918352d69eb423b39daf67f84c185cb37fb436f7d4",
+          "size": 972
+        }
+      ]
+    }
+  ]
+}

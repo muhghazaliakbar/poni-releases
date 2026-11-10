@@ -1,0 +1,12 @@
+{
+  "id": "dev.notchkit.kurs",
+  "name": "Kurs Rupiah",
+  "version": "1.0.0",
+  "author": "NotchKit",
+  "description": "Kurs USD, SGD, EUR, JPY, MYR ke Rupiah. Diperbarui tiap jam.",
+  "category": "Keuangan",
+  "symbol": "dollarsign.arrow.circlepath",
+  "permissions": ["network"],
+  "refreshInterval": 60,
+  "order": 20
+}

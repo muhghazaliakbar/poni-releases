@@ -1,0 +1,12 @@
+{
+  "id": "dev.notchkit.countdown",
+  "name": "Hitung Mundur",
+  "version": "1.0.0",
+  "author": "NotchKit",
+  "description": "Hitung mundur ke tanggal penting: deadline, gajian, liburan, atau Lebaran.",
+  "category": "Produktivitas",
+  "symbol": "calendar.badge.clock",
+  "permissions": [],
+  "refreshInterval": 1,
+  "order": 22
+}
