@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Membuat plugin NotchKit</title>
+  <meta name="description" content="Panduan membuat plugin NotchKit dengan JavaScript: manifest, komponen UI, API notch, izin, dan cara mengirim plugin ke galeri.">
+  <meta name="theme-color" content="#1c2350">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c2350'/%3E%3Cpath d='M9 8h14v5a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3z' fill='%23000'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="docs">
+  <a class="skip" href="#isi">Langsung ke isi</a>
+
+  <header class="docs-bar">
+    <a class="docs-home" href="./">NotchKit</a>
+    <span class="docs-title">Membuat plugin</span>
+    <a class="docs-download" id="download" href="https://github.com/muhghazaliakbar/notchkit-releases/releases/latest">Unduh NotchKit</a>
+  </header>
+
+  <div class="docs-layout">
+    <nav class="toc" aria-label="Isi halaman">
+      <ol>
+        <li><a href="#mulai">Mulai</a></li>
+        <li><a href="#manifest">manifest.json</a></li>
+        <li><a href="#pengaturan">Pengaturan</a></li>
+        <li><a href="#siklus">Fungsi di main.js</a></li>
+        <li><a href="#ui">Komponen UI</a></li>
+        <li><a href="#api">API notch</a></li>
+        <li><a href="#izin">Izin</a></li>
+        <li><a href="#batasan">Batasan</a></li>
+        <li><a href="#contoh">Contoh</a></li>
+        <li><a href="#galeri">Kirim ke galeri</a></li>
+      </ol>
+    </nav>
+
+    <main id="isi" class="prose">
+      <h1>Membuat plugin NotchKit</h1>
+      <p class="lede-dark">Plugin adalah satu folder berisi <code>manifest.json</code> dan <code>main.js</code>. Anda menulis
+        JavaScript biasa yang mengembalikan susunan komponen; NotchKit menggambarnya di notch dengan tampilan macOS.
+        Tidak perlu Xcode, build, atau npm.</p>
+
+      <section id="mulai">
+        <h2>Mulai</h2>
+        <ol class="steps">
+          <li><strong>Pasang NotchKit</strong> dan buka sekali.</li>
+          <li><strong>Unduh <a href="downloads/notchkit-plugin-template.zip">template plugin</a></strong>, lalu ekstrak
+            foldernya ke <code>~/Library/Application Support/NotchKit/Plugins/</code>. Di Finder: Go → Go to Folder,
+            lalu tempel alamat itu.</li>
+          <li><strong>Plugin langsung muncul sebagai tab baru.</strong> Ubah <code>main.js</code>, simpan, dan notch
+            memuat ulang plugin itu saat itu juga.</li>
+        </ol>
+        <p>Keluaran <code>console.log</code>, error JavaScript dan peringatan lain tampil di Pengaturan, di halaman plugin
+          Anda, bagian <strong>Konsol</strong>. Jika <code>manifest.json</code> tidak bisa dibaca, plugin tampil di bagian
+          <strong>Gagal dimuat</strong> di sidebar Pengaturan beserta alasannya.</p>
+        <p>Isi template:</p>
+<pre><code>halo/
+  manifest.json   identitas, ikon, izin dan pengaturan plugin
+  main.js         kode plugin</code></pre>
+      </section>
+
+      <section id="manifest">
+        <h2>manifest.json</h2>
+<pre><code>{
+  "id": "com.namaanda.halo",
+  "name": "Halo",
+  "version": "1.0.0",
+  "author": "Nama Anda",
+  "description": "Satu kalimat tentang apa yang dilakukan plugin ini.",
+  "symbol": "hand.wave.fill",
+  "permissions": ["network"],
+  "refreshInterval": 1,
+  "order": 50
+}</code></pre>
+        <div class="table-wrap">
+        <table class="ref">
+          <thead><tr><th scope="col">Kolom</th><th scope="col">Arti</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><code>id</code></th><td>Wajib. Unik, huruf kecil, berbentuk domain terbalik seperti <code>com.namaanda.halo</code>.
+              Awalan <code>dev.notchkit.</code> dipakai plugin resmi.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>Wajib. Nama yang tampil di tab dan Pengaturan.</td></tr>
+            <tr><th scope="row"><code>version</code></th><td>Seperti <code>1.2.0</code>. Galeri memakainya untuk menawarkan pembaruan.</td></tr>
+            <tr><th scope="row"><code>author</code>, <code>description</code></th><td>Tampil di galeri dan Pengaturan.</td></tr>
+            <tr><th scope="row"><code>symbol</code></th><td>Nama ikon <a href="https://developer.apple.com/sf-symbols/">SF Symbols</a> untuk tab.</td></tr>
+            <tr><th scope="row"><code>permissions</code></th><td>Izin yang dibutuhkan, lihat <a href="#izin">Izin</a>.</td></tr>
+            <tr><th scope="row"><code>refreshInterval</code></th><td>Detik antara <code>render()</code> otomatis. Bawaan 1, paling cepat 0,25.</td></tr>
+            <tr><th scope="row"><code>order</code></th><td>Urutan tab, angka kecil lebih dulu. Pengguna tetap bisa menyusun ulang.</td></tr>
+            <tr><th scope="row"><code>main</code></th><td>Nama berkas kode, bawaan <code>main.js</code>.</td></tr>
+            <tr><th scope="row"><code>settings</code></th><td>Daftar pengaturan; NotchKit membuat formulirnya. Lihat di bawah.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section id="pengaturan">
+        <h2>Pengaturan</h2>
+        <p>Tulis daftar pengaturan di manifest; NotchKit menampilkan formulirnya di jendela Pengaturan, menyimpan nilainya,
+          dan memberi tombol untuk kembali ke nilai bawaan.</p>
+<pre><code>"settings": [
+  { "key": "city", "type": "text", "label": "Kota", "default": "Jakarta", "placeholder": "Jakarta" },
+  { "key": "minutes", "type": "number", "label": "Durasi", "default": 25,
+    "min": 5, "max": 120, "step": 5, "help": "Dalam menit" },
+  { "key": "lyrics", "type": "toggle", "label": "Tampilkan lirik", "default": true },
+  { "key": "unit", "type": "select", "label": "Satuan", "default": "c",
+    "options": [{ "value": "c", "label": "Celsius" }, { "value": "f", "label": "Fahrenheit" }] }
+]</code></pre>
+        <p>Jenis yang tersedia: <code>text</code>, <code>number</code>, <code>toggle</code> dan <code>select</code>.
+          Baca nilainya dengan <code>notch.settings.get('city')</code> atau semuanya sekaligus dengan
+          <code>notch.settings.all()</code>. Saat pengguna mengubah nilai, NotchKit memanggil
+          <code>onSettingsChanged(key, value)</code> lalu <code>render()</code>.</p>
+      </section>
+
+      <section id="siklus">
+        <h2>Fungsi di main.js</h2>
+        <p>Definisikan fungsi yang Anda perlukan; semuanya opsional kecuali <code>render</code>.</p>
+        <div class="table-wrap">
+        <table class="ref">
+          <thead><tr><th scope="col">Fungsi</th><th scope="col">Kapan dipanggil</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><code>init()</code></th><td>Sekali, saat plugin dimuat.</td></tr>
+            <tr><th scope="row"><code>render()</code></th><td>Setiap <code>refreshInterval</code>, setelah aksi, timer atau fetch.
+              Kembalikan susunan komponen <code>ui.*</code>.</td></tr>
+            <tr><th scope="row"><code>compact()</code></th><td>Bersama <code>render()</code>. Kembalikan
+              <code>{ symbol, text, color, wide }</code> untuk tampil di samping notch saat tertutup, atau <code>null</code>.
+              <code>wide: true</code> memberi ruang untuk teks lebih panjang.</td></tr>
+            <tr><th scope="row"><code>onAction(action, value)</code></th><td>Tombol diklik, atau isian dikirim dengan Return.</td></tr>
+            <tr><th scope="row"><code>onSettingsChanged(key, value)</code></th><td>Pengaturan diubah. <code>key</code> bernilai
+              <code>null</code> saat semua pengaturan dikembalikan ke bawaan.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section id="ui">
+        <h2>Komponen UI</h2>
+        <p>Setiap fungsi <code>ui.*</code> mengembalikan objek biasa; susun sesuka Anda.</p>
+<pre><code>ui.vstack(children, { spacing, align, padding, background, fill })
+ui.hstack(children, { spacing, padding, background, fill })
+ui.text(text, { style, color, lines })
+ui.symbol(name, { size, color })
+ui.button(label, action, { symbol, style: 'primary', color })
+ui.progress(value, { color })                 <span class="c">// value 0 sampai 1</span>
+ui.row(label, value, { symbol, highlight, color })
+ui.input(placeholder, action, { value })
+ui.image(url, { size, radius, placeholder })  <span class="c">// placeholder: SF Symbol saat memuat</span>
+ui.spacer()
+ui.divider()</code></pre>
+        <dl class="defs">
+          <div><dt><code>style</code> pada teks</dt><dd><code>largeTitle</code>, <code>title</code>, <code>headline</code>,
+            <code>body</code>, <code>caption</code>, <code>mono</code>. Teks yang isinya angka (jam, hitung mundur,
+            harga) bergulir saat berubah, seperti jam sistem.</dd></div>
+          <div><dt><code>align</code> pada vstack</dt><dd><code>leading</code>, <code>center</code>, <code>trailing</code>.</dd></div>
+          <div><dt>Warna</dt><dd><code>primary</code>, <code>secondary</code>, <code>tertiary</code>, <code>accent</code>,
+            <code>blue</code>, <code>green</code>, <code>red</code>, <code>orange</code>, <code>yellow</code>,
+            <code>purple</code>, <code>pink</code>, <code>teal</code>, atau hex <code>#RRGGBB</code>.</dd></div>
+          <div><dt><code>background</code> dan <code>fill</code></dt><dd><code>background</code> memberi kotak berwarna tipis
+            dengan sudut membulat; <code>fill: true</code> melebarkan tumpukan selebar notch.</dd></div>
+        </dl>
+      </section>
+
+      <section id="api">
+        <h2>API notch</h2>
+        <div class="table-wrap">
+        <table class="ref">
+          <thead><tr><th scope="col">API</th><th scope="col">Keterangan</th><th scope="col">Izin</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><code>notch.fetch(url, cb)</code></th><td>HTTP GET; <code>cb(text, error)</code>. Batas waktu 15 detik.</td><td>network</td></tr>
+            <tr><th scope="row"><code>notch.fetchJSON(url, cb)</code></th><td>Sama, hasilnya sudah di-parse: <code>cb(json, error)</code>.</td><td>network</td></tr>
+            <tr><th scope="row"><code>notch.storage.get(key)</code>, <code>.set(key, value)</code></th><td>Penyimpanan permanen milik plugin ini.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.settings.get(key)</code>, <code>.all()</code></th><td>Nilai pengaturan, atau bawaan dari manifest.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.flash(text, symbol)</code></th><td>Pesan singkat 3 detik di samping notch.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.refresh()</code></th><td>Gambar ulang sekarang.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.open(url)</code></th><td>Buka tautan di browser.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.text.romanize(text)</code></th><td>Tulisan Latin untuk teks Jepang, Mandarin, Korea dan aksara lain; <code>null</code> bila sudah Latin.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.media.get()</code></th><td>Lagu di Spotify atau Apple Music: <code>{ title, artist, album, duration, position, playing, source, artwork }</code>, atau <code>null</code>.</td><td>media</td></tr>
+            <tr><th scope="row"><code>notch.media.control(cmd)</code></th><td><code>'playpause'</code>, <code>'next'</code>, <code>'previous'</code>.</td><td>media</td></tr>
+            <tr><th scope="row"><code>notch.notify(title, body)</code></th><td>Notifikasi macOS.</td><td>notifications</td></tr>
+            <tr><th scope="row"><code>notch.clipboard.get()</code>, <code>.set(text)</code>, <code>.changeCount()</code></th><td>Teks di clipboard.</td><td>clipboard</td></tr>
+            <tr><th scope="row"><code>notch.calendar.events(days)</code></th><td>Acara mulai hari ini: <code>[{ title, start, end, allDay, calendar, color, location, url }]</code>, waktu dalam milidetik. <code>notch.calendar.status()</code> memberi tahu apakah akses sudah diberikan.</td><td>calendar</td></tr>
+            <tr><th scope="row"><code>notch.system.stats()</code></th><td>CPU, memori, baterai, jaringan, disk dan suhu.</td><td>system</td></tr>
+            <tr><th scope="row"><code>notch.ai.usage()</code></th><td>Pemakaian Claude Code dan Codex dari log di Mac ini.</td><td>ai-usage</td></tr>
+            <tr><th scope="row"><code>setTimeout</code>, <code>setInterval</code></th><td>Seperti di browser, paling cepat 50 ms. Plugin digambar ulang setelah callback.</td><td></td></tr>
+            <tr><th scope="row"><code>console.log</code>, <code>.warn</code>, <code>.error</code></th><td>Tampil di Konsol di Pengaturan.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.pluginId</code>, <code>notch.version</code></th><td>Id plugin ini dan versi NotchKit.</td><td></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section id="izin">
+        <h2>Izin</h2>
+        <p>Plugin hanya bisa memakai API yang izinnya ditulis di <code>permissions</code> dan disetujui pengguna.</p>
+        <ul class="facts">
+          <li>Plugin dari galeri mendapat izinnya saat pengguna menyetujui pemasangan.</li>
+          <li>Plugin yang dipasang sendiri ditanya saat pertama kali memakai sebuah izin. Selama dialog terbuka, panggilan
+            mengembalikan <code>null</code> atau <code>false</code>; plugin digambar ulang setelah pengguna menjawab.</li>
+          <li>Pengguna bisa mencabut atau memberi izin kapan saja di Pengaturan, di halaman plugin.</li>
+          <li>API yang izinnya tidak ditulis tidak berjalan: <code>notch.fetch</code> memberi error yang menyebut izin yang
+            kurang, API lain mengembalikan <code>null</code>.</li>
+        </ul>
+        <p>Pilihan: <code>network</code>, <code>media</code>, <code>notifications</code>, <code>clipboard</code>,
+          <code>calendar</code>, <code>system</code>, <code>ai-usage</code>.</p>
+      </section>
+
+      <section id="batasan">
+        <h2>Batasan</h2>
+        <ul class="facts">
+          <li>Setiap plugin berjalan di JavaScriptCore tersendiri dan tidak bisa membaca variabel plugin lain.</li>
+          <li>Tidak ada DOM, <code>require</code>, <code>import</code> atau <code>fetch</code> bawaan browser; gunakan
+            <code>notch.fetch</code>.</li>
+          <li>Setiap panggilan ke plugin dibatasi setengah detik. Yang lebih lama dihentikan; tiga kali dalam semenit membuat
+            plugin dihentikan sementara sampai Anda menyimpan perbaikan.</li>
+          <li>Simpan data yang perlu bertahan dengan <code>notch.storage</code>. Variabel biasa hilang saat plugin dimuat ulang.</li>
+        </ul>
+      </section>
+
+      <section id="contoh">
+        <h2>Contoh</h2>
+        <h3>Penghitung dengan sayap</h3>
+<pre><code><span class="k">var</span> count = notch.storage.<span class="f">get</span>(<span class="s">'count'</span>) || <span class="n">0</span>;
+
+<span class="k">function</span> <span class="f">render</span>() {
+  <span class="k">return</span> ui.<span class="f">vstack</span>([
+    ui.<span class="f">text</span>(count + <span class="s">' gelas air hari ini'</span>, { style: <span class="s">'title'</span> }),
+    ui.<span class="f">hstack</span>([
+      ui.<span class="f">button</span>(<span class="s">'Minum'</span>, <span class="s">'add'</span>, { symbol: <span class="s">'drop.fill'</span>, style: <span class="s">'primary'</span> }),
+      ui.<span class="f">button</span>(<span class="s">'Ulang'</span>, <span class="s">'reset'</span>)
+    ])
+  ]);
+}
+
+<span class="k">function</span> <span class="f">compact</span>() {
+  <span class="k">return</span> count ? { symbol: <span class="s">'drop.fill'</span>, text: count + <span class="s">' gelas'</span>, color: <span class="s">'blue'</span> } : <span class="k">null</span>;
+}
+
+<span class="k">function</span> <span class="f">onAction</span>(action) {
+  count = action === <span class="s">'add'</span> ? count + <span class="n">1</span> : <span class="n">0</span>;
+  notch.storage.<span class="f">set</span>(<span class="s">'count'</span>, count);
+}</code></pre>
+
+        <h3>Data dari internet</h3>
+        <p>Butuh <code>"permissions": ["network"]</code>. Ambil data saat dimuat dan setiap 10 menit; <code>render()</code>
+          hanya menggambar apa yang sudah ada.</p>
+<pre><code><span class="k">var</span> rate = <span class="k">null</span>, error = <span class="k">null</span>;
+
+<span class="k">function</span> <span class="f">load</span>() {
+  notch.<span class="f">fetchJSON</span>(<span class="s">'https://open.er-api.com/v6/latest/USD'</span>, <span class="k">function</span> (json, err) {
+    error = err;
+    <span class="k">if</span> (json) rate = json.rates.IDR;
+  });
+}
+
+<span class="k">function</span> <span class="f">init</span>() {
+  <span class="f">load</span>();
+  <span class="f">setInterval</span>(load, <span class="n">10</span> * <span class="n">60</span> * <span class="n">1000</span>);
+}
+
+<span class="k">function</span> <span class="f">render</span>() {
+  <span class="k">if</span> (error) <span class="k">return</span> ui.<span class="f">text</span>(<span class="s">'Gagal memuat: '</span> + error, { color: <span class="s">'red'</span> });
+  <span class="k">if</span> (!rate) <span class="k">return</span> ui.<span class="f">text</span>(<span class="s">'Memuat kurs…'</span>, { style: <span class="s">'caption'</span> });
+  <span class="k">return</span> ui.<span class="f">row</span>(<span class="s">'1 USD'</span>, <span class="s">'Rp '</span> + Math.<span class="f">round</span>(rate).<span class="f">toLocaleString</span>(<span class="s">'id-ID'</span>), { symbol: <span class="s">'dollarsign.circle'</span> });
+}</code></pre>
+      </section>
+
+      <section id="galeri">
+        <h2>Kirim ke galeri</h2>
+        <p>Plugin di galeri bisa dipasang semua pengguna NotchKit dengan satu klik. Daftar galeri ditandatangani, jadi setiap
+          plugin diperiksa sebelum masuk.</p>
+        <ol class="steps">
+          <li><strong>Periksa plugin Anda:</strong> <code>id</code> dan <code>version</code> terisi benar, ikon SF Symbol
+            ada, setiap API yang dipakai punya izinnya, tidak meminta izin yang tidak dipakai, dan Konsol bersih dari error.</li>
+          <li><strong>Unggah folder plugin</strong> ke repositori publik atau sebagai zip.</li>
+          <li><strong><a href="https://github.com/muhghazaliakbar/notchkit-releases/issues/new?title=Plugin%3A%20">Buka issue</a></strong>
+            berisi tautan ke plugin, apa fungsinya, dan kenapa izinnya dibutuhkan. Setelah ditinjau, plugin masuk ke
+            galeri. Untuk pembaruan, kirim versi baru dengan <code>version</code> yang dinaikkan; pengguna mendapat tombol
+            Update di galeri.</li>
+        </ol>
+      </section>
+    </main>
+  </div>
+
+  <footer class="foot">
+    <p>NotchKit</p>
+    <nav aria-label="Tautan">
+      <a href="./">Beranda</a>
+      <a href="https://github.com/muhghazaliakbar/notchkit-releases/releases">Semua rilis</a>
+      <a href="https://github.com/muhghazaliakbar/notchkit-releases/tree/main/registry">Registry plugin</a>
+    </nav>
+  </footer>
+
+  <script>
+    // Highlight the section being read in the table of contents.
+    const links = [...document.querySelectorAll(".toc a")];
+    const seen = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((a) => a.setAttribute("aria-current", String(a.hash === "#" + e.target.id)));
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    document.querySelectorAll(".prose section").forEach((s) => seen.observe(s));
+
+    // Same live download link as the landing page.
+    fetch("https://api.github.com/repos/muhghazaliakbar/notchkit-releases/releases/latest")
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((rel) => {
+        const dmg = (rel.assets || []).find((a) => a.name.endsWith(".dmg"));
+        if (dmg) document.getElementById("download").href = dmg.browser_download_url;
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>
