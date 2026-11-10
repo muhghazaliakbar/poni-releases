@@ -70,7 +70,7 @@
   "version": "1.0.0",
   "author": "Nama Anda",
   "description": "Satu kalimat tentang apa yang dilakukan plugin ini.",
-  "symbol": "hand.wave.fill",
+  "symbol": "lucide:hand",
   "permissions": ["network"],
   "refreshInterval": 1,
   "order": 50
@@ -84,7 +84,7 @@
             <tr><th scope="row"><code>name</code></th><td>Wajib. Nama yang tampil di tab dan Pengaturan.</td></tr>
             <tr><th scope="row"><code>version</code></th><td>Seperti <code>1.2.0</code>. Galeri memakainya untuk menawarkan pembaruan.</td></tr>
             <tr><th scope="row"><code>author</code>, <code>description</code></th><td>Tampil di galeri dan Pengaturan.</td></tr>
-            <tr><th scope="row"><code>symbol</code></th><td>Nama ikon <a href="https://developer.apple.com/sf-symbols/">SF Symbols</a> untuk tab.</td></tr>
+            <tr><th scope="row"><code>symbol</code></th><td>Ikon tab: <code>lucide:&lt;nama&gt;</code> dari <a href="https://lucide.dev/icons">Lucide</a>, atau nama <a href="https://developer.apple.com/sf-symbols/">SF Symbols</a>.</td></tr>
             <tr><th scope="row"><code>permissions</code></th><td>Izin yang dibutuhkan, lihat <a href="#izin">Izin</a>.</td></tr>
             <tr><th scope="row"><code>refreshInterval</code></th><td>Detik antara <code>render()</code> otomatis. Bawaan 1, paling cepat 0,25.</td></tr>
             <tr><th scope="row"><code>order</code></th><td>Urutan tab, angka kecil lebih dulu. Pengguna tetap bisa menyusun ulang.</td></tr>
@@ -124,8 +124,10 @@
             <tr><th scope="row"><code>render()</code></th><td>Setiap <code>refreshInterval</code>, setelah aksi, timer atau fetch.
               Kembalikan susunan komponen <code>ui.*</code>.</td></tr>
             <tr><th scope="row"><code>compact()</code></th><td>Bersama <code>render()</code>. Kembalikan
-              <code>{ symbol, text, color, wide }</code> untuk tampil di samping notch saat tertutup, atau <code>null</code>.
-              <code>wide: true</code> memberi ruang untuk teks lebih panjang.</td></tr>
+              <code>{ symbol, text, color, wide, image, equalizer }</code> untuk tampil di samping notch saat tertutup, atau
+              <code>null</code>. <code>wide: true</code> memberi ruang untuk teks lebih panjang, <code>image</code> menampilkan
+              gambar kecil (misalnya artwork) sebagai ganti simbol, dan <code>equalizer: true</code> menambah bar equalizer
+              yang bergerak.</td></tr>
             <tr><th scope="row"><code>onAction(action, value)</code></th><td>Tombol diklik, atau isian dikirim dengan Return.</td></tr>
             <tr><th scope="row"><code>onSettingsChanged(key, value)</code></th><td>Pengaturan diubah. <code>key</code> bernilai
               <code>null</code> saat semua pengaturan dikembalikan ke bawaan.</td></tr>
@@ -137,25 +139,36 @@
       <section id="ui">
         <h2>Komponen UI</h2>
         <p>Setiap fungsi <code>ui.*</code> mengembalikan objek biasa; susun sesuka Anda.</p>
-<pre><code>ui.vstack(children, { spacing, align, padding, background, fill })
-ui.hstack(children, { spacing, padding, background, fill })
-ui.text(text, { style, color, lines })
-ui.symbol(name, { size, color })
-ui.button(label, action, { symbol, style: 'primary', color })
-ui.progress(value, { color })                 <span class="c">// value 0 sampai 1</span>
+<pre><code>ui.vstack(children, { spacing, align, padding, paddingX, paddingY, width, background, radius, fill, highlight, stagger })
+ui.hstack(children, { spacing, align, padding, width, background, fill, highlight, stagger })
+ui.text(text, { style, weight, color, lines, width, align })
+ui.ring(value, { size, color, label })        <span class="c">// cincin progres (Focus)</span>
+ui.symbol(name, { size, color, fill, animation })  <span class="c">// name: 'lucide:music-2' atau SF Symbol</span>
+ui.weatherGlyph(condition, { size })           <span class="c">// matahari + awan beranimasi</span>
+ui.button(label, action, { symbol, fill, style: 'primary', color, labelColor })
+ui.progress(value, { color, height })         <span class="c">// value 0 sampai 1</span>
 ui.row(label, value, { symbol, highlight, color })
 ui.input(placeholder, action, { value })
-ui.image(url, { size, radius, placeholder })  <span class="c">// placeholder: SF Symbol saat memuat</span>
+ui.image(url, { size, radius, placeholder, playing })  <span class="c">// playing: kilau saat diputar</span>
 ui.spacer()
 ui.divider()</code></pre>
         <dl class="defs">
-          <div><dt><code>style</code> pada teks</dt><dd><code>largeTitle</code>, <code>title</code>, <code>headline</code>,
-            <code>body</code>, <code>caption</code>, <code>mono</code>. Teks yang isinya angka (jam, hitung mundur,
+          <div><dt><code>style</code> pada teks</dt><dd><code>largeTitle</code> (34), <code>title</code> (17 bold),
+            <code>headline</code> (15 semibold), <code>body</code> (15), <code>callout</code> (14), <code>caption</code> (13),
+            <code>footnote</code> (12), dan versi angka <code>mono</code>, <code>monoFootnote</code>, <code>monoHeadline</code>,
+            <code>monoTitle</code>, dalam huruf Onest dan JetBrains Mono seperti halaman ini. Teks yang isinya angka (jam, hitung mundur,
             harga) bergulir saat berubah, seperti jam sistem.</dd></div>
           <div><dt><code>align</code> pada vstack</dt><dd><code>leading</code>, <code>center</code>, <code>trailing</code>.</dd></div>
           <div><dt>Warna</dt><dd><code>primary</code>, <code>secondary</code>, <code>tertiary</code>, <code>accent</code>,
             <code>blue</code>, <code>green</code>, <code>red</code>, <code>orange</code>, <code>yellow</code>,
-            <code>purple</code>, <code>pink</code>, <code>teal</code>, atau hex <code>#RRGGBB</code>.</dd></div>
+            <code>purple</code>, <code>pink</code>, <code>teal</code>, <code>mint</code>, <code>amber</code>, <code>rose</code>,
+            <code>white/55</code> (putih 55 %), atau hex <code>#RRGGBB</code>.</dd></div>
+          <div><dt>Ikon</dt><dd>Tulis <code>lucide:&lt;nama&gt;</code> untuk ikon <a href="https://lucide.dev/icons">Lucide</a>
+            (seperti di halaman ini) atau nama SF Symbol. <code>fill: true</code> mengisi ikon. <code>animation</code>:
+            <code>spin</code> (berputar), <code>drift</code> (bergoyang), <code>pulse</code> (berdenyut),
+            <code>bob</code> (naik-turun). Berlaku juga untuk <code>symbol</code> di manifest, tombol, dan <code>compact()</code>.</dd></div>
+          <div><dt><code>stagger: true</code></dt><dd>Anak-anak tumpukan masuk bergantian saat halaman dibuka: baris
+            dari kiri pada <code>vstack</code>, kartu dari bawah pada <code>hstack</code>.</dd></div>
           <div><dt><code>background</code> dan <code>fill</code></dt><dd><code>background</code> memberi kotak berwarna tipis
             dengan sudut membulat; <code>fill: true</code> melebarkan tumpukan selebar notch.</dd></div>
         </dl>
@@ -226,14 +239,14 @@ ui.divider()</code></pre>
   <span class="k">return</span> ui.<span class="f">vstack</span>([
     ui.<span class="f">text</span>(count + <span class="s">' gelas air hari ini'</span>, { style: <span class="s">'title'</span> }),
     ui.<span class="f">hstack</span>([
-      ui.<span class="f">button</span>(<span class="s">'Minum'</span>, <span class="s">'add'</span>, { symbol: <span class="s">'drop.fill'</span>, style: <span class="s">'primary'</span> }),
+      ui.<span class="f">button</span>(<span class="s">'Minum'</span>, <span class="s">'add'</span>, { symbol: <span class="s">'lucide:droplet'</span>, style: <span class="s">'primary'</span> }),
       ui.<span class="f">button</span>(<span class="s">'Ulang'</span>, <span class="s">'reset'</span>)
     ])
   ]);
 }
 
 <span class="k">function</span> <span class="f">compact</span>() {
-  <span class="k">return</span> count ? { symbol: <span class="s">'drop.fill'</span>, text: count + <span class="s">' gelas'</span>, color: <span class="s">'blue'</span> } : <span class="k">null</span>;
+  <span class="k">return</span> count ? { symbol: <span class="s">'lucide:droplet'</span>, text: count + <span class="s">' gelas'</span>, color: <span class="s">'blue'</span> } : <span class="k">null</span>;
 }
 
 <span class="k">function</span> <span class="f">onAction</span>(action) {
@@ -261,7 +274,7 @@ ui.divider()</code></pre>
 <span class="k">function</span> <span class="f">render</span>() {
   <span class="k">if</span> (error) <span class="k">return</span> ui.<span class="f">text</span>(<span class="s">'Gagal memuat: '</span> + error, { color: <span class="s">'red'</span> });
   <span class="k">if</span> (!rate) <span class="k">return</span> ui.<span class="f">text</span>(<span class="s">'Memuat kurs…'</span>, { style: <span class="s">'caption'</span> });
-  <span class="k">return</span> ui.<span class="f">row</span>(<span class="s">'1 USD'</span>, <span class="s">'Rp '</span> + Math.<span class="f">round</span>(rate).<span class="f">toLocaleString</span>(<span class="s">'id-ID'</span>), { symbol: <span class="s">'dollarsign.circle'</span> });
+  <span class="k">return</span> ui.<span class="f">row</span>(<span class="s">'1 USD'</span>, <span class="s">'Rp '</span> + Math.<span class="f">round</span>(rate).<span class="f">toLocaleString</span>(<span class="s">'id-ID'</span>), { symbol: <span class="s">'lucide:circle-dollar-sign'</span> });
 }</code></pre>
       </section>
 
