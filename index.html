@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NotchKit untuk macOS</title>
+  <meta name="description" content="NotchKit menaruh musik, timer fokus, jadwal hari ini, cuaca dan jadwal sholat di notch MacBook. Tambah plugin dari galeri, atau tulis sendiri dengan JavaScript.">
+  <meta name="theme-color" content="#1c2350">
+  <meta property="og:title" content="NotchKit untuk macOS">
+  <meta property="og:description" content="Musik, timer fokus, kalender, cuaca dan jadwal sholat di notch MacBook, dengan plugin JavaScript.">
+  <meta property="og:image" content="assets/notch-music.webp">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c2350'/%3E%3Cpath d='M9 8h14v5a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3z' fill='%23000'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#isi">Langsung ke isi</a>
+
+  <header class="screen">
+    <div class="menubar" aria-hidden="true">
+      <span class="menubar-left">NotchKit</span>
+      <span class="menubar-right"><span id="clock">09.41</span></span>
+    </div>
+
+    <div class="stage">
+      <button class="notch" id="notch" type="button" aria-expanded="false" aria-controls="notch-view"
+              aria-label="Buka notch">
+        <span class="notch-body"></span>
+        <img class="notch-view" id="notch-view" src="assets/notch-music.webp" alt="" width="683" height="170">
+      </button>
+
+      <div class="chips" role="group" aria-label="Pilih isi notch">
+        <button type="button" data-tab="music" aria-pressed="true">Musik</button>
+        <button type="button" data-tab="focus" aria-pressed="false">Focus</button>
+        <button type="button" data-tab="today" aria-pressed="false">Hari ini</button>
+        <button type="button" data-tab="weather" aria-pressed="false">Cuaca</button>
+        <button type="button" data-tab="prayer" aria-pressed="false">Jadwal sholat</button>
+        <button type="button" data-tab="aiusage" aria-pressed="false">Pemakaian AI</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Notch di MacBook Anda bisa lebih dari sekadar menutupi kamera.</h1>
+      <p class="lede">NotchKit menaruh musik, timer fokus, jadwal hari ini, cuaca dan jadwal sholat tepat di bawah
+        kamera. Arahkan kursor ke notch dan semuanya terbuka. Tambah plugin dari galeri, atau tulis sendiri dengan
+        JavaScript.</p>
+      <div class="cta">
+        <a class="button" id="download" href="https://github.com/muhghazaliakbar/notchkit-releases/releases/latest">Unduh NotchKit</a>
+        <p class="cta-note">Gratis, untuk macOS 14 Sonoma ke atas. Versi beta: pembukaan pertama perlu satu
+          konfirmasi, <a href="#pasang">lihat caranya</a>.</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="isi">
+    <section class="block" aria-labelledby="h-bawaan">
+      <h2 id="h-bawaan">Yang ada di notch sejak dipasang</h2>
+      <dl class="features">
+        <div><dt>Musik</dt><dd>Lagu yang sedang diputar di Spotify atau Apple Music, tombol putar, progres lagu dan lirik
+          yang berjalan mengikuti lagu.</dd></div>
+        <div><dt>Focus</dt><dd>Timer Pomodoro. Saat notch tertutup, hitung mundurnya tetap terlihat di samping notch.</dd></div>
+        <div><dt>Hari ini</dt><dd>Acara kalender hari ini dan berapa lama lagi sampai acara berikutnya.</dd></div>
+        <div><dt>Cuaca</dt><dd>Suhu dan kondisi sekarang, ditambah prakiraan tiga hari ke depan untuk kota pilihan Anda.</dd></div>
+        <div><dt>Jadwal sholat</dt><dd>Lima waktu sholat hari ini dengan metode Kemenag RI, dan hitung mundur ke waktu
+          berikutnya.</dd></div>
+        <div><dt>Shelf</dt><dd>Seret file, tautan atau teks ke notch untuk disimpan sebentar, lalu seret keluar lagi saat
+          dibutuhkan.</dd></div>
+      </dl>
+    </section>
+
+    <section class="block" aria-labelledby="h-galeri">
+      <div class="block-head">
+        <h2 id="h-galeri">Plugin dari galeri</h2>
+        <p>Pasang lewat tombol + di notch. Daftar ini diambil langsung dari registry NotchKit, jadi selalu sama
+          dengan yang Anda lihat di aplikasi.</p>
+      </div>
+      <ul class="gallery" id="gallery">
+        <li><strong>Pemakaian AI</strong><span>Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam, dibaca dari log lokal.</span></li>
+        <li><strong>Hitung Mundur</strong><span>Hitung mundur ke tanggal penting: deadline, gajian, liburan, atau Lebaran.</span></li>
+        <li><strong>Harga Kripto</strong><span>Harga BTC, ETH, SOL dalam Rupiah dengan perubahan 24 jam dari CoinGecko.</span></li>
+        <li><strong>Kurs Rupiah</strong><span>Kurs USD, SGD, EUR, JPY, MYR ke Rupiah. Diperbarui tiap jam.</span></li>
+        <li><strong>Catatan Cepat</strong><span>Tulis catatan singkat langsung dari notch. Tersimpan otomatis.</span></li>
+        <li><strong>Monitor Sistem</strong><span>CPU, RAM, baterai, jaringan dan disk; satu metrik pilihan tampil di samping notch.</span></li>
+      </ul>
+      <p class="fineprint" id="gallery-source">Versi gratis bisa mengaktifkan 3 plugin tambahan sekaligus.</p>
+    </section>
+
+    <section class="block sdk" aria-labelledby="h-sdk">
+      <div class="block-head">
+        <h2 id="h-sdk">Tulis plugin sendiri</h2>
+        <p>Satu folder berisi <code>manifest.json</code> dan <code>main.js</code>. Taruh di
+          <code>~/Library/Application Support/NotchKit/Plugins</code>, dan plugin muncul sebagai tab baru.</p>
+        <ul class="facts">
+          <li>Simpan file, notch langsung memuat ulang plugin itu.</li>
+          <li><code>console.log</code> dan error tampil di Pengaturan, di halaman plugin.</li>
+          <li>Plugin hanya mendapat izin yang Anda setujui, misalnya jaringan atau kalender.</li>
+          <li>Plugin yang macet dihentikan setelah setengah detik, tanpa membekukan notch.</li>
+        </ul>
+      </div>
+      <figure class="code">
+        <figcaption>main.js</figcaption>
+<pre><code><span class="k">var</span> clicks = <span class="n">0</span>;
+
+<span class="c">// Isi notch saat terbuka.</span>
+<span class="k">function</span> <span class="f">render</span>() {
+  <span class="k">return</span> ui.<span class="f">vstack</span>([
+    ui.<span class="f">text</span>(<span class="s">'Halo!'</span>, { style: <span class="s">'title'</span> }),
+    ui.<span class="f">button</span>(<span class="s">'Klik aku'</span>, <span class="s">'click'</span>, { symbol: <span class="s">'hand.tap.fill'</span> }),
+    ui.<span class="f">text</span>(clicks + <span class="s">' klik'</span>, { color: <span class="s">'secondary'</span> })
+  ]);
+}
+
+<span class="c">// Tampil di samping notch saat tertutup.</span>
+<span class="k">function</span> <span class="f">compact</span>() {
+  <span class="k">return</span> clicks &gt; <span class="n">0</span> ? { symbol: <span class="s">'sparkles'</span>, text: clicks + <span class="s">' klik'</span> } : <span class="k">null</span>;
+}
+
+<span class="k">function</span> <span class="f">onAction</span>(action) {
+  <span class="k">if</span> (action === <span class="s">'click'</span>) clicks++;
+}</code></pre>
+      </figure>
+    </section>
+
+    <section class="block" aria-labelledby="h-harga">
+      <div class="block-head">
+        <h2 id="h-harga">Gratis, dengan Pro untuk yang ingin lebih</h2>
+        <p>Setiap instalasi baru mendapat Pro gratis selama 7 hari. Harga Pro diumumkan saat pembelian dibuka.</p>
+      </div>
+      <table class="plans">
+        <thead>
+          <tr><th scope="col"><span class="sr">Fitur</span></th><th scope="col">Gratis</th><th scope="col">Pro</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Semua plugin bawaan dan Shelf</th><td>Ya</td><td>Ya</td></tr>
+          <tr><th scope="row">Plugin tambahan yang aktif, dari galeri atau buatan sendiri</th><td>3</td><td>Tanpa batas</td></tr>
+          <tr><th scope="row">Tema Classic</th><td>Ya</td><td>Ya</td></tr>
+          <tr><th scope="row">Tema Glass dan Pill</th><td>Tidak</td><td>Ya</td></tr>
+          <tr><th scope="row">Update otomatis</th><td>Ya</td><td>Ya</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block" id="pasang" aria-labelledby="h-pasang">
+      <div class="block-head">
+        <h2 id="h-pasang">Memasang versi beta</h2>
+        <p>Beta ini belum dinotarisasi Apple, jadi macOS menahannya saat pertama dibuka. Konfirmasi ini cukup sekali;
+          update berikutnya terpasang sendiri.</p>
+      </div>
+      <ol class="steps">
+        <li><strong>Unduh DMG, lalu seret NotchKit ke Applications.</strong></li>
+        <li><strong>Buka NotchKit.</strong> macOS menampilkan pesan bahwa NotchKit tidak dibuka. Klik Done.</li>
+        <li><strong>Buka System Settings, lalu Privacy &amp; Security.</strong> Gulir ke bawah, klik Open Anyway, lalu
+          masukkan password Mac Anda. Di macOS 14 Sonoma, cukup klik kanan NotchKit di Applications lalu pilih Open.</li>
+      </ol>
+      <p class="fineprint">Panduan lengkap dan cara memeriksa tanda tangan aplikasi ada di
+        <a href="https://github.com/muhghazaliakbar/notchkit-releases/blob/main/INSTALL.md">INSTALL.md</a>.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p><span id="version-line">NotchKit</span></p>
+    <nav aria-label="Tautan">
+      <a href="https://github.com/muhghazaliakbar/notchkit-releases/releases">Semua rilis</a>
+      <a href="https://github.com/muhghazaliakbar/notchkit-releases/blob/main/INSTALL.md">Panduan instalasi</a>
+      <a href="https://github.com/muhghazaliakbar/notchkit-releases/tree/main/registry">Registry plugin</a>
+    </nav>
+    <p class="fineprint">Halaman ini tidak memakai cookie atau analitik.</p>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
