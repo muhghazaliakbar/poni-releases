@@ -4,7 +4,7 @@
     {
       "id": "dev.notchkit.aiusage",
       "name": "Pemakaian AI",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "NotchKit",
       "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam, dibaca dari log lokal.",
       "symbol": "sparkles",
@@ -16,14 +16,14 @@
         {
           "path": "main.js",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/aiusage/main.js",
-          "sha256": "8439c2bc31cd1897551e80b52a0fb00a4e5c97de7ceb9cba10e64dd546debf21",
-          "size": 4067
+          "sha256": "462c2bf48b5f1db2af2ea88b7fa97955ce6ddc429ebb34d4ebbbd98dcd12ddf1",
+          "size": 3340
         },
         {
           "path": "manifest.json",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/aiusage/manifest.json",
-          "sha256": "46a08fe51c2b6c3e3fff8ee88a385da181965a60c69216b84ae9e73c20a0ab0f",
-          "size": 938
+          "sha256": "0c28844f4e3c95b4bb8a8e2a072bc6577ffedf2b389552cc641288d01dcda122",
+          "size": 1132
         }
       ]
     },

@@ -1,23 +1,50 @@
 {
   "id": "dev.notchkit.aiusage",
   "name": "Pemakaian AI",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "NotchKit",
   "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam, dibaca dari log lokal.",
   "category": "Developer",
   "symbol": "sparkles",
-  "permissions": ["ai-usage"],
+  "permissions": [
+    "ai-usage"
+  ],
   "refreshInterval": 10,
   "order": 23,
   "settings": [
-    { "key": "compact", "type": "select", "label": "Di samping notch", "default": "auto",
+    {
+      "key": "compact",
+      "type": "select",
+      "label": "Di samping notch",
+      "default": "auto",
       "options": [
-        { "value": "auto", "label": "Otomatis (yang aktif terakhir)" },
-        { "value": "codex", "label": "Codex · kuota 5 jam" },
-        { "value": "claude", "label": "Claude Code · sisa waktu blok" },
-        { "value": "none", "label": "Jangan tampilkan" }
-      ] },
-    { "key": "alert", "type": "number", "label": "Peringatan kuota Codex", "default": 80, "min": 50, "max": 100, "step": 5,
-      "help": "Pop-up saat pemakaian 5 jam melewati persentase ini" }
+        {
+          "value": "auto",
+          "label": "Otomatis (yang aktif terakhir)"
+        },
+        {
+          "value": "codex",
+          "label": "Codex · kuota 5 jam"
+        },
+        {
+          "value": "claude",
+          "label": "Claude Code · sisa waktu blok"
+        },
+        {
+          "value": "none",
+          "label": "Jangan tampilkan"
+        }
+      ]
+    },
+    {
+      "key": "alert",
+      "type": "number",
+      "label": "Peringatan kuota Codex",
+      "default": 80,
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "help": "Pop-up saat pemakaian 5 jam melewati persentase ini"
+    }
   ]
 }
