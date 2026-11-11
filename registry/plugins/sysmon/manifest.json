@@ -1,24 +1,76 @@
 {
   "id": "app.useponi.sysmon",
-  "name": "Monitor Sistem",
-  "version": "1.0.0",
+  "name": "System Monitor",
+  "version": "1.0.1",
   "author": "Poni",
-  "description": "CPU, RAM, baterai, jaringan dan disk; satu metrik pilihan tampil di samping notch.",
-  "category": "Produktivitas",
+  "description": "CPU, memory, battery, network, and disk, with one metric of your choice beside the notch.",
+  "category": "Utilities",
   "symbol": "gauge.with.dots.needle.67percent",
-  "permissions": ["system"],
+  "permissions": [
+    "system"
+  ],
   "refreshInterval": 2,
   "order": 22,
   "settings": [
-    { "key": "compact", "type": "select", "label": "Di samping notch", "default": "none",
+    {
+      "key": "compact",
+      "type": "select",
+      "label": "Beside the notch",
+      "default": "none",
       "options": [
-        { "value": "none", "label": "Jangan tampilkan" },
-        { "value": "cpu", "label": "CPU" },
-        { "value": "memory", "label": "RAM" },
-        { "value": "battery", "label": "Baterai" },
-        { "value": "network", "label": "Jaringan (unduh)" }
-      ] },
-    { "key": "cpuAlert", "type": "number", "label": "Peringatan CPU tinggi", "default": 90, "min": 50, "max": 100, "step": 5,
-      "help": "Pop-up bila CPU di atas persentase ini selama 10 detik (100 = mati)" }
-  ]
+        {
+          "value": "none",
+          "label": "Don’t show"
+        },
+        {
+          "value": "cpu",
+          "label": "CPU"
+        },
+        {
+          "value": "memory",
+          "label": "Memory"
+        },
+        {
+          "value": "battery",
+          "label": "Battery"
+        },
+        {
+          "value": "network",
+          "label": "Network (download)"
+        }
+      ]
+    },
+    {
+      "key": "cpuAlert",
+      "type": "number",
+      "label": "High CPU alert",
+      "default": 90,
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "help": "Pop-up when CPU stays above this percentage for 10 seconds (100 = off)"
+    }
+  ],
+  "locales": {
+    "id": {
+      "name": "Monitor Sistem",
+      "description": "CPU, RAM, baterai, jaringan dan disk; satu metrik pilihan tampil di samping notch.",
+      "settings": {
+        "compact": {
+          "label": "Di samping notch",
+          "options": {
+            "none": "Jangan tampilkan",
+            "memory": "RAM",
+            "battery": "Baterai",
+            "network": "Jaringan (unduh)"
+          }
+        },
+        "cpuAlert": {
+          "label": "Peringatan CPU tinggi",
+          "help": "Pop-up bila CPU di atas persentase ini selama 10 detik (100 = mati)"
+        }
+      },
+      "category": "Utilitas"
+    }
+  }
 }

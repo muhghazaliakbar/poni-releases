@@ -1,6 +1,22 @@
-// Riwayat Clipboard — what you copied recently, one click to copy again.
+// Clipboard — what you copied recently, one click to copy again.
 // Only plain text is kept, on this Mac only (notch.storage). Poni never hands plugins what password
 // managers mark as concealed, so passwords do not end up here.
+
+var STRINGS = {
+  en: {
+    justNow: 'just now', min: 'min', h: 'h', d: 'd',
+    updateTitle: 'Update Poni', updateHint: 'Clipboard history needs Poni 0.1.2 or later.',
+    count: '{n} items · click to copy again', one: '1 item · click to copy again', empty: 'Nothing copied yet',
+    clear: 'Clear', emptyHint: 'Copy text in any app (⌘C) and it shows up here.', more: '+{n} more', copied: 'Copied'
+  },
+  id: {
+    justNow: 'baru saja', min: 'mnt', h: 'j', d: 'hr',
+    updateTitle: 'Perbarui Poni', updateHint: 'Riwayat Clipboard butuh Poni 0.1.2 atau lebih baru.',
+    count: '{n} item · salin lagi dengan satu klik', one: '1 item · salin lagi dengan satu klik', empty: 'Belum ada yang disalin',
+    clear: 'Bersihkan', emptyHint: 'Salin teks di aplikasi mana pun (⌘C), lalu teks itu muncul di sini.', more: '+{n} lainnya', copied: 'Disalin'
+  }
+};
+function t(key) { return (STRINGS[notch.locale] || STRINGS.en)[key]; }
 
 var items = notch.storage.get('items') || []; // [{ t: text, at: ms, pin: bool }]
 var lastCount = -1;
@@ -49,11 +65,11 @@ function kind(t) {
 
 function ago(ms) {
   var m = Math.floor((Date.now() - ms) / 60000);
-  if (m < 1) return 'baru saja';
-  if (m < 60) return m + ' mnt';
+  if (m < 1) return t('justNow');
+  if (m < 60) return m + ' ' + t('min');
   var h = Math.floor(m / 60);
-  if (h < 24) return h + ' j';
-  return Math.floor(h / 24) + ' hr';
+  if (h < 24) return h + ' ' + t('h');
+  return Math.floor(h / 24) + ' ' + t('d');
 }
 
 function preview(t) { return t.replace(/\s+/g, ' ').trim().slice(0, 140); }
@@ -66,8 +82,8 @@ function ordered() {
 function render() {
   if (!supported()) {
     return ui.vstack([
-      ui.text('Perbarui Poni', { style: 'title' }),
-      ui.text('Riwayat Clipboard butuh Poni 0.1.2 atau lebih baru.', { style: 'callout', color: 'white/55' })
+      ui.text(t('updateTitle'), { style: 'title' }),
+      ui.text(t('updateHint'), { style: 'callout', color: 'white/55' })
     ], { spacing: 2 });
   }
   var list = ordered();
@@ -75,15 +91,15 @@ function render() {
   var unpinned = items.filter(function (i) { return !i.pin; }).length;
 
   var header = ui.hstack([
-    ui.text(items.length ? items.length + ' item · salin lagi dengan satu klik' : 'Belum ada yang disalin',
+    ui.text(items.length === 1 ? t('one') : items.length ? t('count').replace('{n}', items.length) : t('empty'),
       { style: 'callout', color: 'white/55' }),
     ui.spacer(),
-    unpinned ? ui.button('Bersihkan', 'clear', { symbol: 'lucide:trash-2', compact: true }) : ui.spacer()
+    unpinned ? ui.button(t('clear'), 'clear', { symbol: 'lucide:trash-2', compact: true }) : ui.spacer()
   ], { spacing: 12 });
 
   if (!list.length) {
     return ui.vstack([header,
-      ui.text('Salin teks di aplikasi mana pun (⌘C), lalu teks itu muncul di sini.', { style: 'caption', color: 'white/40' })],
+      ui.text(t('emptyHint'), { style: 'caption', color: 'white/40' })],
       { spacing: 10 });
   }
 
@@ -99,7 +115,7 @@ function render() {
     ], { spacing: 10 });
   });
   if (list.length > shown.length) {
-    rows.push(ui.text('+' + (list.length - shown.length) + ' lainnya', { style: 'caption', color: 'white/40' }));
+    rows.push(ui.text(t('more').replace('{n}', list.length - shown.length), { style: 'caption', color: 'white/40' }));
   }
   return ui.vstack([header, ui.vstack(rows, { spacing: 6, stagger: true })], { spacing: 12 });
 }
@@ -109,7 +125,7 @@ function onAction(action) {
   var item = items[+parts[1]];
   if (parts[0] === 'copy' && item) {
     notch.clipboard.set(item.t);
-    notch.flash('Disalin', 'lucide:check');
+    notch.flash(t('copied'), 'lucide:check');
   }
   if (parts[0] === 'pin' && item) { item.pin = !item.pin; save(); }
   if (parts[0] === 'clear') { items = items.filter(function (i) { return i.pin; }); save(); }

@@ -1,4 +1,11 @@
-// Harga Kripto — prices in IDR from the CoinGecko public API.
+// Crypto — prices in IDR from the CoinGecko public API.
+
+var STRINGS = {
+  en: { failed: 'Couldn’t load prices', loading: 'Loading prices…', title: 'Crypto prices (IDR)', day: '24h' },
+  id: { failed: 'Gagal memuat harga', loading: 'Memuat harga…', title: 'Harga Kripto (IDR)', day: '24 jam' }
+};
+function t(key) { return (STRINGS[notch.locale] || STRINGS.en)[key]; }
+function numberLocale() { return notch.locale === 'id' ? 'id-ID' : 'en-US'; }
 
 var COINS = [
   ['bitcoin', 'Bitcoin', 'BTC', 'bitcoinsign.circle.fill'],
@@ -6,7 +13,7 @@ var COINS = [
   ['solana', 'Solana', 'SOL', 'sun.max.fill']
 ];
 var prices = null;
-var error = null;
+var error = null; // { detail } from the network, or { key } for a message in STRINGS
 var lastFetch = 0;
 
 function load() {
@@ -14,26 +21,26 @@ function load() {
   var ids = COINS.map(function (c) { return c[0]; }).join(',');
   notch.fetchJSON('https://api.coingecko.com/api/v3/simple/price?vs_currencies=idr&include_24hr_change=true&ids=' + ids,
     function (json, err) {
-      if (err || !json || !json.bitcoin) { error = err || 'Gagal memuat harga'; return; }
+      if (err || !json || !json.bitcoin) { error = err ? { detail: err } : { key: 'failed' }; return; }
       prices = json;
       error = null;
     });
 }
 
 function rupiah(n) {
-  return 'Rp ' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return 'Rp ' + Math.round(n).toLocaleString(numberLocale());
 }
 
-function pct(n) { return (n >= 0 ? '+' : '') + n.toFixed(2) + '%'; }
+function pct(n) { return (n >= 0 ? '+' : '') + n.toLocaleString(numberLocale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%'; }
 
 function init() { load(); }
 
 function render() {
   if (Date.now() - lastFetch > 2 * 60000) load();
-  if (!prices) return ui.text(error || 'Memuat harga…', { style: 'headline' });
+  if (!prices) return ui.text(error ? (error.detail || t(error.key)) : t('loading'), { style: 'headline' });
 
   return ui.vstack([
-    ui.hstack([ui.text('Harga Kripto (IDR)', { style: 'headline' }), ui.spacer(), ui.text('24 jam', { style: 'caption' })]),
+    ui.hstack([ui.text(t('title'), { style: 'headline' }), ui.spacer(), ui.text(t('day'), { style: 'caption' })]),
     ui.vstack(COINS.map(function (c) {
       var p = prices[c[0]];
       var change = p.idr_24h_change || 0;

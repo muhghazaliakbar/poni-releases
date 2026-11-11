@@ -1,16 +1,35 @@
-// Pemakaian AI — notch.ai.usage(): Claude Code tokens (5-hour blocks) + Codex rate limits.
+// AI Usage — notch.ai.usage(): Claude Code tokens (5-hour blocks) + Codex rate limits.
+
+var STRINGS = {
+  en: {
+    million: 'M', thousand: 'K', d: 'd', h: 'h', m: 'm',
+    reading: 'Reading local logs…', claudeBlock: 'Claude Code · 5-hour block', tokens: '{n} tokens · resets in {t}',
+    noBlock: 'no active block', codexPrimary: 'Codex · main quota', codexWeekly: 'Codex · weekly',
+    wasReset: 'reset', used: '{n}% used', emptyTitle: 'No data yet',
+    emptyHint: 'No Claude Code (~/.claude) or Codex (~/.codex) logs found.', alert: 'Codex at {n}% of 5-hour quota'
+  },
+  id: {
+    million: ' jt', thousand: ' rb', d: 'hr', h: 'j', m: 'm',
+    reading: 'Membaca log lokal…', claudeBlock: 'Claude Code · blok 5 jam', tokens: '{n} token · reset {t}',
+    noBlock: 'tidak ada blok aktif', codexPrimary: 'Codex · kuota utama', codexWeekly: 'Codex · mingguan',
+    wasReset: 'sudah reset', used: '{n}% terpakai', emptyTitle: 'Belum ada data',
+    emptyHint: 'Tidak ditemukan log Claude Code (~/.claude) atau Codex (~/.codex).', alert: 'Codex {n}% kuota 5 jam'
+  }
+};
+function t(key) { return (STRINGS[notch.locale] || STRINGS.en)[key]; }
+function tf(key, vals) { return t(key).replace(/\{(\w+)\}/g, function (_, k) { return vals[k]; }); }
 
 var alerted = null;
 
 function tok(n) {
-  if (n >= 1e6) return (n / 1e6).toFixed(1) + ' jt';
-  if (n >= 1e3) return Math.round(n / 1e3) + ' rb';
+  if (n >= 1e6) return (n / 1e6).toFixed(1) + t('million');
+  if (n >= 1e3) return Math.round(n / 1e3) + t('thousand');
   return String(n || 0);
 }
 function left(ms) {
   var m = Math.max(0, Math.round((ms - Date.now()) / 60000));
-  if (m >= 1440) return Math.floor(m / 1440) + ' hr ' + Math.floor((m % 1440) / 60) + ' j';
-  return Math.floor(m / 60) + ' j ' + (m % 60) + ' m';
+  if (m >= 1440) return Math.floor(m / 1440) + ' ' + t('d') + ' ' + Math.floor((m % 1440) / 60) + ' ' + t('h');
+  return Math.floor(m / 60) + ' ' + t('h') + ' ' + (m % 60) + ' ' + t('m');
 }
 function tone(x) { return x > 0.85 ? 'red' : x > 0.6 ? 'orange' : 'green'; }
 function shortModel(m) { return m.replace(/^claude-/, '').replace(/-\d{8}$/, ''); }
@@ -30,22 +49,22 @@ function meter(label, sub, value, color) {
 
 function render() {
   var u = notch.ai.usage();
-  if (!u) return ui.text('Membaca log lokal…', { style: 'caption', color: 'white/50' });
+  if (!u) return ui.text(t('reading'), { style: 'caption', color: 'white/50' });
   var c = u.claude, x = u.codex, rows = [];
   if (c && c.block) {
     var b = c.block, elapsed = Math.min(1, (Date.now() - b.start) / (b.end - b.start));
-    rows.push(meter('Claude Code · blok 5 jam', tok(b.input + b.output) + ' token · reset ' + left(b.end), elapsed, '#d97757'));
+    rows.push(meter(t('claudeBlock'), tf('tokens', { n: tok(b.input + b.output), t: left(b.end) }), elapsed, '#d97757'));
   } else if (c) {
-    rows.push(meter('Claude Code · blok 5 jam', 'tidak ada blok aktif', 0, '#d97757'));
+    rows.push(meter(t('claudeBlock'), t('noBlock'), 0, '#d97757'));
   }
   if (x && x.primary) {
-    rows.push(meter('Codex · kuota utama', x.primary.reset ? 'sudah reset' : Math.round(x.primary.used * 100) + '% terpakai', x.primary.used, 'mint'));
+    rows.push(meter(t('codexPrimary'), x.primary.reset ? t('wasReset') : tf('used', { n: Math.round(x.primary.used * 100) }), x.primary.used, 'mint'));
   }
   if (x && x.secondary) {
-    rows.push(meter('Codex · mingguan', x.secondary.reset ? 'sudah reset' : Math.round(x.secondary.used * 100) + '% terpakai', x.secondary.used, 'accent'));
+    rows.push(meter(t('codexWeekly'), x.secondary.reset ? t('wasReset') : tf('used', { n: Math.round(x.secondary.used * 100) }), x.secondary.used, 'accent'));
   }
-  if (!rows.length) return ui.vstack([ui.text('Belum ada data', { style: 'title' }),
-    ui.text('Tidak ditemukan log Claude Code (~/.claude) atau Codex (~/.codex).', { style: 'callout', color: 'white/55' })], { spacing: 4 });
+  if (!rows.length) return ui.vstack([ui.text(t('emptyTitle'), { style: 'title' }),
+    ui.text(t('emptyHint'), { style: 'callout', color: 'white/55' })], { spacing: 4 });
   return ui.vstack(rows, { spacing: 12 });
 }
 
@@ -56,7 +75,7 @@ function compact() {
   var limit = (notch.settings.get('alert') || 80) / 100;
   if (x && x.primary && x.primary.used >= limit && alerted !== x.primary.resetsAt) {
     alerted = x.primary.resetsAt;
-    notch.flash('Codex ' + Math.round(x.primary.used * 100) + '% kuota 5 jam', 'exclamationmark.triangle.fill');
+    notch.flash(tf('alert', { n: Math.round(x.primary.used * 100) }), 'exclamationmark.triangle.fill');
   }
   if (mode === 'none') return null;
   if (mode === 'auto') {

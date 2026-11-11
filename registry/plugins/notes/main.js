@@ -1,4 +1,10 @@
-// Catatan Cepat — tiny notes list stored per plugin.
+// Notes — tiny notes list stored per plugin.
+
+var STRINGS = {
+  en: { placeholder: 'Write a note and press Return…', empty: 'No notes yet.', more: '+{n} more notes', open: '{n} notes', one: '1 note' },
+  id: { placeholder: 'Tulis catatan lalu tekan Enter…', empty: 'Belum ada catatan.', more: '+{n} catatan lain', open: '{n} catatan', one: '1 catatan' }
+};
+function t(key) { return (STRINGS[notch.locale] || STRINGS.en)[key]; }
 
 var notes = notch.storage.get('notes') || [];
 
@@ -15,15 +21,15 @@ function render() {
     ], { spacing: 8 });
   });
   return ui.vstack([
-    ui.input('Tulis catatan lalu tekan Enter…', 'add'),
-    notes.length ? ui.vstack(rows, { spacing: 6 }) : ui.text('Belum ada catatan.', { style: 'caption' }),
-    notes.length > 6 ? ui.text('+' + (notes.length - 6) + ' catatan lain', { style: 'caption' }) : ui.spacer()
+    ui.input(t('placeholder'), 'add'),
+    notes.length ? ui.vstack(rows, { spacing: 6 }) : ui.text(t('empty'), { style: 'caption' }),
+    notes.length > 6 ? ui.text(t('more').replace('{n}', notes.length - 6), { style: 'caption' }) : ui.spacer()
   ], { spacing: 10 });
 }
 
 function compact() {
   var open = notes.filter(function (n) { return !n.done; }).length;
-  return open ? { symbol: 'note.text', text: open + ' catatan', color: 'yellow' } : null;
+  return open ? { symbol: 'note.text', text: open === 1 ? t('one') : t('open').replace('{n}', open), color: 'yellow' } : null;
 }
 
 function onAction(action, value) {

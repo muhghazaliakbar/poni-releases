@@ -1,10 +1,10 @@
 {
   "id": "app.useponi.clipboard",
   "name": "Clipboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Poni",
-  "description": "Teks yang baru Anda salin, siap disalin lagi dengan satu klik. Sematkan yang sering dipakai. Password tidak pernah dicatat.",
-  "category": "Produktivitas",
+  "description": "Text you copied recently, ready to copy again in one click. Pin what you use often. Passwords are never saved.",
+  "category": "Productivity",
   "symbol": "lucide:clipboard-list",
   "permissions": [
     "clipboard"
@@ -15,21 +15,36 @@
     {
       "key": "max",
       "type": "number",
-      "label": "Simpan paling banyak",
+      "label": "Keep up to",
       "default": 30,
       "min": 10,
       "max": 100,
       "step": 10,
-      "help": "Item tersemat tidak dihitung"
+      "help": "Pinned items don’t count"
     },
     {
       "key": "show",
       "type": "number",
-      "label": "Tampilkan di notch",
+      "label": "Show in the notch",
       "default": 5,
       "min": 3,
       "max": 8,
       "step": 1
     }
-  ]
+  ],
+  "locales": {
+    "id": {
+      "description": "Teks yang baru Anda salin, siap disalin lagi dengan satu klik. Sematkan yang sering dipakai. Password tidak pernah dicatat.",
+      "settings": {
+        "max": {
+          "label": "Simpan paling banyak",
+          "help": "Item tersemat tidak dihitung"
+        },
+        "show": {
+          "label": "Tampilkan di notch"
+        }
+      },
+      "category": "Produktivitas"
+    }
+  }
 }

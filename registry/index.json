@@ -3,179 +3,265 @@
   "plugins": [
     {
       "id": "app.useponi.aiusage",
-      "name": "Pemakaian AI",
-      "version": "1.1.0",
+      "name": "AI Usage",
+      "version": "1.1.1",
       "author": "Poni",
-      "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam, dibaca dari log lokal.",
+      "description": "Codex quota left and Claude Code token use per 5-hour block, read from local logs.",
       "symbol": "sparkles",
       "category": "Developer",
       "permissions": [
         "ai-usage"
       ],
+      "locales": {
+        "id": {
+          "name": "Pemakaian AI",
+          "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam, dibaca dari log lokal.",
+          "settings": {
+            "compact": {
+              "label": "Di samping notch",
+              "options": {
+                "auto": "Otomatis (yang aktif terakhir)",
+                "codex": "Codex · kuota 5 jam",
+                "claude": "Claude Code · sisa waktu blok",
+                "none": "Jangan tampilkan"
+              }
+            },
+            "alert": {
+              "label": "Peringatan kuota Codex",
+              "help": "Pop-up saat pemakaian 5 jam melewati persentase ini"
+            }
+          }
+        }
+      },
       "files": [
         {
           "path": "main.js",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/aiusage/main.js",
-          "sha256": "462c2bf48b5f1db2af2ea88b7fa97955ce6ddc429ebb34d4ebbbd98dcd12ddf1",
-          "size": 3340
+          "sha256": "81dcb23b79f753ac1f42e5e74079286101773037358de815387e7f2fdf134d77",
+          "size": 4452
         },
         {
           "path": "manifest.json",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/aiusage/manifest.json",
-          "sha256": "2926e1db1f91d254e6e4f58505676db6d3e08ee280eef468ddca1d54f9f083c0",
-          "size": 1127
+          "sha256": "6f392869fdbe2636b64672e969709e3b73f1b9ecd8c24b6223ee8d1cf211e510",
+          "size": 1765
         }
       ]
     },
     {
       "id": "app.useponi.clipboard",
       "name": "Clipboard",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": "Poni",
-      "description": "Teks yang baru Anda salin, siap disalin lagi dengan satu klik. Sematkan yang sering dipakai. Password tidak pernah dicatat.",
+      "description": "Text you copied recently, ready to copy again in one click. Pin what you use often. Passwords are never saved.",
       "symbol": "lucide:clipboard-list",
-      "category": "Produktivitas",
+      "category": "Productivity",
       "permissions": [
         "clipboard"
       ],
+      "locales": {
+        "id": {
+          "description": "Teks yang baru Anda salin, siap disalin lagi dengan satu klik. Sematkan yang sering dipakai. Password tidak pernah dicatat.",
+          "settings": {
+            "max": {
+              "label": "Simpan paling banyak",
+              "help": "Item tersemat tidak dihitung"
+            },
+            "show": {
+              "label": "Tampilkan di notch"
+            }
+          },
+          "category": "Produktivitas"
+        }
+      },
       "files": [
         {
           "path": "main.js",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/clipboard/main.js",
-          "sha256": "76a7a3393d188886321b5a3a7eae27b5a24638be60e3147fdcb0e8eac703ccb0",
-          "size": 4390
+          "sha256": "3f42cfe1a33f0420c5ad8fc586eadd3c4ff472efb88561b98782cf01c0d30ede",
+          "size": 5254
         },
         {
           "path": "manifest.json",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/clipboard/manifest.json",
-          "sha256": "14d1e97af7d39b525e31b69ad0aa8dd308e34f2e8d951a8198a7c76eae8f2754",
-          "size": 791
+          "sha256": "43052c3ea22fd7fb237b02268d1e7d9bc0b19658ecd136ac7154413eaf5f92d1",
+          "size": 1201
         }
       ]
     },
     {
       "id": "app.useponi.countdown",
-      "name": "Hitung Mundur",
-      "version": "1.0.0",
+      "name": "Countdown",
+      "version": "1.0.1",
       "author": "Poni",
-      "description": "Hitung mundur ke tanggal penting: deadline, gajian, liburan, atau Lebaran.",
+      "description": "Count down to a date that matters: a deadline, payday, a holiday, or Eid.",
       "symbol": "calendar.badge.clock",
-      "category": "Produktivitas",
+      "category": "Productivity",
       "permissions": [],
+      "locales": {
+        "id": {
+          "name": "Hitung Mundur",
+          "description": "Hitung mundur ke tanggal penting: deadline, gajian, liburan, atau Lebaran.",
+          "category": "Produktivitas"
+        }
+      },
       "files": [
         {
           "path": "main.js",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/countdown/main.js",
-          "sha256": "9f0cafac9992535418ebf8257295c1db68ff5b3ad3678a167393ed7dd3aa42b4",
-          "size": 2550
+          "sha256": "4aa6b942bd94eb64fff8ba037f4488bddb57def1e71811f63c4b5164260abf64",
+          "size": 3411
         },
         {
           "path": "manifest.json",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/countdown/manifest.json",
-          "sha256": "3967e271792d73844ed1565a03cb8bcca5dc36c9d31e44f3bb7c8b60be25ea00",
-          "size": 327
+          "sha256": "0bec7ea1c45804b765fd8d5eb158bb9dabc75e7a1538a0a488e5d4f7aafc1370",
+          "size": 523
         }
       ]
     },
     {
       "id": "app.useponi.crypto",
-      "name": "Harga Kripto",
-      "version": "1.0.0",
+      "name": "Crypto",
+      "version": "1.0.1",
       "author": "Poni",
-      "description": "Harga BTC, ETH, SOL dalam Rupiah dengan perubahan 24 jam dari CoinGecko.",
+      "description": "BTC, ETH, and SOL prices in Indonesian rupiah, with 24-hour change from CoinGecko.",
       "symbol": "bitcoinsign.circle.fill",
-      "category": "Keuangan",
+      "category": "Finance",
       "permissions": [
         "network"
       ],
+      "locales": {
+        "id": {
+          "name": "Harga Kripto",
+          "description": "Harga BTC, ETH, SOL dalam Rupiah dengan perubahan 24 jam dari CoinGecko.",
+          "category": "Keuangan"
+        }
+      },
       "files": [
         {
           "path": "main.js",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/crypto/main.js",
-          "sha256": "98079924abad18e02e1e1fd2c7a2b4faf1e49a127a143d70190220854779dd3c",
-          "size": 1879
+          "sha256": "031b132e79c11ca137c0dd6baa4a099f451a0f11c638024bb945be5f3580315b",
+          "size": 2426
         },
         {
           "path": "manifest.json",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/crypto/manifest.json",
-          "sha256": "2e466f54d02279d43e15e63753cb208ac29c05d113ffc5052430c41ff3f25ac3",
-          "size": 329
+          "sha256": "fa26d1ea16866055a5c3a545121899885a1ddb7c10a948bfa835a03f76bbefa3",
+          "size": 534
         }
       ]
     },
     {
       "id": "app.useponi.kurs",
-      "name": "Kurs Rupiah",
-      "version": "1.0.0",
+      "name": "Exchange Rates",
+      "version": "1.0.1",
       "author": "Poni",
-      "description": "Kurs USD, SGD, EUR, JPY, MYR ke Rupiah. Diperbarui tiap jam.",
+      "description": "USD, SGD, EUR, JPY, and MYR rates in Indonesian rupiah. Updated hourly.",
       "symbol": "dollarsign.arrow.circlepath",
-      "category": "Keuangan",
+      "category": "Finance",
       "permissions": [
         "network"
       ],
+      "locales": {
+        "id": {
+          "name": "Kurs Rupiah",
+          "description": "Kurs USD, SGD, EUR, JPY, MYR ke Rupiah. Diperbarui tiap jam.",
+          "category": "Keuangan"
+        }
+      },
       "files": [
         {
           "path": "main.js",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/kurs/main.js",
-          "sha256": "63736cb5a4e0bb997211114c27583f04300f97f8fd5bbb46397759ba1bea3fbe",
-          "size": 1586
+          "sha256": "6455a02637f19cc9e01cf5417456f2115bb0ab6ffd94fb705a3f895092a46c7a",
+          "size": 2356
         },
         {
           "path": "manifest.json",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/kurs/manifest.json",
-          "sha256": "8d8ee31d931ccecb1d03d1a8f5c191584aa552db82df411139a1f4d989c32c7a",
-          "size": 318
+          "sha256": "7e49e114a7cf5bdd86738ced1effe31f816fca8944031c980b687a997a57da9f",
+          "size": 520
         }
       ]
     },
     {
       "id": "app.useponi.notes",
-      "name": "Catatan Cepat",
-      "version": "1.0.0",
+      "name": "Notes",
+      "version": "1.0.1",
       "author": "Poni",
-      "description": "Tulis catatan singkat langsung dari notch. Tersimpan otomatis.",
+      "description": "Jot down quick notes right from the notch. Saved automatically.",
       "symbol": "note.text",
-      "category": "Produktivitas",
+      "category": "Productivity",
       "permissions": [],
+      "locales": {
+        "id": {
+          "name": "Catatan Cepat",
+          "description": "Tulis catatan singkat langsung dari notch. Tersimpan otomatis.",
+          "category": "Produktivitas"
+        }
+      },
       "files": [
         {
           "path": "main.js",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/notes/main.js",
-          "sha256": "4a2799351d5e07eaa864fd0c6c4de6c3b6b723b69d2be9dab55344da65d037ee",
-          "size": 1474
+          "sha256": "4d68a8e47c4dc99bd4b9480ad9da5b73421125b993cd52848af7ee0d125612e4",
+          "size": 1861
         },
         {
           "path": "manifest.json",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/notes/manifest.json",
-          "sha256": "89ade5a170f2b69124add2ef20f70a188c109a40d7badc7a0d6e3ed8de03d6d4",
-          "size": 300
+          "sha256": "ed0676a4c9c73398ba6b4f2a67754f60bf1261fef39527922328c1e8ff0e2662",
+          "size": 482
         }
       ]
     },
     {
       "id": "app.useponi.sysmon",
-      "name": "Monitor Sistem",
-      "version": "1.0.0",
+      "name": "System Monitor",
+      "version": "1.0.1",
       "author": "Poni",
-      "description": "CPU, RAM, baterai, jaringan dan disk; satu metrik pilihan tampil di samping notch.",
+      "description": "CPU, memory, battery, network, and disk, with one metric of your choice beside the notch.",
       "symbol": "gauge.with.dots.needle.67percent",
-      "category": "Produktivitas",
+      "category": "Utilities",
       "permissions": [
         "system"
       ],
+      "locales": {
+        "id": {
+          "name": "Monitor Sistem",
+          "description": "CPU, RAM, baterai, jaringan dan disk; satu metrik pilihan tampil di samping notch.",
+          "settings": {
+            "compact": {
+              "label": "Di samping notch",
+              "options": {
+                "none": "Jangan tampilkan",
+                "memory": "RAM",
+                "battery": "Baterai",
+                "network": "Jaringan (unduh)"
+              }
+            },
+            "cpuAlert": {
+              "label": "Peringatan CPU tinggi",
+              "help": "Pop-up bila CPU di atas persentase ini selama 10 detik (100 = mati)"
+            }
+          },
+          "category": "Utilitas"
+        }
+      },
       "files": [
         {
           "path": "main.js",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/sysmon/main.js",
-          "sha256": "e54aac2e5cbbb1201a39b75a1bf14d8ed4e9b35928767d7f72f2e9aca0bd791e",
-          "size": 2968
+          "sha256": "ac0e9282670b80e08525162fc33fe96bdf9231a055d8f91da2509987816aa5b2",
+          "size": 3655
         },
         {
           "path": "manifest.json",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/sysmon/manifest.json",
-          "sha256": "9c89db307b83c59604af10b249e8e77099853f04eebd29f80169bbbb3ebe776d",
-          "size": 967
+          "sha256": "7914b98c4dcd87122bbb689413e78a20ae5c342d665777c57578b7cea602f377",
+          "size": 1839
         }
       ]
     }

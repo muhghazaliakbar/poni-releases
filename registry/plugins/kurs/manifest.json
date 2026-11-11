@@ -1,12 +1,21 @@
 {
   "id": "app.useponi.kurs",
-  "name": "Kurs Rupiah",
-  "version": "1.0.0",
+  "name": "Exchange Rates",
+  "version": "1.0.1",
   "author": "Poni",
-  "description": "Kurs USD, SGD, EUR, JPY, MYR ke Rupiah. Diperbarui tiap jam.",
-  "category": "Keuangan",
+  "description": "USD, SGD, EUR, JPY, and MYR rates in Indonesian rupiah. Updated hourly.",
+  "category": "Finance",
   "symbol": "dollarsign.arrow.circlepath",
-  "permissions": ["network"],
+  "permissions": [
+    "network"
+  ],
   "refreshInterval": 60,
-  "order": 20
+  "order": 20,
+  "locales": {
+    "id": {
+      "name": "Kurs Rupiah",
+      "description": "Kurs USD, SGD, EUR, JPY, MYR ke Rupiah. Diperbarui tiap jam.",
+      "category": "Keuangan"
+    }
+  }
 }

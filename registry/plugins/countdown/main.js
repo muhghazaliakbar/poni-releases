@@ -1,4 +1,20 @@
-// Hitung Mundur — countdown to a date the user types (YYYY-MM-DD or YYYY-MM-DD HH:MM).
+// Countdown — countdown to a date the user types (YYYY-MM-DD or YYYY-MM-DD HH:MM).
+
+var STRINGS = {
+  en: {
+    placeholder: 'e.g. Payday 2026-11-25  or  Launch 2026-12-01 09:00', emptyTitle: 'No date set',
+    emptyHint: 'Type a name and a date, then press Return.', remove: 'Remove', arrived: 'It’s here! 🎉',
+    days: 'days', hours: 'hours', minutes: 'min', seconds: 'sec', daysShort: '{n} days', dayShort: '1 day',
+    format: 'Format: Name YYYY-MM-DD'
+  },
+  id: {
+    placeholder: 'Contoh: Gajian 2026-11-25  atau  Rilis 2026-12-01 09:00', emptyTitle: 'Belum ada target',
+    emptyHint: 'Ketik nama dan tanggal, lalu tekan Enter.', remove: 'Hapus', arrived: 'Sudah tiba! 🎉',
+    days: 'hari', hours: 'jam', minutes: 'menit', seconds: 'detik', daysShort: '{n} hari', dayShort: '1 hari',
+    format: 'Format: Nama YYYY-MM-DD'
+  }
+};
+function t(key) { return (STRINGS[notch.locale] || STRINGS.en)[key]; }
 
 var target = notch.storage.get('target'); // { label, date: ISO string }
 
@@ -22,11 +38,11 @@ function box(value, label) {
 }
 
 function render() {
-  var input = ui.input('Contoh: Gajian 2026-11-25  atau  Rilis 2026-12-01 09:00', 'set');
+  var input = ui.input(t('placeholder'), 'set');
   if (!target) {
     return ui.vstack([
-      ui.text('Belum ada target', { style: 'headline' }),
-      ui.text('Ketik nama dan tanggal, lalu tekan Enter.', { style: 'caption' }),
+      ui.text(t('emptyTitle'), { style: 'headline' }),
+      ui.text(t('emptyHint'), { style: 'caption' }),
       input
     ], { spacing: 10 });
   }
@@ -38,14 +54,14 @@ function render() {
       ui.symbol('calendar.badge.clock', { size: 22, color: 'accent' }),
       ui.vstack([
         ui.text(target.label, { style: 'headline' }),
-        ui.text(date.toLocaleString('id-ID'), { style: 'caption' })
+        ui.text(date.toLocaleString(notch.locale === 'id' ? 'id-ID' : 'en-US'), { style: 'caption' })
       ], { spacing: 2 }),
       ui.spacer(),
-      ui.button('Hapus', 'clear', { symbol: 'xmark' })
+      ui.button(t('remove'), 'clear', { symbol: 'xmark' })
     ]),
     ms <= 0
-      ? ui.text('Sudah tiba! 🎉', { style: 'title', color: 'green' })
-      : ui.hstack([box(String(p.d), 'hari'), box(pad(p.h), 'jam'), box(pad(p.m), 'menit'), box(pad(p.s), 'detik')], { spacing: 8 }),
+      ? ui.text(t('arrived'), { style: 'title', color: 'green' })
+      : ui.hstack([box(String(p.d), t('days')), box(pad(p.h), t('hours')), box(pad(p.m), t('minutes')), box(pad(p.s), t('seconds'))], { spacing: 8 }),
     input
   ], { spacing: 12 });
 }
@@ -55,14 +71,14 @@ function compact() {
   var ms = new Date(target.date).getTime() - Date.now();
   if (ms <= 0) return null;
   var p = parts(ms);
-  return { symbol: 'calendar.badge.clock', text: p.d > 0 ? p.d + ' hari' : pad(p.h) + ':' + pad(p.m) + ':' + pad(p.s), color: 'accent' };
+  return { symbol: 'calendar.badge.clock', text: p.d > 1 ? t('daysShort').replace('{n}', p.d) : p.d === 1 ? t('dayShort') : pad(p.h) + ':' + pad(p.m) + ':' + pad(p.s), color: 'accent' };
 }
 
 function onAction(action, value) {
   if (action === 'set') {
-    var t = parse(value);
-    if (t) { target = t; notch.storage.set('target', t); }
-    else notch.flash('Format: Nama YYYY-MM-DD', 'exclamationmark.triangle.fill');
+    var parsed = parse(value);
+    if (parsed) { target = parsed; notch.storage.set('target', parsed); }
+    else notch.flash(t('format'), 'exclamationmark.triangle.fill');
   }
   if (action === 'clear') { target = null; notch.storage.set('target', null); }
 }

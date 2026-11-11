@@ -1,12 +1,19 @@
 {
   "id": "app.useponi.countdown",
-  "name": "Hitung Mundur",
-  "version": "1.0.0",
+  "name": "Countdown",
+  "version": "1.0.1",
   "author": "Poni",
-  "description": "Hitung mundur ke tanggal penting: deadline, gajian, liburan, atau Lebaran.",
-  "category": "Produktivitas",
+  "description": "Count down to a date that matters: a deadline, payday, a holiday, or Eid.",
+  "category": "Productivity",
   "symbol": "calendar.badge.clock",
   "permissions": [],
   "refreshInterval": 1,
-  "order": 22
+  "order": 22,
+  "locales": {
+    "id": {
+      "name": "Hitung Mundur",
+      "description": "Hitung mundur ke tanggal penting: deadline, gajian, liburan, atau Lebaran.",
+      "category": "Produktivitas"
+    }
+  }
 }

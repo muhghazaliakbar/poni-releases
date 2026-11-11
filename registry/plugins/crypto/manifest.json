@@ -1,12 +1,21 @@
 {
   "id": "app.useponi.crypto",
-  "name": "Harga Kripto",
-  "version": "1.0.0",
+  "name": "Crypto",
+  "version": "1.0.1",
   "author": "Poni",
-  "description": "Harga BTC, ETH, SOL dalam Rupiah dengan perubahan 24 jam dari CoinGecko.",
-  "category": "Keuangan",
+  "description": "BTC, ETH, and SOL prices in Indonesian rupiah, with 24-hour change from CoinGecko.",
+  "category": "Finance",
   "symbol": "bitcoinsign.circle.fill",
-  "permissions": ["network"],
+  "permissions": [
+    "network"
+  ],
   "refreshInterval": 60,
-  "order": 21
+  "order": 21,
+  "locales": {
+    "id": {
+      "name": "Harga Kripto",
+      "description": "Harga BTC, ETH, SOL dalam Rupiah dengan perubahan 24 jam dari CoinGecko.",
+      "category": "Keuangan"
+    }
+  }
 }

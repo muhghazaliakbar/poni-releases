@@ -1,12 +1,19 @@
 {
   "id": "app.useponi.notes",
-  "name": "Catatan Cepat",
-  "version": "1.0.0",
+  "name": "Notes",
+  "version": "1.0.1",
   "author": "Poni",
-  "description": "Tulis catatan singkat langsung dari notch. Tersimpan otomatis.",
-  "category": "Produktivitas",
+  "description": "Jot down quick notes right from the notch. Saved automatically.",
+  "category": "Productivity",
   "symbol": "note.text",
   "permissions": [],
   "refreshInterval": 5,
-  "order": 23
+  "order": 23,
+  "locales": {
+    "id": {
+      "name": "Catatan Cepat",
+      "description": "Tulis catatan singkat langsung dari notch. Tersimpan otomatis.",
+      "category": "Produktivitas"
+    }
+  }
 }
