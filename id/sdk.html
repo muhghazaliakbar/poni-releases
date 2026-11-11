@@ -191,6 +191,7 @@ ui.progress(value, { color, height })         <span class="c">// value 0 sampai 
 ui.row(label, value, { symbol, highlight, color })
 ui.input(placeholder, action, { value })
 ui.image(url, { size, radius, placeholder, playing })  <span class="c">// playing: kilau saat diputar</span>
+ui.camera({ height, radius, mirrored })  <span class="c">// pratinjau kamera langsung; butuh "camera". Hanya menyala saat terlihat</span>
 ui.spacer()
 ui.divider()</code></pre>
         <dl class="defs">
@@ -258,7 +259,7 @@ ui.divider()</code></pre>
             kurang, API lain mengembalikan <code>null</code>.</li>
         </ul>
         <p>Pilihan: <code>network</code>, <code>media</code>, <code>notifications</code>, <code>clipboard</code>,
-          <code>calendar</code>, <code>system</code>, <code>ai-usage</code>.</p>
+          <code>calendar</code>, <code>system</code>, <code>ai-usage</code>, <code>camera</code> (untuk <code>ui.camera()</code>).</p>
       </section>
 
       <section id="batasan">

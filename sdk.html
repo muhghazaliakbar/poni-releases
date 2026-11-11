@@ -190,6 +190,7 @@ ui.progress(value, { color, height })         <span class="c">// value from 0 to
 ui.row(label, value, { symbol, highlight, color })
 ui.input(placeholder, action, { value })
 ui.image(url, { size, radius, placeholder, playing })  <span class="c">// playing: shimmer while playing</span>
+ui.camera({ height, radius, mirrored })  <span class="c">// live camera preview; needs "camera". On only while visible</span>
 ui.spacer()
 ui.divider()</code></pre>
         <dl class="defs">
@@ -257,7 +258,7 @@ ui.divider()</code></pre>
             permission, and other APIs return <code>null</code>.</li>
         </ul>
         <p>Options: <code>network</code>, <code>media</code>, <code>notifications</code>, <code>clipboard</code>,
-          <code>calendar</code>, <code>system</code>, <code>ai-usage</code>.</p>
+          <code>calendar</code>, <code>system</code>, <code>ai-usage</code>, <code>camera</code> (for <code>ui.camera()</code>).</p>
       </section>
 
       <section id="batasan">
