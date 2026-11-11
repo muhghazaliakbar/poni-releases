@@ -143,6 +143,7 @@
 ui.hstack(children, { spacing, align, padding, width, background, fill, highlight, stagger })
 ui.text(text, { style, weight, color, lines, width, align })
 ui.ring(value, { size, color, label })        <span class="c">// cincin progres (Focus)</span>
+ui.bars(values, { labels, color, height, highlight })  <span class="c">// grafik batang kecil</span>
 ui.symbol(name, { size, color, fill, animation })  <span class="c">// name: 'lucide:music-2' atau SF Symbol</span>
 ui.weatherGlyph(condition, { size })           <span class="c">// matahari + awan beranimasi</span>
 ui.button(label, action, { symbol, fill, style: 'primary', color, labelColor, compact })
@@ -187,6 +188,7 @@ ui.divider()</code></pre>
             <tr><th scope="row"><code>notch.flash(text, symbol)</code></th><td>Pesan singkat 3 detik di samping notch.</td><td></td></tr>
             <tr><th scope="row"><code>notch.refresh()</code></th><td>Gambar ulang sekarang.</td><td></td></tr>
             <tr><th scope="row"><code>notch.open(url)</code></th><td>Buka tautan di browser.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.sound.play(name)</code>, <code>.stop()</code>, <code>.playing()</code></th><td>Putar suara sistem macOS (<code>'Glass'</code>, <code>'Hero'</code>…) atau file audio pilihan pengguna, misalnya <code>'~/Music/azan.mp3'</code>.</td><td></td></tr>
             <tr><th scope="row"><code>notch.text.romanize(text)</code></th><td>Tulisan Latin untuk teks Jepang, Mandarin, Korea dan aksara lain; <code>null</code> bila sudah Latin.</td><td></td></tr>
             <tr><th scope="row"><code>notch.media.get()</code></th><td>Lagu di Spotify atau Apple Music: <code>{ title, artist, album, duration, position, playing, source, artwork }</code>, atau <code>null</code>.</td><td>media</td></tr>
             <tr><th scope="row"><code>notch.media.control(cmd)</code></th><td><code>'playpause'</code>, <code>'next'</code>, <code>'previous'</code>.</td><td>media</td></tr>
