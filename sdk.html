@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Membuat plugin NotchKit</title>
-  <meta name="description" content="Panduan membuat plugin NotchKit dengan JavaScript: manifest, komponen UI, API notch, izin, dan cara mengirim plugin ke galeri.">
+  <title>Membuat plugin Poni</title>
+  <meta name="description" content="Panduan membuat plugin Poni dengan JavaScript: manifest, komponen UI, API notch, izin, dan cara mengirim plugin ke galeri.">
   <meta name="theme-color" content="#1c2350">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c2350'/%3E%3Cpath d='M9 8h14v5a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3z' fill='%23000'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,9 +16,9 @@
   <a class="skip" href="#isi">Langsung ke isi</a>
 
   <header class="docs-bar">
-    <a class="docs-home" href="./">NotchKit</a>
+    <a class="docs-home" href="./">Poni</a>
     <span class="docs-title">Membuat plugin</span>
-    <a class="docs-download" id="download" href="https://github.com/muhghazaliakbar/notchkit-releases/releases/latest">Unduh NotchKit</a>
+    <a class="docs-download" id="download" href="https://github.com/muhghazaliakbar/poni-releases/releases/latest">Unduh Poni</a>
   </header>
 
   <div class="docs-layout">
@@ -38,17 +38,17 @@
     </nav>
 
     <main id="isi" class="prose">
-      <h1>Membuat plugin NotchKit</h1>
+      <h1>Membuat plugin Poni</h1>
       <p class="lede-dark">Plugin adalah satu folder berisi <code>manifest.json</code> dan <code>main.js</code>. Anda menulis
-        JavaScript biasa yang mengembalikan susunan komponen; NotchKit menggambarnya di notch dengan tampilan macOS.
+        JavaScript biasa yang mengembalikan susunan komponen; Poni menggambarnya di notch dengan tampilan macOS.
         Tidak perlu Xcode, build, atau npm.</p>
 
       <section id="mulai">
         <h2>Mulai</h2>
         <ol class="steps">
-          <li><strong>Pasang NotchKit</strong> dan buka sekali.</li>
-          <li><strong>Unduh <a href="downloads/notchkit-plugin-template.zip">template plugin</a></strong>, lalu ekstrak
-            foldernya ke <code>~/Library/Application Support/NotchKit/Plugins/</code>. Di Finder: Go → Go to Folder,
+          <li><strong>Pasang Poni</strong> dan buka sekali.</li>
+          <li><strong>Unduh <a href="downloads/poni-plugin-template.zip">template plugin</a></strong>, lalu ekstrak
+            foldernya ke <code>~/Library/Application Support/Poni/Plugins/</code>. Di Finder: Go → Go to Folder,
             lalu tempel alamat itu.</li>
           <li><strong>Plugin langsung muncul sebagai tab baru.</strong> Ubah <code>main.js</code>, simpan, dan notch
             memuat ulang plugin itu saat itu juga.</li>
@@ -80,7 +80,7 @@
           <thead><tr><th scope="col">Kolom</th><th scope="col">Arti</th></tr></thead>
           <tbody>
             <tr><th scope="row"><code>id</code></th><td>Wajib. Unik, huruf kecil, berbentuk domain terbalik seperti <code>com.namaanda.halo</code>.
-              Awalan <code>dev.notchkit.</code> dipakai plugin resmi.</td></tr>
+              Awalan <code>app.useponi.</code> dipakai plugin resmi.</td></tr>
             <tr><th scope="row"><code>name</code></th><td>Wajib. Nama yang tampil di tab dan Pengaturan.</td></tr>
             <tr><th scope="row"><code>version</code></th><td>Seperti <code>1.2.0</code>. Galeri memakainya untuk menawarkan pembaruan.</td></tr>
             <tr><th scope="row"><code>author</code>, <code>description</code></th><td>Tampil di galeri dan Pengaturan.</td></tr>
@@ -89,7 +89,7 @@
             <tr><th scope="row"><code>refreshInterval</code></th><td>Detik antara <code>render()</code> otomatis. Bawaan 1, paling cepat 0,25.</td></tr>
             <tr><th scope="row"><code>order</code></th><td>Urutan tab, angka kecil lebih dulu. Pengguna tetap bisa menyusun ulang.</td></tr>
             <tr><th scope="row"><code>main</code></th><td>Nama berkas kode, bawaan <code>main.js</code>.</td></tr>
-            <tr><th scope="row"><code>settings</code></th><td>Daftar pengaturan; NotchKit membuat formulirnya. Lihat di bawah.</td></tr>
+            <tr><th scope="row"><code>settings</code></th><td>Daftar pengaturan; Poni membuat formulirnya. Lihat di bawah.</td></tr>
           </tbody>
         </table>
         </div>
@@ -97,7 +97,7 @@
 
       <section id="pengaturan">
         <h2>Pengaturan</h2>
-        <p>Tulis daftar pengaturan di manifest; NotchKit menampilkan formulirnya di jendela Pengaturan, menyimpan nilainya,
+        <p>Tulis daftar pengaturan di manifest; Poni menampilkan formulirnya di jendela Pengaturan, menyimpan nilainya,
           dan memberi tombol untuk kembali ke nilai bawaan.</p>
 <pre><code>"settings": [
   { "key": "city", "type": "text", "label": "Kota", "default": "Jakarta", "placeholder": "Jakarta" },
@@ -109,7 +109,7 @@
 ]</code></pre>
         <p>Jenis yang tersedia: <code>text</code>, <code>number</code>, <code>toggle</code> dan <code>select</code>.
           Baca nilainya dengan <code>notch.settings.get('city')</code> atau semuanya sekaligus dengan
-          <code>notch.settings.all()</code>. Saat pengguna mengubah nilai, NotchKit memanggil
+          <code>notch.settings.all()</code>. Saat pengguna mengubah nilai, Poni memanggil
           <code>onSettingsChanged(key, value)</code> lalu <code>render()</code>.</p>
       </section>
 
@@ -199,7 +199,7 @@ ui.divider()</code></pre>
             <tr><th scope="row"><code>notch.ai.usage()</code></th><td>Pemakaian Claude Code dan Codex dari log di Mac ini.</td><td>ai-usage</td></tr>
             <tr><th scope="row"><code>setTimeout</code>, <code>setInterval</code></th><td>Seperti di browser, paling cepat 50 ms. Plugin digambar ulang setelah callback.</td><td></td></tr>
             <tr><th scope="row"><code>console.log</code>, <code>.warn</code>, <code>.error</code></th><td>Tampil di Konsol di Pengaturan.</td><td></td></tr>
-            <tr><th scope="row"><code>notch.pluginId</code>, <code>notch.version</code></th><td>Id plugin ini dan versi NotchKit.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.pluginId</code>, <code>notch.version</code></th><td>Id plugin ini dan versi Poni.</td><td></td></tr>
           </tbody>
         </table>
         </div>
@@ -282,13 +282,13 @@ ui.divider()</code></pre>
 
       <section id="galeri">
         <h2>Kirim ke galeri</h2>
-        <p>Plugin di galeri bisa dipasang semua pengguna NotchKit dengan satu klik. Daftar galeri ditandatangani, jadi setiap
+        <p>Plugin di galeri bisa dipasang semua pengguna Poni dengan satu klik. Daftar galeri ditandatangani, jadi setiap
           plugin diperiksa sebelum masuk.</p>
         <ol class="steps">
           <li><strong>Periksa plugin Anda:</strong> <code>id</code> dan <code>version</code> terisi benar, ikon SF Symbol
             ada, setiap API yang dipakai punya izinnya, tidak meminta izin yang tidak dipakai, dan Konsol bersih dari error.</li>
           <li><strong>Unggah folder plugin</strong> ke repositori publik atau sebagai zip.</li>
-          <li><strong><a href="https://github.com/muhghazaliakbar/notchkit-releases/issues/new?title=Plugin%3A%20">Buka issue</a></strong>
+          <li><strong><a href="https://github.com/muhghazaliakbar/poni-releases/issues/new?title=Plugin%3A%20">Buka issue</a></strong>
             berisi tautan ke plugin, apa fungsinya, dan kenapa izinnya dibutuhkan. Setelah ditinjau, plugin masuk ke
             galeri. Untuk pembaruan, kirim versi baru dengan <code>version</code> yang dinaikkan; pengguna mendapat tombol
             Update di galeri.</li>
@@ -298,11 +298,11 @@ ui.divider()</code></pre>
   </div>
 
   <footer class="foot">
-    <p>NotchKit</p>
+    <p>Poni</p>
     <nav aria-label="Tautan">
       <a href="./">Beranda</a>
-      <a href="https://github.com/muhghazaliakbar/notchkit-releases/releases">Semua rilis</a>
-      <a href="https://github.com/muhghazaliakbar/notchkit-releases/tree/main/registry">Registry plugin</a>
+      <a href="https://github.com/muhghazaliakbar/poni-releases/releases">Semua rilis</a>
+      <a href="https://github.com/muhghazaliakbar/poni-releases/tree/main/registry">Registry plugin</a>
     </nav>
   </footer>
 
@@ -318,7 +318,7 @@ ui.divider()</code></pre>
     document.querySelectorAll(".prose section").forEach((s) => seen.observe(s));
 
     // Same live download link as the landing page.
-    fetch("https://api.github.com/repos/muhghazaliakbar/notchkit-releases/releases/latest")
+    fetch("https://api.github.com/repos/muhghazaliakbar/poni-releases/releases/latest")
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
       .then((rel) => {
         const dmg = (rel.assets || []).find((a) => a.name.endsWith(".dmg"));
