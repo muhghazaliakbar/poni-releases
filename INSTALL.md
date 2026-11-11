@@ -1,56 +1,58 @@
-# Memasang Poni (beta)
+# Installing Poni (beta)
 
-Poni butuh **macOS 14 Sonoma atau yang lebih baru**. Notch paling pas di MacBook yang memiliki notch.
-Di layar tanpa notch, Poni menampilkan notch virtual di tengah menu bar.
+**English** · [Bahasa Indonesia](INSTALL.id.md)
 
-## Kenapa macOS menahan Poni?
+Poni needs **macOS 14 Sonoma or later**. It's at its best on a MacBook with a notch; on screens without
+one, Poni shows a virtual notch in the middle of the menu bar.
 
-Rilis beta ditandatangani dengan sertifikat sendiri (bernama "NotchKit Beta Signing", nama lama Poni), bukan sertifikat Developer ID dari Apple,
-dan belum dinotarisasi. Karena itu Gatekeeper menahan aplikasi saat **pertama** kali dibuka. Ini bukan
-tanda aplikasinya rusak. Konfirmasi ini hanya sekali: update lewat menu **Periksa Pembaruan** terpasang
-tanpa langkah ini lagi, dan izin yang sudah Anda berikan (Kalender, Notifikasi, dll.) tetap tersimpan.
+## Why does macOS hold Poni back?
 
-## Langkah
+Beta releases are signed with Poni's own certificate (named "NotchKit Beta Signing", Poni's former name)
+instead of an Apple Developer ID, and they aren't notarized yet. So Gatekeeper stops the app the **first**
+time you open it. That doesn't mean anything is wrong with it. You only confirm once: updates installed
+from **Check for Updates** skip this step, and the permissions you've granted (Calendar, Notifications…)
+stay in place.
 
-1. Buka `Poni-<versi>.dmg`, lalu seret **Poni** ke **Applications**.
-2. Buka Poni dari folder Applications. macOS menampilkan *"Poni" Not Opened*. Klik **Done**.
+## Steps
 
-### macOS 15 Sequoia dan yang lebih baru
+1. Open `Poni-<version>.dmg` and drag **Poni** to **Applications**.
+2. Open Poni from the Applications folder. macOS shows *"Poni" Not Opened*. Click **Done**.
 
-3. Buka **System Settings → Privacy & Security**.
-4. Gulir ke bagian **Security**. Akan muncul *"Poni" was blocked to protect your Mac*.
-   Klik **Open Anyway**, lalu masukkan password Mac Anda.
-5. Klik **Open Anyway** sekali lagi pada dialog yang muncul. Poni akan terbuka dan menampilkan onboarding.
+### macOS 15 Sequoia and later
 
-Tombol **Open Anyway** hanya muncul sekitar satu jam setelah percobaan membuka di langkah 2. Kalau tidak
-terlihat, ulangi langkah 2.
+3. Open **System Settings → Privacy & Security**.
+4. Scroll to **Security**. You'll see *"Poni" was blocked to protect your Mac*.
+   Click **Open Anyway** and enter your Mac's password.
+5. Click **Open Anyway** again in the dialog. Poni opens and shows its introduction.
+
+The **Open Anyway** button only appears for about an hour after the attempt in step 2. If you don't see
+it, repeat step 2.
 
 ### macOS 14 Sonoma
 
-3. Di Finder, klik kanan (atau Control-klik) **Poni** di Applications, pilih **Open**, lalu klik
-   **Open** di dialog.
+3. In Finder, right-click (or Control-click) **Poni** in Applications, choose **Open**, then click
+   **Open** in the dialog.
 
-### Alternatif: Terminal (semua versi)
+### Alternative: Terminal (any version)
 
 ```bash
 xattr -dr com.apple.quarantine /Applications/Poni.app
 ```
 
-Perintah ini menghapus tanda "diunduh dari internet" pada aplikasi, sehingga Poni langsung bisa dibuka.
+This removes the "downloaded from the internet" flag from the app, so Poni opens right away.
 
-## Memverifikasi unduhan (opsional)
+## Verifying the download (optional)
 
-Pastikan aplikasi ditandatangani oleh sertifikat "NotchKit Beta Signing" yang sama dengan yang diumumkan di halaman
-rilis:
+Check that the app is signed by the same "NotchKit Beta Signing" certificate listed on the release page:
 
 ```bash
 codesign -dv --verbose=2 /Applications/Poni.app 2>&1 | grep Authority
 codesign -d -r- /Applications/Poni.app
 ```
 
-Baris `designated => … certificate leaf = H"…"` harus sama dengan sidik jari di halaman rilis.
+The `designated => … certificate leaf = H"…"` line must match the fingerprint on the release page.
 
-## Menghapus
+## Uninstalling
 
-Keluar dari Poni lewat ikon menu bar, lalu hapus `Poni.app` dari Applications. Data opsional:
-`~/Library/Application Support/Poni` (plugin dan Shelf), dan preferensi `app.useponi.poni`.
+Quit Poni from its menu bar icon, then delete `Poni.app` from Applications. Optional data:
+`~/Library/Application Support/Poni` (plugins and Shelf) and the `app.useponi.poni` preferences.

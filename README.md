@@ -1,19 +1,28 @@
 # Poni
 
-Aplikasi notch untuk macOS dengan platform plugin terbuka: musik, timer fokus, kalender, cuaca,
-jadwal sholat, Shelf untuk menaruh file sementara, dan galeri plugin.
+A notch app for macOS with an open plugin platform: music, a focus timer, calendar, weather, prayer
+times, a Shelf for parking files, and a plugin gallery.
 
-Repo ini hanya berisi build rilis, feed update (Sparkle) dan registry plugin galeri.
+**English** · [Bahasa Indonesia](#bahasa-indonesia)
 
-## Unduh
+This repository only holds release builds, the update feed (Sparkle) and the gallery's plugin registry.
 
-Ambil `Poni-<versi>.dmg` dari [rilis terbaru](../../releases/latest). Butuh macOS 14 Sonoma atau yang
-lebih baru. Setelah terpasang, Poni memperbarui dirinya sendiri.
+## Download
 
-Versi beta belum dinotarisasi Apple. Untuk membukanya pertama kali, ikuti [INSTALL.md](INSTALL.md).
+Get `Poni-<version>.dmg` from the [latest release](../../releases/latest). Needs macOS 14 Sonoma or
+later. Once installed, Poni keeps itself up to date.
 
-## Isi repo
+The beta isn't notarized by Apple yet. To open it the first time, follow [INSTALL.md](INSTALL.md).
 
-- **Releases**: DMG dan `appcast.xml` per versi.
-- **`registry/`**: daftar plugin galeri (`index.json`, ditandatangani Ed25519) beserta berkas
-  plugin. Dibaca aplikasi lewat raw.githubusercontent.com.
+## What's here
+
+- **Releases**: the DMG and `appcast.xml` for each version.
+- **`registry/`**: the gallery's plugin list (`index.json`, signed with Ed25519) and the plugin files.
+  The app reads it from raw.githubusercontent.com.
+
+## Bahasa Indonesia
+
+Aplikasi notch untuk macOS dengan platform plugin terbuka. Unduh `Poni-<versi>.dmg` dari
+[rilis terbaru](../../releases/latest) (butuh macOS 14 Sonoma atau lebih baru), lalu ikuti
+[panduan memasang](INSTALL.id.md) untuk membukanya pertama kali. Bahasa aplikasi bisa diganti di
+Pengaturan → Umum → Bahasa.
