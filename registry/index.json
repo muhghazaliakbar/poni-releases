@@ -28,6 +28,32 @@
       ]
     },
     {
+      "id": "dev.notchkit.clipboard",
+      "name": "Clipboard",
+      "version": "1.0.0",
+      "author": "NotchKit",
+      "description": "Teks yang baru Anda salin, siap disalin lagi dengan satu klik. Sematkan yang sering dipakai. Password tidak pernah dicatat.",
+      "symbol": "lucide:clipboard-list",
+      "category": "Produktivitas",
+      "permissions": [
+        "clipboard"
+      ],
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/clipboard/main.js",
+          "sha256": "149904ef867a032adfc74138c148689288710852f12f9fcf704fd5942bdb6a99",
+          "size": 4406
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/notchkit-releases/main/registry/plugins/clipboard/manifest.json",
+          "sha256": "bddf98484ab691e1406bcbf589597ef1c28e479f077c91c3d87035692f88d4e6",
+          "size": 796
+        }
+      ]
+    },
+    {
       "id": "dev.notchkit.countdown",
       "name": "Hitung Mundur",
       "version": "1.0.0",

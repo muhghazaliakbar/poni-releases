@@ -1,0 +1,35 @@
+{
+  "id": "dev.notchkit.clipboard",
+  "name": "Clipboard",
+  "version": "1.0.0",
+  "author": "NotchKit",
+  "description": "Teks yang baru Anda salin, siap disalin lagi dengan satu klik. Sematkan yang sering dipakai. Password tidak pernah dicatat.",
+  "category": "Produktivitas",
+  "symbol": "lucide:clipboard-list",
+  "permissions": [
+    "clipboard"
+  ],
+  "refreshInterval": 15,
+  "order": 24,
+  "settings": [
+    {
+      "key": "max",
+      "type": "number",
+      "label": "Simpan paling banyak",
+      "default": 30,
+      "min": 10,
+      "max": 100,
+      "step": 10,
+      "help": "Item tersemat tidak dihitung"
+    },
+    {
+      "key": "show",
+      "type": "number",
+      "label": "Tampilkan di notch",
+      "default": 5,
+      "min": 3,
+      "max": 8,
+      "step": 1
+    }
+  ]
+}
