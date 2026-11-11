@@ -1,75 +1,82 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Membuat plugin Poni</title>
-  <meta name="description" content="Panduan membuat plugin Poni dengan JavaScript: manifest, komponen UI, API notch, izin, dan cara mengirim plugin ke galeri.">
+  <title>Build a Poni plugin</title>
+  <meta name="description" content="How to build a Poni plugin in JavaScript: the manifest, UI components, the notch API, permissions, and how to submit your plugin to the gallery.">
   <meta name="theme-color" content="#1c2350">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c2350'/%3E%3Cpath d='M9 8h14v5a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3z' fill='%23000'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="alternate" hreflang="en" href="sdk.html">
+  <link rel="alternate" hreflang="id" href="id/sdk.html">
 </head>
 <body class="docs">
-  <a class="skip" href="#isi">Langsung ke isi</a>
+  <a class="skip" href="#isi">Skip to content</a>
 
   <header class="docs-bar">
     <a class="docs-home" href="./">Poni</a>
-    <span class="docs-title">Membuat plugin</span>
-    <a class="docs-download" id="download" href="https://github.com/muhghazaliakbar/poni-releases/releases/latest">Unduh Poni</a>
+    <span class="docs-title">Build a plugin</span>
+    <nav class="docs-lang" aria-label="Language">
+      <a href="sdk.html" hreflang="en" lang="en" aria-current="true" title="English">EN</a>
+      <a href="id/sdk.html" hreflang="id" lang="id" title="Bahasa Indonesia">ID</a>
+    </nav>
+    <a class="docs-download" id="download" href="https://github.com/muhghazaliakbar/poni-releases/releases/latest">Download Poni</a>
   </header>
 
   <div class="docs-layout">
-    <nav class="toc" aria-label="Isi halaman">
+    <nav class="toc" aria-label="On this page">
       <ol>
-        <li><a href="#mulai">Mulai</a></li>
+        <li><a href="#mulai">Get started</a></li>
         <li><a href="#manifest">manifest.json</a></li>
-        <li><a href="#pengaturan">Pengaturan</a></li>
-        <li><a href="#siklus">Fungsi di main.js</a></li>
-        <li><a href="#ui">Komponen UI</a></li>
-        <li><a href="#api">API notch</a></li>
-        <li><a href="#izin">Izin</a></li>
-        <li><a href="#batasan">Batasan</a></li>
-        <li><a href="#contoh">Contoh</a></li>
-        <li><a href="#galeri">Kirim ke galeri</a></li>
+        <li><a href="#pengaturan">Settings</a></li>
+        <li><a href="#bahasa">Languages</a></li>
+        <li><a href="#siklus">Functions in main.js</a></li>
+        <li><a href="#ui">UI components</a></li>
+        <li><a href="#api">Notch API</a></li>
+        <li><a href="#izin">Permissions</a></li>
+        <li><a href="#batasan">Limits</a></li>
+        <li><a href="#contoh">Examples</a></li>
+        <li><a href="#galeri">Submit to the gallery</a></li>
       </ol>
     </nav>
 
     <main id="isi" class="prose">
-      <h1>Membuat plugin Poni</h1>
-      <p class="lede-dark">Plugin adalah satu folder berisi <code>manifest.json</code> dan <code>main.js</code>. Anda menulis
-        JavaScript biasa yang mengembalikan susunan komponen; Poni menggambarnya di notch dengan tampilan macOS.
-        Tidak perlu Xcode, build, atau npm.</p>
+      <h1>Build a Poni plugin</h1>
+      <p class="lede-dark">A plugin is one folder with a <code>manifest.json</code> and a <code>main.js</code>. You write
+        plain JavaScript that returns a layout of components, and Poni draws it in the notch with a native macOS look.
+        No Xcode, build step or npm needed.</p>
 
       <section id="mulai">
-        <h2>Mulai</h2>
+        <h2>Get started</h2>
         <ol class="steps">
-          <li><strong>Pasang Poni</strong> dan buka sekali.</li>
-          <li><strong>Unduh <a href="downloads/poni-plugin-template.zip">template plugin</a></strong>, lalu ekstrak
-            foldernya ke <code>~/Library/Application Support/Poni/Plugins/</code>. Di Finder: Go → Go to Folder,
-            lalu tempel alamat itu.</li>
-          <li><strong>Plugin langsung muncul sebagai tab baru.</strong> Ubah <code>main.js</code>, simpan, dan notch
-            memuat ulang plugin itu saat itu juga.</li>
+          <li><strong>Install Poni</strong> and open it once.</li>
+          <li><strong>Download the <a href="downloads/poni-plugin-template.zip">plugin template</a></strong>, then unzip
+            the folder into <code>~/Library/Application Support/Poni/Plugins/</code>. In Finder, choose Go → Go to Folder
+            and paste that path.</li>
+          <li><strong>Your plugin appears as a new tab right away.</strong> Edit <code>main.js</code>, save, and the notch
+            reloads the plugin on the spot.</li>
         </ol>
-        <p>Keluaran <code>console.log</code>, error JavaScript dan peringatan lain tampil di Pengaturan, di halaman plugin
-          Anda, bagian <strong>Konsol</strong>. Jika <code>manifest.json</code> tidak bisa dibaca, plugin tampil di bagian
-          <strong>Gagal dimuat</strong> di sidebar Pengaturan beserta alasannya.</p>
-        <p>Isi template:</p>
-<pre><code>halo/
-  manifest.json   identitas, ikon, izin dan pengaturan plugin
-  main.js         kode plugin</code></pre>
+        <p><code>console.log</code> output, JavaScript errors and other warnings appear in Settings, on your plugin's page,
+          under <strong>Console</strong>. If <code>manifest.json</code> can't be read, the plugin is listed under
+          <strong>Failed to load</strong> in the Settings sidebar, with the reason.</p>
+        <p>What's in the template:</p>
+<pre><code>hello/
+  manifest.json   the plugin's identity, icon, permissions and settings
+  main.js         the plugin's code</code></pre>
       </section>
 
       <section id="manifest">
         <h2>manifest.json</h2>
 <pre><code>{
-  "id": "com.namaanda.halo",
-  "name": "Halo",
+  "id": "com.yourname.hello",
+  "name": "Hello",
   "version": "1.0.0",
-  "author": "Nama Anda",
-  "description": "Satu kalimat tentang apa yang dilakukan plugin ini.",
+  "author": "Your Name",
+  "description": "One sentence about what this plugin does.",
   "symbol": "lucide:hand",
   "permissions": ["network"],
   "refreshInterval": 1,
@@ -77,178 +84,211 @@
 }</code></pre>
         <div class="table-wrap">
         <table class="ref">
-          <thead><tr><th scope="col">Kolom</th><th scope="col">Arti</th></tr></thead>
+          <thead><tr><th scope="col">Field</th><th scope="col">Meaning</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><code>id</code></th><td>Wajib. Unik, huruf kecil, berbentuk domain terbalik seperti <code>com.namaanda.halo</code>.
-              Awalan <code>app.useponi.</code> dipakai plugin resmi.</td></tr>
-            <tr><th scope="row"><code>name</code></th><td>Wajib. Nama yang tampil di tab dan Pengaturan.</td></tr>
-            <tr><th scope="row"><code>version</code></th><td>Seperti <code>1.2.0</code>. Galeri memakainya untuk menawarkan pembaruan.</td></tr>
-            <tr><th scope="row"><code>author</code>, <code>description</code></th><td>Tampil di galeri dan Pengaturan.</td></tr>
-            <tr><th scope="row"><code>symbol</code></th><td>Ikon tab: <code>lucide:&lt;nama&gt;</code> dari <a href="https://lucide.dev/icons">Lucide</a>, atau nama <a href="https://developer.apple.com/sf-symbols/">SF Symbols</a>.</td></tr>
-            <tr><th scope="row"><code>permissions</code></th><td>Izin yang dibutuhkan, lihat <a href="#izin">Izin</a>.</td></tr>
-            <tr><th scope="row"><code>refreshInterval</code></th><td>Detik antara <code>render()</code> otomatis. Bawaan 1, paling cepat 0,25.</td></tr>
-            <tr><th scope="row"><code>order</code></th><td>Urutan tab, angka kecil lebih dulu. Pengguna tetap bisa menyusun ulang.</td></tr>
-            <tr><th scope="row"><code>main</code></th><td>Nama berkas kode, bawaan <code>main.js</code>.</td></tr>
-            <tr><th scope="row"><code>settings</code></th><td>Daftar pengaturan; Poni membuat formulirnya. Lihat di bawah.</td></tr>
+            <tr><th scope="row"><code>id</code></th><td>Required. Unique, lowercase, in reverse-domain form such as <code>com.yourname.hello</code>.
+              The <code>app.useponi.</code> prefix is reserved for official plugins.</td></tr>
+            <tr><th scope="row"><code>name</code></th><td>Required. The name shown on the tab and in Settings.</td></tr>
+            <tr><th scope="row"><code>version</code></th><td>Such as <code>1.2.0</code>. The gallery uses it to offer updates.</td></tr>
+            <tr><th scope="row"><code>author</code>, <code>description</code></th><td>Shown in the gallery and in Settings.</td></tr>
+            <tr><th scope="row"><code>symbol</code></th><td>The tab icon: <code>lucide:&lt;name&gt;</code> from <a href="https://lucide.dev/icons">Lucide</a>, or an <a href="https://developer.apple.com/sf-symbols/">SF Symbols</a> name.</td></tr>
+            <tr><th scope="row"><code>permissions</code></th><td>The permissions the plugin needs; see <a href="#izin">Permissions</a>.</td></tr>
+            <tr><th scope="row"><code>refreshInterval</code></th><td>Seconds between automatic <code>render()</code> calls. Default 1, minimum 0.25.</td></tr>
+            <tr><th scope="row"><code>order</code></th><td>Tab order; lower numbers come first. Users can still rearrange tabs.</td></tr>
+            <tr><th scope="row"><code>main</code></th><td>The code file's name. Default <code>main.js</code>.</td></tr>
+            <tr><th scope="row"><code>settings</code></th><td>A list of settings; Poni builds the form for you. See below.</td></tr>
+            <tr><th scope="row"><code>locales</code></th><td>Optional. Translations of the manifest's text, per language; see <a href="#bahasa">Languages</a>.</td></tr>
           </tbody>
         </table>
         </div>
       </section>
 
       <section id="pengaturan">
-        <h2>Pengaturan</h2>
-        <p>Tulis daftar pengaturan di manifest; Poni menampilkan formulirnya di jendela Pengaturan, menyimpan nilainya,
-          dan memberi tombol untuk kembali ke nilai bawaan.</p>
+        <h2>Settings</h2>
+        <p>List your settings in the manifest. Poni shows the form in the Settings window, saves the values, and adds a
+          button to restore the defaults.</p>
 <pre><code>"settings": [
-  { "key": "city", "type": "text", "label": "Kota", "default": "Jakarta", "placeholder": "Jakarta" },
-  { "key": "minutes", "type": "number", "label": "Durasi", "default": 25,
-    "min": 5, "max": 120, "step": 5, "help": "Dalam menit" },
-  { "key": "lyrics", "type": "toggle", "label": "Tampilkan lirik", "default": true },
-  { "key": "unit", "type": "select", "label": "Satuan", "default": "c",
+  { "key": "city", "type": "text", "label": "City", "default": "Jakarta", "placeholder": "Jakarta" },
+  { "key": "minutes", "type": "number", "label": "Duration", "default": 25,
+    "min": 5, "max": 120, "step": 5, "help": "In minutes" },
+  { "key": "lyrics", "type": "toggle", "label": "Show lyrics", "default": true },
+  { "key": "unit", "type": "select", "label": "Unit", "default": "c",
     "options": [{ "value": "c", "label": "Celsius" }, { "value": "f", "label": "Fahrenheit" }] }
 ]</code></pre>
-        <p>Jenis yang tersedia: <code>text</code>, <code>number</code>, <code>toggle</code> dan <code>select</code>.
-          Baca nilainya dengan <code>notch.settings.get('city')</code> atau semuanya sekaligus dengan
-          <code>notch.settings.all()</code>. Saat pengguna mengubah nilai, Poni memanggil
-          <code>onSettingsChanged(key, value)</code> lalu <code>render()</code>.</p>
+        <p>Available types: <code>text</code>, <code>number</code>, <code>toggle</code> and <code>select</code>.
+          Read a value with <code>notch.settings.get('city')</code>, or all of them at once with
+          <code>notch.settings.all()</code>. When the user changes a value, Poni calls
+          <code>onSettingsChanged(key, value)</code> and then <code>render()</code>.</p>
+      </section>
+
+      <section id="bahasa">
+        <h2>Languages</h2>
+        <p>Poni is available in English (the default) and Indonesian. Write the manifest's text (<code>name</code>,
+          <code>description</code>, and each setting's <code>label</code>, <code>help</code>, <code>placeholder</code> and
+          option labels) in English, then add translations under <code>locales.id</code>. Anything you don't translate
+          falls back to the English text.</p>
+<pre><code>"locales": {
+  "id": {
+    "name": "Catatan",
+    "description": "Catatan singkat di notch.",
+    "settings": {
+      "showStats": { "label": "Tampilkan grafik 7 hari" },
+      "unit": { "label": "Satuan", "options": { "c": "Celsius", "f": "Fahrenheit" } }
+    }
+  }
+}</code></pre>
+        <p>Keys under <code>settings</code> are setting keys; <code>options</code> maps each option's <code>value</code>
+          to its label.</p>
+        <p>In <code>main.js</code>, <code>notch.locale</code> holds the app's current language: <code>"en"</code> or
+          <code>"id"</code>. It changes when the user switches languages, and <code>render()</code> runs again afterwards,
+          so build your strings inside <code>render()</code>, not when the plugin loads.</p>
+<pre><code><span class="k">var</span> TEXT = {
+  en: { title: <span class="s">'Hello!'</span> },
+  id: { title: <span class="s">'Halo!'</span> }
+};
+
+<span class="k">function</span> <span class="f">render</span>() {
+  <span class="k">var</span> t = TEXT[notch.locale] || TEXT.en;
+  <span class="k">return</span> ui.<span class="f">text</span>(t.title, { style: <span class="s">'title'</span> });
+}</code></pre>
       </section>
 
       <section id="siklus">
-        <h2>Fungsi di main.js</h2>
-        <p>Definisikan fungsi yang Anda perlukan; semuanya opsional kecuali <code>render</code>.</p>
+        <h2>Functions in main.js</h2>
+        <p>Define the functions you need. All of them are optional except <code>render</code>.</p>
         <div class="table-wrap">
         <table class="ref">
-          <thead><tr><th scope="col">Fungsi</th><th scope="col">Kapan dipanggil</th></tr></thead>
+          <thead><tr><th scope="col">Function</th><th scope="col">When it's called</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><code>init()</code></th><td>Sekali, saat plugin dimuat.</td></tr>
-            <tr><th scope="row"><code>render()</code></th><td>Setiap <code>refreshInterval</code>, setelah aksi, timer atau fetch.
-              Kembalikan susunan komponen <code>ui.*</code>.</td></tr>
-            <tr><th scope="row"><code>compact()</code></th><td>Bersama <code>render()</code>. Kembalikan
-              <code>{ symbol, text, color, wide, image, equalizer }</code> untuk tampil di samping notch saat tertutup, atau
-              <code>null</code>. <code>wide: true</code> memberi ruang untuk teks lebih panjang, <code>image</code> menampilkan
-              gambar kecil (misalnya artwork) sebagai ganti simbol, dan <code>equalizer: true</code> menambah bar equalizer
-              yang bergerak.</td></tr>
-            <tr><th scope="row"><code>onAction(action, value)</code></th><td>Tombol diklik, atau isian dikirim dengan Return.</td></tr>
-            <tr><th scope="row"><code>onSettingsChanged(key, value)</code></th><td>Pengaturan diubah. <code>key</code> bernilai
-              <code>null</code> saat semua pengaturan dikembalikan ke bawaan.</td></tr>
+            <tr><th scope="row"><code>init()</code></th><td>Once, when the plugin loads.</td></tr>
+            <tr><th scope="row"><code>render()</code></th><td>Every <code>refreshInterval</code>, and after an action, timer or fetch.
+              Return a layout of <code>ui.*</code> components.</td></tr>
+            <tr><th scope="row"><code>compact()</code></th><td>Along with <code>render()</code>. Return
+              <code>{ symbol, text, color, wide, image, equalizer }</code> to show next to the closed notch, or
+              <code>null</code>. <code>wide: true</code> makes room for longer text, <code>image</code> shows a small image
+              (such as album art) instead of a symbol, and <code>equalizer: true</code> adds animated equalizer bars.</td></tr>
+            <tr><th scope="row"><code>onAction(action, value)</code></th><td>A button was clicked, or a text field was submitted with Return.</td></tr>
+            <tr><th scope="row"><code>onSettingsChanged(key, value)</code></th><td>A setting changed. <code>key</code> is
+              <code>null</code> when all settings were reset to their defaults.</td></tr>
           </tbody>
         </table>
         </div>
       </section>
 
       <section id="ui">
-        <h2>Komponen UI</h2>
-        <p>Setiap fungsi <code>ui.*</code> mengembalikan objek biasa; susun sesuka Anda.</p>
+        <h2>UI components</h2>
+        <p>Each <code>ui.*</code> function returns a plain object, so you can combine them however you like.</p>
 <pre><code>ui.vstack(children, { spacing, align, padding, paddingX, paddingY, width, background, radius, fill, highlight, stagger })
 ui.hstack(children, { spacing, align, padding, width, background, fill, highlight, stagger })
 ui.text(text, { style, weight, color, lines, width, align })
-ui.ring(value, { size, color, label })        <span class="c">// cincin progres (Focus)</span>
-ui.bars(values, { labels, color, height, highlight })  <span class="c">// grafik batang kecil</span>
-ui.symbol(name, { size, color, fill, animation })  <span class="c">// name: 'lucide:music-2' atau SF Symbol</span>
-ui.weatherGlyph(condition, { size })           <span class="c">// matahari + awan beranimasi</span>
+ui.ring(value, { size, color, label })        <span class="c">// progress ring (as in Focus)</span>
+ui.bars(values, { labels, color, height, highlight })  <span class="c">// small bar chart</span>
+ui.symbol(name, { size, color, fill, animation })  <span class="c">// name: 'lucide:music-2' or an SF Symbol</span>
+ui.weatherGlyph(condition, { size })           <span class="c">// animated sun and clouds</span>
 ui.button(label, action, { symbol, fill, style: 'primary', color, labelColor, compact })
-ui.progress(value, { color, height })         <span class="c">// value 0 sampai 1</span>
+ui.progress(value, { color, height })         <span class="c">// value from 0 to 1</span>
 ui.row(label, value, { symbol, highlight, color })
 ui.input(placeholder, action, { value })
-ui.image(url, { size, radius, placeholder, playing })  <span class="c">// playing: kilau saat diputar</span>
+ui.image(url, { size, radius, placeholder, playing })  <span class="c">// playing: shimmer while playing</span>
 ui.spacer()
 ui.divider()</code></pre>
         <dl class="defs">
-          <div><dt><code>style</code> pada teks</dt><dd><code>largeTitle</code> (34), <code>title</code> (17 bold),
+          <div><dt><code>style</code> on text</dt><dd><code>largeTitle</code> (34), <code>title</code> (17 bold),
             <code>headline</code> (15 semibold), <code>body</code> (15), <code>callout</code> (14), <code>caption</code> (13),
-            <code>footnote</code> (12), dan versi angka <code>mono</code>, <code>monoFootnote</code>, <code>monoHeadline</code>,
-            <code>monoTitle</code>, dalam huruf Onest dan JetBrains Mono seperti halaman ini. Teks yang isinya angka (jam, hitung mundur,
-            harga) bergulir saat berubah, seperti jam sistem.</dd></div>
-          <div><dt><code>align</code> pada vstack</dt><dd><code>leading</code>, <code>center</code>, <code>trailing</code>.</dd></div>
-          <div><dt>Warna</dt><dd><code>primary</code>, <code>secondary</code>, <code>tertiary</code>, <code>accent</code>,
+            <code>footnote</code> (12), and the monospaced-digit versions <code>mono</code>, <code>monoFootnote</code>,
+            <code>monoHeadline</code> and <code>monoTitle</code>, set in Onest and JetBrains Mono like this page. Text made of
+            numbers (clocks, countdowns, prices) rolls when it changes, like the system clock.</dd></div>
+          <div><dt><code>align</code> on vstack</dt><dd><code>leading</code>, <code>center</code>, <code>trailing</code>.</dd></div>
+          <div><dt>Colors</dt><dd><code>primary</code>, <code>secondary</code>, <code>tertiary</code>, <code>accent</code>,
             <code>blue</code>, <code>green</code>, <code>red</code>, <code>orange</code>, <code>yellow</code>,
             <code>purple</code>, <code>pink</code>, <code>teal</code>, <code>mint</code>, <code>amber</code>, <code>rose</code>,
-            <code>white/55</code> (putih 55 %), atau hex <code>#RRGGBB</code>.</dd></div>
-          <div><dt>Ikon</dt><dd>Tulis <code>lucide:&lt;nama&gt;</code> untuk ikon <a href="https://lucide.dev/icons">Lucide</a>
-            (seperti di halaman ini) atau nama SF Symbol. <code>fill: true</code> mengisi ikon. <code>animation</code>:
-            <code>spin</code> (berputar), <code>drift</code> (bergoyang), <code>pulse</code> (berdenyut),
-            <code>bob</code> (naik-turun). Berlaku juga untuk <code>symbol</code> di manifest, tombol, dan <code>compact()</code>.</dd></div>
-          <div><dt><code>stagger: true</code></dt><dd>Anak-anak tumpukan masuk bergantian saat halaman dibuka: baris
-            dari kiri pada <code>vstack</code>, kartu dari bawah pada <code>hstack</code>.</dd></div>
-          <div><dt><code>background</code> dan <code>fill</code></dt><dd><code>background</code> memberi kotak berwarna tipis
-            dengan sudut membulat; <code>fill: true</code> melebarkan tumpukan selebar notch.</dd></div>
+            <code>white/55</code> (white at 55%), or a hex value <code>#RRGGBB</code>.</dd></div>
+          <div><dt>Icons</dt><dd>Use <code>lucide:&lt;name&gt;</code> for <a href="https://lucide.dev/icons">Lucide</a> icons
+            (as on this page) or an SF Symbol name. <code>fill: true</code> fills the icon. <code>animation</code>:
+            <code>spin</code>, <code>drift</code> (sways), <code>pulse</code> or <code>bob</code> (moves up and down).
+            This also applies to <code>symbol</code> in the manifest, buttons, and <code>compact()</code>.</dd></div>
+          <div><dt><code>stagger: true</code></dt><dd>A stack's children animate in one after another when the page opens:
+            rows slide in from the left in a <code>vstack</code>, cards rise from below in an <code>hstack</code>.</dd></div>
+          <div><dt><code>background</code> and <code>fill</code></dt><dd><code>background</code> adds a subtle colored box
+            with rounded corners; <code>fill: true</code> stretches the stack to the notch's full width.</dd></div>
         </dl>
       </section>
 
       <section id="api">
-        <h2>API notch</h2>
+        <h2>Notch API</h2>
         <div class="table-wrap">
         <table class="ref">
-          <thead><tr><th scope="col">API</th><th scope="col">Keterangan</th><th scope="col">Izin</th></tr></thead>
+          <thead><tr><th scope="col">API</th><th scope="col">Description</th><th scope="col">Permission</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><code>notch.fetch(url, cb)</code></th><td>HTTP GET; <code>cb(text, error)</code>. Batas waktu 15 detik.</td><td>network</td></tr>
-            <tr><th scope="row"><code>notch.fetchJSON(url, cb)</code></th><td>Sama, hasilnya sudah di-parse: <code>cb(json, error)</code>.</td><td>network</td></tr>
-            <tr><th scope="row"><code>notch.storage.get(key)</code>, <code>.set(key, value)</code></th><td>Penyimpanan permanen milik plugin ini.</td><td></td></tr>
-            <tr><th scope="row"><code>notch.settings.get(key)</code>, <code>.all()</code></th><td>Nilai pengaturan, atau bawaan dari manifest.</td><td></td></tr>
-            <tr><th scope="row"><code>notch.flash(text, symbol)</code></th><td>Pesan singkat 3 detik di samping notch.</td><td></td></tr>
-            <tr><th scope="row"><code>notch.refresh()</code></th><td>Gambar ulang sekarang.</td><td></td></tr>
-            <tr><th scope="row"><code>notch.open(url)</code></th><td>Buka tautan di browser.</td><td></td></tr>
-            <tr><th scope="row"><code>notch.sound.play(name)</code>, <code>.stop()</code>, <code>.playing()</code></th><td>Putar suara sistem macOS (<code>'Glass'</code>, <code>'Hero'</code>…) atau file audio pilihan pengguna, misalnya <code>'~/Music/azan.mp3'</code>.</td><td></td></tr>
-            <tr><th scope="row"><code>notch.text.romanize(text)</code></th><td>Tulisan Latin untuk teks Jepang, Mandarin, Korea dan aksara lain; <code>null</code> bila sudah Latin.</td><td></td></tr>
-            <tr><th scope="row"><code>notch.media.get()</code></th><td>Lagu di Spotify atau Apple Music: <code>{ title, artist, album, duration, position, playing, source, artwork }</code>, atau <code>null</code>.</td><td>media</td></tr>
+            <tr><th scope="row"><code>notch.fetch(url, cb)</code></th><td>HTTP GET; <code>cb(text, error)</code>. Times out after 15 seconds.</td><td>network</td></tr>
+            <tr><th scope="row"><code>notch.fetchJSON(url, cb)</code></th><td>The same, with the result already parsed: <code>cb(json, error)</code>.</td><td>network</td></tr>
+            <tr><th scope="row"><code>notch.storage.get(key)</code>, <code>.set(key, value)</code></th><td>Persistent storage for this plugin.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.settings.get(key)</code>, <code>.all()</code></th><td>Setting values, or the defaults from the manifest.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.flash(text, symbol)</code></th><td>A short 3-second message next to the notch.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.refresh()</code></th><td>Redraw now.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.open(url)</code></th><td>Open a link in the browser.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.sound.play(name)</code>, <code>.stop()</code>, <code>.playing()</code></th><td>Play a macOS system sound (<code>'Glass'</code>, <code>'Hero'</code>…) or an audio file the user picked, such as <code>'~/Music/azan.mp3'</code>.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.text.romanize(text)</code></th><td>Latin script for Japanese, Chinese, Korean and other scripts; <code>null</code> if the text is already Latin.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.media.get()</code></th><td>The track in Spotify or Apple Music: <code>{ title, artist, album, duration, position, playing, source, artwork }</code>, or <code>null</code>.</td><td>media</td></tr>
             <tr><th scope="row"><code>notch.media.control(cmd)</code></th><td><code>'playpause'</code>, <code>'next'</code>, <code>'previous'</code>.</td><td>media</td></tr>
-            <tr><th scope="row"><code>notch.notify(title, body)</code></th><td>Notifikasi macOS.</td><td>notifications</td></tr>
-            <tr><th scope="row"><code>notch.clipboard.get()</code>, <code>.set(text)</code>, <code>.changeCount()</code></th><td>Teks di clipboard. Salinan dari pengelola password tidak pernah diberikan (<code>get()</code> mengembalikan <code>null</code>).</td><td>clipboard</td></tr>
-            <tr><th scope="row"><code>notch.calendar.events(days)</code></th><td>Acara mulai hari ini: <code>[{ title, start, end, allDay, calendar, color, location, url, meeting }]</code>, waktu dalam milidetik. <code>meeting</code> berisi <code>{ service, url }</code> bila acara punya tautan Zoom, Google Meet, Teams, Webex, FaceTime, Jitsi atau Whereby. <code>notch.calendar.status()</code> memberi tahu apakah akses sudah diberikan.</td><td>calendar</td></tr>
-            <tr><th scope="row"><code>notch.system.stats()</code></th><td>CPU, memori, baterai, jaringan, disk dan suhu.</td><td>system</td></tr>
-            <tr><th scope="row"><code>notch.ai.usage()</code></th><td>Pemakaian Claude Code dan Codex dari log di Mac ini.</td><td>ai-usage</td></tr>
-            <tr><th scope="row"><code>setTimeout</code>, <code>setInterval</code></th><td>Seperti di browser, paling cepat 50 ms. Plugin digambar ulang setelah callback.</td><td></td></tr>
-            <tr><th scope="row"><code>console.log</code>, <code>.warn</code>, <code>.error</code></th><td>Tampil di Konsol di Pengaturan.</td><td></td></tr>
-            <tr><th scope="row"><code>notch.pluginId</code>, <code>notch.version</code></th><td>Id plugin ini dan versi Poni.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.notify(title, body)</code></th><td>A macOS notification.</td><td>notifications</td></tr>
+            <tr><th scope="row"><code>notch.clipboard.get()</code>, <code>.set(text)</code>, <code>.changeCount()</code></th><td>Text on the clipboard. Items copied from a password manager are never shared (<code>get()</code> returns <code>null</code>).</td><td>clipboard</td></tr>
+            <tr><th scope="row"><code>notch.calendar.events(days)</code></th><td>Events starting today: <code>[{ title, start, end, allDay, calendar, color, location, url, meeting }]</code>, with times in milliseconds. <code>meeting</code> holds <code>{ service, url }</code> when the event has a Zoom, Google Meet, Teams, Webex, FaceTime, Jitsi or Whereby link. <code>notch.calendar.status()</code> tells you whether access has been granted.</td><td>calendar</td></tr>
+            <tr><th scope="row"><code>notch.system.stats()</code></th><td>CPU, memory, battery, network, disk and temperature.</td><td>system</td></tr>
+            <tr><th scope="row"><code>notch.ai.usage()</code></th><td>Claude Code and Codex usage, read from logs on this Mac.</td><td>ai-usage</td></tr>
+            <tr><th scope="row"><code>setTimeout</code>, <code>setInterval</code></th><td>As in the browser, with a minimum of 50 ms. The plugin redraws after each callback.</td><td></td></tr>
+            <tr><th scope="row"><code>console.log</code>, <code>.warn</code>, <code>.error</code></th><td>Shown in the Console in Settings.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.pluginId</code>, <code>notch.version</code></th><td>This plugin's id and the Poni version.</td><td></td></tr>
+            <tr><th scope="row"><code>notch.locale</code></th><td>The app's language: <code>"en"</code> (default) or <code>"id"</code>. It changes when the user switches languages, and <code>render()</code> runs again. See <a href="#bahasa">Languages</a>.</td><td></td></tr>
           </tbody>
         </table>
         </div>
       </section>
 
       <section id="izin">
-        <h2>Izin</h2>
-        <p>Plugin hanya bisa memakai API yang izinnya ditulis di <code>permissions</code> dan disetujui pengguna.</p>
+        <h2>Permissions</h2>
+        <p>A plugin can only use the APIs whose permissions are listed in <code>permissions</code> and approved by the user.</p>
         <ul class="facts">
-          <li>Plugin dari galeri mendapat izinnya saat pengguna menyetujui pemasangan.</li>
-          <li>Plugin yang dipasang sendiri ditanya saat pertama kali memakai sebuah izin. Selama dialog terbuka, panggilan
-            mengembalikan <code>null</code> atau <code>false</code>; plugin digambar ulang setelah pengguna menjawab.</li>
-          <li>Pengguna bisa mencabut atau memberi izin kapan saja di Pengaturan, di halaman plugin.</li>
-          <li>API yang izinnya tidak ditulis tidak berjalan: <code>notch.fetch</code> memberi error yang menyebut izin yang
-            kurang, API lain mengembalikan <code>null</code>.</li>
+          <li>Plugins from the gallery get their permissions when the user approves the install.</li>
+          <li>Plugins you install yourself ask the first time they use a permission. While the dialog is open, calls return
+            <code>null</code> or <code>false</code>; the plugin redraws once the user answers.</li>
+          <li>Users can grant or revoke permissions at any time in Settings, on the plugin's page.</li>
+          <li>APIs whose permission isn't listed don't run: <code>notch.fetch</code> returns an error naming the missing
+            permission, and other APIs return <code>null</code>.</li>
         </ul>
-        <p>Pilihan: <code>network</code>, <code>media</code>, <code>notifications</code>, <code>clipboard</code>,
+        <p>Options: <code>network</code>, <code>media</code>, <code>notifications</code>, <code>clipboard</code>,
           <code>calendar</code>, <code>system</code>, <code>ai-usage</code>.</p>
       </section>
 
       <section id="batasan">
-        <h2>Batasan</h2>
+        <h2>Limits</h2>
         <ul class="facts">
-          <li>Setiap plugin berjalan di JavaScriptCore tersendiri dan tidak bisa membaca variabel plugin lain.</li>
-          <li>Tidak ada DOM, <code>require</code>, <code>import</code> atau <code>fetch</code> bawaan browser; gunakan
-            <code>notch.fetch</code>.</li>
-          <li>Setiap panggilan ke plugin dibatasi setengah detik. Yang lebih lama dihentikan; tiga kali dalam semenit membuat
-            plugin dihentikan sementara sampai Anda menyimpan perbaikan.</li>
-          <li>Simpan data yang perlu bertahan dengan <code>notch.storage</code>. Variabel biasa hilang saat plugin dimuat ulang.</li>
+          <li>Each plugin runs in its own JavaScriptCore context and can't read other plugins' variables.</li>
+          <li>There's no DOM, <code>require</code>, <code>import</code> or browser <code>fetch</code>; use
+            <code>notch.fetch</code> instead.</li>
+          <li>Each call into a plugin is limited to half a second. Longer calls are stopped, and three in one minute pause the
+            plugin until you save a fix.</li>
+          <li>Keep data that needs to last in <code>notch.storage</code>. Ordinary variables are lost when the plugin reloads.</li>
         </ul>
       </section>
 
       <section id="contoh">
-        <h2>Contoh</h2>
-        <h3>Penghitung dengan sayap</h3>
+        <h2>Examples</h2>
+        <h3>A counter with wings</h3>
 <pre><code><span class="k">var</span> count = notch.storage.<span class="f">get</span>(<span class="s">'count'</span>) || <span class="n">0</span>;
 
 <span class="k">function</span> <span class="f">render</span>() {
   <span class="k">return</span> ui.<span class="f">vstack</span>([
-    ui.<span class="f">text</span>(count + <span class="s">' gelas air hari ini'</span>, { style: <span class="s">'title'</span> }),
+    ui.<span class="f">text</span>(count + <span class="s">' glasses of water today'</span>, { style: <span class="s">'title'</span> }),
     ui.<span class="f">hstack</span>([
-      ui.<span class="f">button</span>(<span class="s">'Minum'</span>, <span class="s">'add'</span>, { symbol: <span class="s">'lucide:droplet'</span>, style: <span class="s">'primary'</span> }),
-      ui.<span class="f">button</span>(<span class="s">'Ulang'</span>, <span class="s">'reset'</span>)
+      ui.<span class="f">button</span>(<span class="s">'Drink'</span>, <span class="s">'add'</span>, { symbol: <span class="s">'lucide:droplet'</span>, style: <span class="s">'primary'</span> }),
+      ui.<span class="f">button</span>(<span class="s">'Reset'</span>, <span class="s">'reset'</span>)
     ])
   ]);
 }
 
 <span class="k">function</span> <span class="f">compact</span>() {
-  <span class="k">return</span> count ? { symbol: <span class="s">'lucide:droplet'</span>, text: count + <span class="s">' gelas'</span>, color: <span class="s">'blue'</span> } : <span class="k">null</span>;
+  <span class="k">return</span> count ? { symbol: <span class="s">'lucide:droplet'</span>, text: count + <span class="s">' glasses'</span>, color: <span class="s">'blue'</span> } : <span class="k">null</span>;
 }
 
 <span class="k">function</span> <span class="f">onAction</span>(action) {
@@ -256,15 +296,15 @@ ui.divider()</code></pre>
   notch.storage.<span class="f">set</span>(<span class="s">'count'</span>, count);
 }</code></pre>
 
-        <h3>Data dari internet</h3>
-        <p>Butuh <code>"permissions": ["network"]</code>. Ambil data saat dimuat dan setiap 10 menit; <code>render()</code>
-          hanya menggambar apa yang sudah ada.</p>
+        <h3>Data from the internet</h3>
+        <p>Needs <code>"permissions": ["network"]</code>. Fetch data when the plugin loads and every 10 minutes;
+          <code>render()</code> only draws what's already there.</p>
 <pre><code><span class="k">var</span> rate = <span class="k">null</span>, error = <span class="k">null</span>;
 
 <span class="k">function</span> <span class="f">load</span>() {
   notch.<span class="f">fetchJSON</span>(<span class="s">'https://open.er-api.com/v6/latest/USD'</span>, <span class="k">function</span> (json, err) {
     error = err;
-    <span class="k">if</span> (json) rate = json.rates.IDR;
+    <span class="k">if</span> (json) rate = json.rates.EUR;
   });
 }
 
@@ -274,24 +314,25 @@ ui.divider()</code></pre>
 }
 
 <span class="k">function</span> <span class="f">render</span>() {
-  <span class="k">if</span> (error) <span class="k">return</span> ui.<span class="f">text</span>(<span class="s">'Gagal memuat: '</span> + error, { color: <span class="s">'red'</span> });
-  <span class="k">if</span> (!rate) <span class="k">return</span> ui.<span class="f">text</span>(<span class="s">'Memuat kurs…'</span>, { style: <span class="s">'caption'</span> });
-  <span class="k">return</span> ui.<span class="f">row</span>(<span class="s">'1 USD'</span>, <span class="s">'Rp '</span> + Math.<span class="f">round</span>(rate).<span class="f">toLocaleString</span>(<span class="s">'id-ID'</span>), { symbol: <span class="s">'lucide:circle-dollar-sign'</span> });
+  <span class="k">if</span> (error) <span class="k">return</span> ui.<span class="f">text</span>(<span class="s">'Couldn’t load: '</span> + error, { color: <span class="s">'red'</span> });
+  <span class="k">if</span> (!rate) <span class="k">return</span> ui.<span class="f">text</span>(<span class="s">'Loading rate…'</span>, { style: <span class="s">'caption'</span> });
+  <span class="k">return</span> ui.<span class="f">row</span>(<span class="s">'1 USD'</span>, <span class="s">'€'</span> + rate.<span class="f">toFixed</span>(<span class="n">2</span>), { symbol: <span class="s">'lucide:circle-dollar-sign'</span> });
 }</code></pre>
       </section>
 
       <section id="galeri">
-        <h2>Kirim ke galeri</h2>
-        <p>Plugin di galeri bisa dipasang semua pengguna Poni dengan satu klik. Daftar galeri ditandatangani, jadi setiap
-          plugin diperiksa sebelum masuk.</p>
+        <h2>Submit to the gallery</h2>
+        <p>Every Poni user can install plugins from the gallery with one click. The gallery list is signed, so each plugin
+          is reviewed before it's added.</p>
         <ol class="steps">
-          <li><strong>Periksa plugin Anda:</strong> <code>id</code> dan <code>version</code> terisi benar, ikon SF Symbol
-            ada, setiap API yang dipakai punya izinnya, tidak meminta izin yang tidak dipakai, dan Konsol bersih dari error.</li>
-          <li><strong>Unggah folder plugin</strong> ke repositori publik atau sebagai zip.</li>
-          <li><strong><a href="https://github.com/muhghazaliakbar/poni-releases/issues/new?title=Plugin%3A%20">Buka issue</a></strong>
-            berisi tautan ke plugin, apa fungsinya, dan kenapa izinnya dibutuhkan. Setelah ditinjau, plugin masuk ke
-            galeri. Untuk pembaruan, kirim versi baru dengan <code>version</code> yang dinaikkan; pengguna mendapat tombol
-            Update di galeri.</li>
+          <li><strong>Check your plugin:</strong> <code>id</code> and <code>version</code> are set correctly, the SF Symbol
+            icon exists, every API you use has its permission, you don't ask for permissions you don't use, and the Console
+            shows no errors.</li>
+          <li><strong>Upload the plugin folder</strong> to a public repository, or as a zip.</li>
+          <li><strong><a href="https://github.com/muhghazaliakbar/poni-releases/issues/new?title=Plugin%3A%20">Open an issue</a></strong>
+            with a link to the plugin, what it does, and why it needs its permissions. Once it's reviewed, the plugin is
+            added to the gallery. For updates, submit the new version with a higher <code>version</code>; users get an
+            Update button in the gallery.</li>
         </ol>
       </section>
     </main>
@@ -299,10 +340,10 @@ ui.divider()</code></pre>
 
   <footer class="foot">
     <p>Poni</p>
-    <nav aria-label="Tautan">
-      <a href="./">Beranda</a>
-      <a href="https://github.com/muhghazaliakbar/poni-releases/releases">Semua rilis</a>
-      <a href="https://github.com/muhghazaliakbar/poni-releases/tree/main/registry">Registry plugin</a>
+    <nav aria-label="Links">
+      <a href="./">Home</a>
+      <a href="https://github.com/muhghazaliakbar/poni-releases/releases">All releases</a>
+      <a href="https://github.com/muhghazaliakbar/poni-releases/tree/main/registry">Plugin registry</a>
     </nav>
   </footer>
 

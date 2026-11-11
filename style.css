@@ -287,6 +287,14 @@ h2 { margin: 0 0 14px; font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.4rem); line-he
   margin-left: auto; padding: 7px 16px; border-radius: 999px;
   background: #fff; color: var(--dusk-top); font-weight: 700; font-size: .9rem; text-decoration: none;
 }
+.docs-lang { margin-left: auto; display: flex; gap: 2px; padding: 2px; border-radius: 999px; background: rgba(255, 255, 255, .12); }
+.docs-lang a {
+  padding: 3px 9px; border-radius: 999px; color: rgba(255, 255, 255, .75);
+  font-size: .8rem; font-weight: 700; text-decoration: none;
+}
+.docs-lang a:hover { color: #fff; }
+.docs-lang a[aria-current="true"] { background: #fff; color: var(--dusk-top); }
+.docs-lang + .docs-download { margin-left: 0; }
 .docs-layout {
   width: min(1120px, 100% - 32px);
   margin: 0 auto;
