@@ -1,8 +1,8 @@
 {
-  "id": "dev.notchkit.notes",
+  "id": "app.useponi.notes",
   "name": "Catatan Cepat",
   "version": "1.0.0",
-  "author": "NotchKit",
+  "author": "Poni",
   "description": "Tulis catatan singkat langsung dari notch. Tersimpan otomatis.",
   "category": "Produktivitas",
   "symbol": "note.text",

@@ -1,8 +1,8 @@
 {
-  "id": "dev.notchkit.sysmon",
+  "id": "app.useponi.sysmon",
   "name": "Monitor Sistem",
   "version": "1.0.0",
-  "author": "NotchKit",
+  "author": "Poni",
   "description": "CPU, RAM, baterai, jaringan dan disk; satu metrik pilihan tampil di samping notch.",
   "category": "Produktivitas",
   "symbol": "gauge.with.dots.needle.67percent",

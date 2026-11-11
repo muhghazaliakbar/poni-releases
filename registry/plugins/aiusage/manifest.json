@@ -1,8 +1,8 @@
 {
-  "id": "dev.notchkit.aiusage",
+  "id": "app.useponi.aiusage",
   "name": "Pemakaian AI",
   "version": "1.1.0",
-  "author": "NotchKit",
+  "author": "Poni",
   "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam, dibaca dari log lokal.",
   "category": "Developer",
   "symbol": "sparkles",

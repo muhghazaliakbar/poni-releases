@@ -1,8 +1,8 @@
 {
-  "id": "dev.notchkit.crypto",
+  "id": "app.useponi.crypto",
   "name": "Harga Kripto",
   "version": "1.0.0",
-  "author": "NotchKit",
+  "author": "Poni",
   "description": "Harga BTC, ETH, SOL dalam Rupiah dengan perubahan 24 jam dari CoinGecko.",
   "category": "Keuangan",
   "symbol": "bitcoinsign.circle.fill",

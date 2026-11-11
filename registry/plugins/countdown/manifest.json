@@ -1,8 +1,8 @@
 {
-  "id": "dev.notchkit.countdown",
+  "id": "app.useponi.countdown",
   "name": "Hitung Mundur",
   "version": "1.0.0",
-  "author": "NotchKit",
+  "author": "Poni",
   "description": "Hitung mundur ke tanggal penting: deadline, gajian, liburan, atau Lebaran.",
   "category": "Produktivitas",
   "symbol": "calendar.badge.clock",

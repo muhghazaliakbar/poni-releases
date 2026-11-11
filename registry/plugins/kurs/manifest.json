@@ -1,8 +1,8 @@
 {
-  "id": "dev.notchkit.kurs",
+  "id": "app.useponi.kurs",
   "name": "Kurs Rupiah",
   "version": "1.0.0",
-  "author": "NotchKit",
+  "author": "Poni",
   "description": "Kurs USD, SGD, EUR, JPY, MYR ke Rupiah. Diperbarui tiap jam.",
   "category": "Keuangan",
   "symbol": "dollarsign.arrow.circlepath",

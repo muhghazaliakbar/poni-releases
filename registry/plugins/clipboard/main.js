@@ -1,11 +1,11 @@
 // Riwayat Clipboard — what you copied recently, one click to copy again.
-// Only plain text is kept, on this Mac only (notch.storage). NotchKit never hands plugins what password
+// Only plain text is kept, on this Mac only (notch.storage). Poni never hands plugins what password
 // managers mark as concealed, so passwords do not end up here.
 
 var items = notch.storage.get('items') || []; // [{ t: text, at: ms, pin: bool }]
 var lastCount = -1;
 
-// Needs NotchKit 0.1.2+, which keeps password-manager copies away from plugins.
+// Needs Poni 0.1.2+, which keeps password-manager copies away from plugins.
 function supported() {
   if (notch.version === 'dev') return true;
   var v = String(notch.version).split('.').map(Number);
@@ -66,8 +66,8 @@ function ordered() {
 function render() {
   if (!supported()) {
     return ui.vstack([
-      ui.text('Perbarui NotchKit', { style: 'title' }),
-      ui.text('Riwayat Clipboard butuh NotchKit 0.1.2 atau lebih baru.', { style: 'callout', color: 'white/55' })
+      ui.text('Perbarui Poni', { style: 'title' }),
+      ui.text('Riwayat Clipboard butuh Poni 0.1.2 atau lebih baru.', { style: 'callout', color: 'white/55' })
     ], { spacing: 2 });
   }
   var list = ordered();

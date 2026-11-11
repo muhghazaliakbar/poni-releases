@@ -1,8 +1,8 @@
 {
-  "id": "dev.notchkit.clipboard",
+  "id": "app.useponi.clipboard",
   "name": "Clipboard",
   "version": "1.0.0",
-  "author": "NotchKit",
+  "author": "Poni",
   "description": "Teks yang baru Anda salin, siap disalin lagi dengan satu klik. Sematkan yang sering dipakai. Password tidak pernah dicatat.",
   "category": "Produktivitas",
   "symbol": "lucide:clipboard-list",
