@@ -145,7 +145,7 @@ ui.text(text, { style, weight, color, lines, width, align })
 ui.ring(value, { size, color, label })        <span class="c">// cincin progres (Focus)</span>
 ui.symbol(name, { size, color, fill, animation })  <span class="c">// name: 'lucide:music-2' atau SF Symbol</span>
 ui.weatherGlyph(condition, { size })           <span class="c">// matahari + awan beranimasi</span>
-ui.button(label, action, { symbol, fill, style: 'primary', color, labelColor })
+ui.button(label, action, { symbol, fill, style: 'primary', color, labelColor, compact })
 ui.progress(value, { color, height })         <span class="c">// value 0 sampai 1</span>
 ui.row(label, value, { symbol, highlight, color })
 ui.input(placeholder, action, { value })
@@ -191,8 +191,8 @@ ui.divider()</code></pre>
             <tr><th scope="row"><code>notch.media.get()</code></th><td>Lagu di Spotify atau Apple Music: <code>{ title, artist, album, duration, position, playing, source, artwork }</code>, atau <code>null</code>.</td><td>media</td></tr>
             <tr><th scope="row"><code>notch.media.control(cmd)</code></th><td><code>'playpause'</code>, <code>'next'</code>, <code>'previous'</code>.</td><td>media</td></tr>
             <tr><th scope="row"><code>notch.notify(title, body)</code></th><td>Notifikasi macOS.</td><td>notifications</td></tr>
-            <tr><th scope="row"><code>notch.clipboard.get()</code>, <code>.set(text)</code>, <code>.changeCount()</code></th><td>Teks di clipboard.</td><td>clipboard</td></tr>
-            <tr><th scope="row"><code>notch.calendar.events(days)</code></th><td>Acara mulai hari ini: <code>[{ title, start, end, allDay, calendar, color, location, url }]</code>, waktu dalam milidetik. <code>notch.calendar.status()</code> memberi tahu apakah akses sudah diberikan.</td><td>calendar</td></tr>
+            <tr><th scope="row"><code>notch.clipboard.get()</code>, <code>.set(text)</code>, <code>.changeCount()</code></th><td>Teks di clipboard. Salinan dari pengelola password tidak pernah diberikan (<code>get()</code> mengembalikan <code>null</code>).</td><td>clipboard</td></tr>
+            <tr><th scope="row"><code>notch.calendar.events(days)</code></th><td>Acara mulai hari ini: <code>[{ title, start, end, allDay, calendar, color, location, url, meeting }]</code>, waktu dalam milidetik. <code>meeting</code> berisi <code>{ service, url }</code> bila acara punya tautan Zoom, Google Meet, Teams, Webex, FaceTime, Jitsi atau Whereby. <code>notch.calendar.status()</code> memberi tahu apakah akses sudah diberikan.</td><td>calendar</td></tr>
             <tr><th scope="row"><code>notch.system.stats()</code></th><td>CPU, memori, baterai, jaringan, disk dan suhu.</td><td>system</td></tr>
             <tr><th scope="row"><code>notch.ai.usage()</code></th><td>Pemakaian Claude Code dan Codex dari log di Mac ini.</td><td>ai-usage</td></tr>
             <tr><th scope="row"><code>setTimeout</code>, <code>setInterval</code></th><td>Seperti di browser, paling cepat 50 ms. Plugin digambar ulang setelah callback.</td><td></td></tr>
