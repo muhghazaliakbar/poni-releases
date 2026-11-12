@@ -264,6 +264,42 @@
       ]
     },
     {
+      "id": "app.useponi.habits",
+      "name": "Habits",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Tick off your daily habits, keep your streak going, and see the last 7 days at a glance.",
+      "symbol": "lucide:list-checks",
+      "category": "Health",
+      "permissions": [],
+      "locales": {
+        "id": {
+          "name": "Kebiasaan",
+          "description": "Centang kebiasaan harian Anda, jaga streak-nya, dan lihat 7 hari terakhir sekilas.",
+          "category": "Kesehatan",
+          "settings": {
+            "beside": {
+              "label": "Tampilkan sisa hari ini di samping notch"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/habits/main.js",
+          "sha256": "2ad744a62b8d8a9bd32febfa1f074f61e8b989f7bddbf83eb449f5bd58b727ef",
+          "size": 5657
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/habits/manifest.json",
+          "sha256": "796352719c6cb9d464e651c279b311a2f13585b45c7d16dbff1e4f7cd4a403f5",
+          "size": 761
+        }
+      ]
+    },
+    {
       "id": "app.useponi.kurs",
       "name": "Exchange Rates",
       "version": "1.0.1",

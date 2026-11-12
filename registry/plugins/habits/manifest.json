@@ -1,0 +1,25 @@
+{
+  "id": "app.useponi.habits",
+  "name": "Habits",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Tick off your daily habits, keep your streak going, and see the last 7 days at a glance.",
+  "category": "Health",
+  "symbol": "lucide:list-checks",
+  "permissions": [],
+  "refreshInterval": 30,
+  "order": 27,
+  "settings": [
+    { "key": "beside", "type": "toggle", "label": "Show what's left today beside the notch", "default": false }
+  ],
+  "locales": {
+    "id": {
+      "name": "Kebiasaan",
+      "description": "Centang kebiasaan harian Anda, jaga streak-nya, dan lihat 7 hari terakhir sekilas.",
+      "category": "Kesehatan",
+      "settings": {
+        "beside": { "label": "Tampilkan sisa hari ini di samping notch" }
+      }
+    }
+  }
+}
