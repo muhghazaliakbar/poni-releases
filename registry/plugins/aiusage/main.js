@@ -1,4 +1,5 @@
-// AI Usage — notch.ai.usage(): Claude Code tokens (5-hour blocks) + Codex rate limits.
+// AI Usage — notch.ai.usage(): Claude Code tokens (5-hour blocks) + Codex rate limits; notch.ai.cursor():
+// Cursor's monthly usage, only when the user turned it on in the settings.
 
 var STRINGS = {
   en: {
@@ -6,14 +7,18 @@ var STRINGS = {
     reading: 'Reading local logs…', claudeBlock: 'Claude Code · 5-hour block', tokens: '{n} tokens · resets in {t}',
     noBlock: 'no active block', codexPrimary: 'Codex · main quota', codexWeekly: 'Codex · weekly',
     wasReset: 'reset', used: '{n}% used', emptyTitle: 'No data yet',
-    emptyHint: 'No Claude Code (~/.claude) or Codex (~/.codex) logs found.', alert: 'Codex at {n}% of 5-hour quota'
+    emptyHint: 'No Claude Code (~/.claude) or Codex (~/.codex) logs found.', alert: 'Codex at {n}% of 5-hour quota',
+    cursor: 'Cursor · this month', cursorSignedOut: 'sign in to Cursor first', cursorError: 'can’t reach cursor.com',
+    cursorUsd: '${u} of ${l}', cursorReq: '{u} of {l} requests', cursorReqOnly: '{u} requests', resets: 'resets in {t}'
   },
   id: {
     million: ' jt', thousand: ' rb', d: 'hr', h: 'j', m: 'm',
     reading: 'Membaca log lokal…', claudeBlock: 'Claude Code · blok 5 jam', tokens: '{n} token · reset {t}',
     noBlock: 'tidak ada blok aktif', codexPrimary: 'Codex · kuota utama', codexWeekly: 'Codex · mingguan',
     wasReset: 'sudah reset', used: '{n}% terpakai', emptyTitle: 'Belum ada data',
-    emptyHint: 'Tidak ditemukan log Claude Code (~/.claude) atau Codex (~/.codex).', alert: 'Codex {n}% kuota 5 jam'
+    emptyHint: 'Tidak ditemukan log Claude Code (~/.claude) atau Codex (~/.codex).', alert: 'Codex {n}% kuota 5 jam',
+    cursor: 'Cursor · bulan ini', cursorSignedOut: 'masuk ke Cursor dulu', cursorError: 'tidak bisa menghubungi cursor.com',
+    cursorUsd: '${u} dari ${l}', cursorReq: '{u} dari {l} permintaan', cursorReqOnly: '{u} permintaan', resets: 'reset {t} lagi'
   }
 };
 function t(key) { return (STRINGS[notch.locale] || STRINGS.en)[key]; }
@@ -47,6 +52,19 @@ function meter(label, sub, value, color) {
   ], { spacing: 6 });
 }
 
+// Cursor, only when turned on: spend (or premium requests on older plans) against the plan's allowance.
+// Poni before 0.3.10 has no notch.ai.cursor.
+function cursorUsage() { return notch.settings.get('cursor') && notch.ai.cursor ? notch.ai.cursor() : null; }
+function cursorMeter(cu) {
+  if (cu.status === 'signedOut') return meter(t('cursor'), t('cursorSignedOut'), 0, 'white');
+  if (cu.status !== 'ok') return meter(t('cursor'), t('cursorError'), 0, 'white');
+  var note = cu.unit === 'usd'
+    ? tf('cursorUsd', { u: cu.used.toFixed(2), l: cu.limit.toFixed(0) })
+    : cu.limit ? tf('cursorReq', { u: cu.used, l: cu.limit }) : tf('cursorReqOnly', { u: cu.used });
+  if (cu.resetsAt) note += ' · ' + tf('resets', { t: left(cu.resetsAt) });
+  return meter(t('cursor'), note, cu.fraction || 0, 'white');
+}
+
 function render() {
   var u = notch.ai.usage();
   if (!u) return ui.text(t('reading'), { style: 'caption', color: 'white/50' });
@@ -63,6 +81,8 @@ function render() {
   if (x && x.secondary) {
     rows.push(meter(t('codexWeekly'), x.secondary.reset ? t('wasReset') : tf('used', { n: Math.round(x.secondary.used * 100) }), x.secondary.used, 'accent'));
   }
+  var cu = cursorUsage();
+  if (cu) rows.push(cursorMeter(cu));
   if (!rows.length) return ui.vstack([ui.text(t('emptyTitle'), { style: 'title' }),
     ui.text(t('emptyHint'), { style: 'callout', color: 'white/55' })], { spacing: 4 });
   return ui.vstack(rows, { spacing: 12 });
@@ -85,5 +105,7 @@ function compact() {
   }
   if (mode === 'codex' && x && x.primary) return { symbol: 'terminal', text: Math.round(x.primary.used * 100) + '%', color: tone(x.primary.used) };
   if (mode === 'claude' && c && c.block) return { symbol: 'asterisk', text: left(c.block.end), color: 'orange' };
+  var cu = mode === 'cursor' ? cursorUsage() : null;
+  if (cu && cu.status === 'ok' && cu.fraction != null) return { symbol: 'lucide:mouse-pointer-2', text: Math.round(cu.fraction * 100) + '%', color: tone(cu.fraction) };
   return null;
 }

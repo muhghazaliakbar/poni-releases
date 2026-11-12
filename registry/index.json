@@ -4,9 +4,9 @@
     {
       "id": "app.useponi.aiusage",
       "name": "AI Usage",
-      "version": "1.1.1",
+      "version": "1.2.0",
       "author": "Poni",
-      "description": "Codex quota left and Claude Code token use per 5-hour block, read from local logs.",
+      "description": "Codex quota left and Claude Code token use per 5-hour block from local logs, plus Cursor's monthly usage if you turn it on.",
       "symbol": "sparkles",
       "category": "Developer",
       "permissions": [
@@ -15,7 +15,7 @@
       "locales": {
         "id": {
           "name": "Pemakaian AI",
-          "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam, dibaca dari log lokal.",
+          "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam dari log lokal, plus pemakaian bulanan Cursor bila Anda menyalakannya.",
           "settings": {
             "compact": {
               "label": "Di samping notch",
@@ -23,12 +23,17 @@
                 "auto": "Otomatis (yang aktif terakhir)",
                 "codex": "Codex · kuota 5 jam",
                 "claude": "Claude Code · sisa waktu blok",
-                "none": "Jangan tampilkan"
+                "none": "Jangan tampilkan",
+                "cursor": "Cursor · bulan ini"
               }
             },
             "alert": {
               "label": "Peringatan kuota Codex",
               "help": "Pop-up saat pemakaian 5 jam melewati persentase ini"
+            },
+            "cursor": {
+              "label": "Pemakaian bulanan Cursor",
+              "help": "Memakai login Cursor di Mac ini untuk bertanya ke cursor.com, sama seperti Pengaturan → Usage di Cursor. Login tidak dikirim ke tempat lain."
             }
           }
         }
@@ -37,14 +42,14 @@
         {
           "path": "main.js",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/aiusage/main.js",
-          "sha256": "81dcb23b79f753ac1f42e5e74079286101773037358de815387e7f2fdf134d77",
-          "size": 4452
+          "sha256": "13d17fcd2adf66448d438ba1d83d18fd41a9a2ab460db1365696a7a5af690807",
+          "size": 6142
         },
         {
           "path": "manifest.json",
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/aiusage/manifest.json",
-          "sha256": "6f392869fdbe2636b64672e969709e3b73f1b9ecd8c24b6223ee8d1cf211e510",
-          "size": 1765
+          "sha256": "bb8a5bf050ce36afc64a38b0ae05b3489f589b8ae917576962d93301c35d0ce8",
+          "size": 2506
         }
       ]
     },

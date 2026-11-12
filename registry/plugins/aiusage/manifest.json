@@ -1,9 +1,9 @@
 {
   "id": "app.useponi.aiusage",
   "name": "AI Usage",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "author": "Poni",
-  "description": "Codex quota left and Claude Code token use per 5-hour block, read from local logs.",
+  "description": "Codex quota left and Claude Code token use per 5-hour block from local logs, plus Cursor's monthly usage if you turn it on.",
   "category": "Developer",
   "symbol": "sparkles",
   "permissions": [
@@ -12,6 +12,13 @@
   "refreshInterval": 10,
   "order": 23,
   "settings": [
+    {
+      "key": "cursor",
+      "type": "toggle",
+      "label": "Cursor monthly usage",
+      "help": "Uses the Cursor login on this Mac to ask cursor.com, as Cursor's own Settings → Usage does. The login never leaves for anywhere else.",
+      "default": false
+    },
     {
       "key": "compact",
       "type": "select",
@@ -29,6 +36,10 @@
         {
           "value": "claude",
           "label": "Claude Code · time left in block"
+        },
+        {
+          "value": "cursor",
+          "label": "Cursor · this month"
         },
         {
           "value": "none",
@@ -50,7 +61,7 @@
   "locales": {
     "id": {
       "name": "Pemakaian AI",
-      "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam, dibaca dari log lokal.",
+      "description": "Sisa kuota Codex dan pemakaian token Claude Code per blok 5 jam dari log lokal, plus pemakaian bulanan Cursor bila Anda menyalakannya.",
       "settings": {
         "compact": {
           "label": "Di samping notch",
@@ -58,12 +69,17 @@
             "auto": "Otomatis (yang aktif terakhir)",
             "codex": "Codex · kuota 5 jam",
             "claude": "Claude Code · sisa waktu blok",
-            "none": "Jangan tampilkan"
+            "none": "Jangan tampilkan",
+            "cursor": "Cursor · bulan ini"
           }
         },
         "alert": {
           "label": "Peringatan kuota Codex",
           "help": "Pop-up saat pemakaian 5 jam melewati persentase ini"
+        },
+        "cursor": {
+          "label": "Pemakaian bulanan Cursor",
+          "help": "Memakai login Cursor di Mac ini untuk bertanya ke cursor.com, sama seperti Pengaturan → Usage di Cursor. Login tidak dikirim ke tempat lain."
         }
       }
     }
