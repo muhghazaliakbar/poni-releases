@@ -54,6 +54,65 @@
       ]
     },
     {
+      "id": "app.useponi.breaks",
+      "name": "Healthy Breaks",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Reminders to rest your eyes (20-20-20), stand up and stretch, and drink water, with a countdown to the next break.",
+      "symbol": "lucide:coffee",
+      "category": "Health",
+      "permissions": [
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Istirahat Sehat",
+          "description": "Pengingat untuk mengistirahatkan mata (20-20-20), berdiri dan peregangan, serta minum air, dengan hitung mundur ke istirahat berikutnya.",
+          "category": "Kesehatan",
+          "settings": {
+            "eyes": {
+              "label": "Istirahatkan mata (lihat sejauh 6 m selama 20 detik)"
+            },
+            "eyesEvery": {
+              "label": "Istirahat mata setiap (menit)"
+            },
+            "stretch": {
+              "label": "Berdiri dan peregangan"
+            },
+            "stretchEvery": {
+              "label": "Peregangan setiap (menit)"
+            },
+            "water": {
+              "label": "Minum air"
+            },
+            "waterEvery": {
+              "label": "Minum setiap (menit)"
+            },
+            "sound": {
+              "label": "Putar suara"
+            },
+            "beside": {
+              "label": "Tampilkan hitung mundur di samping notch"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/breaks/main.js",
+          "sha256": "1de01c6ba3098f57d30268b5da042c664f92d51e2f7fce748c863934f355b58e",
+          "size": 8151
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/breaks/manifest.json",
+          "sha256": "ea9bb9ddd9a480dc05aabda97fe5af04785807d68aa199dd7f5c4326d9968362",
+          "size": 2057
+        }
+      ]
+    },
+    {
       "id": "app.useponi.clipboard",
       "name": "Clipboard",
       "version": "1.0.1",

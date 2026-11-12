@@ -1,0 +1,39 @@
+{
+  "id": "app.useponi.breaks",
+  "name": "Healthy Breaks",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Reminders to rest your eyes (20-20-20), stand up and stretch, and drink water, with a countdown to the next break.",
+  "category": "Health",
+  "symbol": "lucide:coffee",
+  "permissions": ["notifications"],
+  "refreshInterval": 1,
+  "order": 26,
+  "settings": [
+    { "key": "eyes", "type": "toggle", "label": "Rest your eyes (look 6 m away for 20 seconds)", "default": true },
+    { "key": "eyesEvery", "type": "number", "label": "Eye break every (minutes)", "default": 20, "min": 10, "max": 60, "step": 5 },
+    { "key": "stretch", "type": "toggle", "label": "Stand up and stretch", "default": true },
+    { "key": "stretchEvery", "type": "number", "label": "Stretch every (minutes)", "default": 50, "min": 20, "max": 120, "step": 5 },
+    { "key": "water", "type": "toggle", "label": "Drink water", "default": true },
+    { "key": "waterEvery", "type": "number", "label": "Water every (minutes)", "default": 60, "min": 30, "max": 180, "step": 15 },
+    { "key": "sound", "type": "toggle", "label": "Play a sound", "default": true },
+    { "key": "beside", "type": "toggle", "label": "Show the countdown beside the notch", "default": false }
+  ],
+  "locales": {
+    "id": {
+      "name": "Istirahat Sehat",
+      "description": "Pengingat untuk mengistirahatkan mata (20-20-20), berdiri dan peregangan, serta minum air, dengan hitung mundur ke istirahat berikutnya.",
+      "category": "Kesehatan",
+      "settings": {
+        "eyes": { "label": "Istirahatkan mata (lihat sejauh 6 m selama 20 detik)" },
+        "eyesEvery": { "label": "Istirahat mata setiap (menit)" },
+        "stretch": { "label": "Berdiri dan peregangan" },
+        "stretchEvery": { "label": "Peregangan setiap (menit)" },
+        "water": { "label": "Minum air" },
+        "waterEvery": { "label": "Minum setiap (menit)" },
+        "sound": { "label": "Putar suara" },
+        "beside": { "label": "Tampilkan hitung mundur di samping notch" }
+      }
+    }
+  }
+}
