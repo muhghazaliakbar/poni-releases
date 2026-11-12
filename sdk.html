@@ -185,7 +185,7 @@ ui.ring(value, { size, color, label })        <span class="c">// progress ring (
 ui.bars(values, { labels, color, height, highlight })  <span class="c">// small bar chart</span>
 ui.symbol(name, { size, color, fill, animation })  <span class="c">// name: 'lucide:music-2' or an SF Symbol</span>
 ui.weatherGlyph(condition, { size })           <span class="c">// animated sun and clouds</span>
-ui.button(label, action, { symbol, fill, style: 'primary', color, labelColor, compact })
+ui.button(label, action, { symbol, fill, style: 'primary' | 'plain', color, labelColor, compact })
 ui.progress(value, { color, height })         <span class="c">// value from 0 to 1</span>
 ui.row(label, value, { symbol, highlight, color })
 ui.input(placeholder, action, { value })
@@ -235,6 +235,7 @@ ui.divider()</code></pre>
             <tr><th scope="row"><code>notch.notify(title, body)</code></th><td>A macOS notification.</td><td>notifications</td></tr>
             <tr><th scope="row"><code>notch.clipboard.get()</code>, <code>.set(text)</code>, <code>.changeCount()</code></th><td>Text on the clipboard. Items copied from a password manager are never shared (<code>get()</code> returns <code>null</code>).</td><td>clipboard</td></tr>
             <tr><th scope="row"><code>notch.calendar.events(days)</code></th><td>Events starting today: <code>[{ title, start, end, allDay, calendar, color, location, url, meeting }]</code>, with times in milliseconds. <code>meeting</code> holds <code>{ service, url }</code> when the event has a Zoom, Google Meet, Teams, Webex, FaceTime, Jitsi or Whereby link. <code>notch.calendar.status()</code> tells you whether access has been granted.</td><td>calendar</td></tr>
+            <tr><th scope="row"><code>notch.reminders.list()</code></th><td>Reminders due today or overdue: <code>[{ id, title, due, allDay, overdue, list, color, priority }]</code>. <code>notch.reminders.complete(id)</code> marks one done; <code>notch.reminders.status()</code> works like the calendar's.</td><td>reminders</td></tr>
             <tr><th scope="row"><code>notch.system.stats()</code></th><td>CPU, memory, battery, network, disk and temperature.</td><td>system</td></tr>
             <tr><th scope="row"><code>notch.ai.usage()</code></th><td>Claude Code and Codex usage, read from logs on this Mac.</td><td>ai-usage</td></tr>
             <tr><th scope="row"><code>setTimeout</code>, <code>setInterval</code></th><td>As in the browser, with a minimum of 50 ms. The plugin redraws after each callback.</td><td></td></tr>
@@ -258,7 +259,7 @@ ui.divider()</code></pre>
             permission, and other APIs return <code>null</code>.</li>
         </ul>
         <p>Options: <code>network</code>, <code>media</code>, <code>notifications</code>, <code>clipboard</code>,
-          <code>calendar</code>, <code>system</code>, <code>ai-usage</code>, <code>camera</code> (for <code>ui.camera()</code>).</p>
+          <code>calendar</code>, <code>system</code>, <code>ai-usage</code>, <code>camera</code> (for <code>ui.camera()</code>), <code>reminders</code>.</p>
       </section>
 
       <section id="batasan">
