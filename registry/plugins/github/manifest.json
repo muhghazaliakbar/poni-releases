@@ -1,0 +1,48 @@
+{
+  "id": "app.useponi.github",
+  "name": "GitHub Actions",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Builds and deploys from GitHub Actions beside the notch while they run, green or red when they finish.",
+  "category": "Developer",
+  "symbol": "lucide:workflow",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 5,
+  "order": 24,
+  "settings": [
+    {
+      "key": "repos",
+      "type": "text",
+      "label": "Repositories",
+      "placeholder": "owner/repo, owner/another",
+      "help": "Comma-separated."
+    },
+    {
+      "key": "token",
+      "type": "text",
+      "label": "GitHub token",
+      "placeholder": "github_pat_…",
+      "help": "A fine-grained token with read-only access to Actions and Deployments for these repositories. Needed for private ones; public ones work without it but are limited to 60 checks an hour. Saved in Poni's settings on this Mac and only sent to api.github.com."
+    },
+    {
+      "key": "notify",
+      "type": "toggle",
+      "label": "Notify when a run finishes",
+      "default": true
+    }
+  ],
+  "locales": {
+    "id": {
+      "description": "Build dan deploy dari GitHub Actions di samping notch selama berjalan, hijau atau merah saat selesai.",
+      "category": "Developer",
+      "settings": {
+        "repos": { "label": "Repositori", "help": "Pisahkan dengan koma." },
+        "token": {
+          "label": "Token GitHub",
+          "help": "Token fine-grained dengan akses baca-saja ke Actions dan Deployments untuk repositori ini. Wajib untuk repositori privat; repositori publik bisa tanpa token tapi dibatasi 60 pengecekan per jam. Disimpan di pengaturan Poni di Mac ini dan hanya dikirim ke api.github.com."
+        },
+        "notify": { "label": "Beri tahu saat run selesai" }
+      }
+    }
+  }
+}

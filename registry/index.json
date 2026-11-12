@@ -159,6 +159,52 @@
       ]
     },
     {
+      "id": "app.useponi.github",
+      "name": "GitHub Actions",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Builds and deploys from GitHub Actions beside the notch while they run, green or red when they finish.",
+      "symbol": "lucide:workflow",
+      "category": "Developer",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "description": "Build dan deploy dari GitHub Actions di samping notch selama berjalan, hijau atau merah saat selesai.",
+          "category": "Developer",
+          "settings": {
+            "repos": {
+              "label": "Repositori",
+              "help": "Pisahkan dengan koma."
+            },
+            "token": {
+              "label": "Token GitHub",
+              "help": "Token fine-grained dengan akses baca-saja ke Actions dan Deployments untuk repositori ini. Wajib untuk repositori privat; repositori publik bisa tanpa token tapi dibatasi 60 pengecekan per jam. Disimpan di pengaturan Poni di Mac ini dan hanya dikirim ke api.github.com."
+            },
+            "notify": {
+              "label": "Beri tahu saat run selesai"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/github/main.js",
+          "sha256": "7edf82d88ee21c4af1b4a02d99d07f92fa78fcfa65ad6d6008c546fe3cac17f9",
+          "size": 9726
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/github/manifest.json",
+          "sha256": "330b6cf859272d9464e528f2d622eb78450725747a94622096c8a4fc76920de9",
+          "size": 1801
+        }
+      ]
+    },
+    {
       "id": "app.useponi.kurs",
       "name": "Exchange Rates",
       "version": "1.0.1",
