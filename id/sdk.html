@@ -222,8 +222,8 @@ ui.divider()</code></pre>
         <table class="ref">
           <thead><tr><th scope="col">API</th><th scope="col">Keterangan</th><th scope="col">Izin</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><code>notch.fetch(url, cb)</code></th><td>HTTP GET; <code>cb(text, error)</code>. Batas waktu 15 detik.</td><td>network</td></tr>
-            <tr><th scope="row"><code>notch.fetchJSON(url, cb)</code></th><td>Sama, hasilnya sudah di-parse: <code>cb(json, error)</code>.</td><td>network</td></tr>
+            <tr><th scope="row"><code>notch.fetch(url, [options], cb)</code></th><td>Permintaan HTTP; <code>cb(text, error, status)</code>. <code>options</code>: <code>{ method, headers, body }</code> (sejak Poni 0.4.3; periksa <code>notch.features</code> berisi <code>'fetch-options'</code>). Batas waktu 15 detik.</td><td>network</td></tr>
+            <tr><th scope="row"><code>notch.fetchJSON(url, [options], cb)</code></th><td>Sama, dengan hasil yang sudah di-parse: <code>cb(json, error, status)</code>.</td><td>network</td></tr>
             <tr><th scope="row"><code>notch.storage.get(key)</code>, <code>.set(key, value)</code></th><td>Penyimpanan permanen milik plugin ini.</td><td></td></tr>
             <tr><th scope="row"><code>notch.settings.get(key)</code>, <code>.all()</code></th><td>Nilai pengaturan, atau bawaan dari manifest.</td><td></td></tr>
             <tr><th scope="row"><code>notch.flash(text, symbol)</code></th><td>Pesan singkat 3 detik di samping notch.</td><td></td></tr>

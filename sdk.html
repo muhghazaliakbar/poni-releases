@@ -221,8 +221,8 @@ ui.divider()</code></pre>
         <table class="ref">
           <thead><tr><th scope="col">API</th><th scope="col">Description</th><th scope="col">Permission</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><code>notch.fetch(url, cb)</code></th><td>HTTP GET; <code>cb(text, error)</code>. Times out after 15 seconds.</td><td>network</td></tr>
-            <tr><th scope="row"><code>notch.fetchJSON(url, cb)</code></th><td>The same, with the result already parsed: <code>cb(json, error)</code>.</td><td>network</td></tr>
+            <tr><th scope="row"><code>notch.fetch(url, [options], cb)</code></th><td>HTTP request; <code>cb(text, error, status)</code>. <code>options</code>: <code>{ method, headers, body }</code> (since Poni 0.4.3; check <code>notch.features</code> contains <code>'fetch-options'</code>). Times out after 15 seconds.</td><td>network</td></tr>
+            <tr><th scope="row"><code>notch.fetchJSON(url, [options], cb)</code></th><td>The same, with the result already parsed: <code>cb(json, error, status)</code>.</td><td>network</td></tr>
             <tr><th scope="row"><code>notch.storage.get(key)</code>, <code>.set(key, value)</code></th><td>Persistent storage for this plugin.</td><td></td></tr>
             <tr><th scope="row"><code>notch.settings.get(key)</code>, <code>.all()</code></th><td>Setting values, or the defaults from the manifest.</td><td></td></tr>
             <tr><th scope="row"><code>notch.flash(text, symbol)</code></th><td>A short 3-second message next to the notch.</td><td></td></tr>
