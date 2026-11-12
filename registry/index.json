@@ -251,6 +251,47 @@
       ]
     },
     {
+      "id": "app.useponi.devtools",
+      "name": "Dev Toolbox",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "UUIDs, strong passwords, Unix timestamps, Base64, URL encoding, hashes, and JSON formatting. Click a result to copy it.",
+      "symbol": "lucide:wrench",
+      "category": "Developer",
+      "permissions": [
+        "clipboard"
+      ],
+      "locales": {
+        "id": {
+          "name": "Dev Toolbox",
+          "description": "UUID, password kuat, timestamp Unix, Base64, URL encode, hash, dan format JSON. Klik hasil untuk menyalin.",
+          "category": "Developer",
+          "settings": {
+            "length": {
+              "label": "Panjang password"
+            },
+            "symbols": {
+              "label": "Pakai simbol di password"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/devtools/main.js",
+          "sha256": "f71c434b71a2d326acb4ceacc81460f808614c0b27979ba3684f86a96d4fbf99",
+          "size": 9419
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/devtools/manifest.json",
+          "sha256": "d1fa57ec67e1e9f4e65057fdd1ad09e1146e21677b5bf665fc79419ed5039037",
+          "size": 973
+        }
+      ]
+    },
+    {
       "id": "app.useponi.github",
       "name": "GitHub Actions",
       "version": "1.0.0",

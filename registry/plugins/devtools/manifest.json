@@ -1,0 +1,27 @@
+{
+  "id": "app.useponi.devtools",
+  "name": "Dev Toolbox",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "UUIDs, strong passwords, Unix timestamps, Base64, URL encoding, hashes, and JSON formatting. Click a result to copy it.",
+  "category": "Developer",
+  "symbol": "lucide:wrench",
+  "permissions": ["clipboard"],
+  "refreshInterval": 60,
+  "order": 30,
+  "settings": [
+    { "key": "length", "type": "number", "label": "Password length", "default": 20, "min": 8, "max": 64, "step": 1 },
+    { "key": "symbols", "type": "toggle", "label": "Use symbols in passwords", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Dev Toolbox",
+      "description": "UUID, password kuat, timestamp Unix, Base64, URL encode, hash, dan format JSON. Klik hasil untuk menyalin.",
+      "category": "Developer",
+      "settings": {
+        "length": { "label": "Panjang password" },
+        "symbols": { "label": "Pakai simbol di password" }
+      }
+    }
+  }
+}
