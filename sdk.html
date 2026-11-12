@@ -188,7 +188,7 @@ ui.weatherGlyph(condition, { size })           <span class="c">// animated sun a
 ui.button(label, action, { symbol, fill, style: 'primary' | 'plain', color, labelColor, compact })
 ui.progress(value, { color, height })         <span class="c">// value from 0 to 1</span>
 ui.row(label, value, { symbol, highlight, color })
-ui.input(placeholder, action, { value })
+ui.input(placeholder, action, { value })  <span class="c">// { clear: true } empties it after Enter</span>
 ui.image(url, { size, radius, placeholder, playing })  <span class="c">// playing: shimmer while playing</span>
 ui.camera({ height, radius, mirrored })  <span class="c">// live camera preview; needs "camera". On only while visible</span>
 ui.spacer()
@@ -235,7 +235,7 @@ ui.divider()</code></pre>
             <tr><th scope="row"><code>notch.notify(title, body)</code></th><td>A macOS notification.</td><td>notifications</td></tr>
             <tr><th scope="row"><code>notch.clipboard.get()</code>, <code>.set(text)</code>, <code>.changeCount()</code></th><td>Text on the clipboard. Items copied from a password manager are never shared (<code>get()</code> returns <code>null</code>).</td><td>clipboard</td></tr>
             <tr><th scope="row"><code>notch.calendar.events(days)</code></th><td>Events starting today: <code>[{ title, start, end, allDay, calendar, color, location, url, meeting }]</code>, with times in milliseconds. <code>meeting</code> holds <code>{ service, url }</code> when the event has a Zoom, Google Meet, Teams, Webex, FaceTime, Jitsi or Whereby link. <code>notch.calendar.status()</code> tells you whether access has been granted.</td><td>calendar</td></tr>
-            <tr><th scope="row"><code>notch.reminders.list()</code></th><td>Reminders due today or overdue: <code>[{ id, title, due, allDay, overdue, list, color, priority }]</code>. <code>notch.reminders.complete(id)</code> marks one done; <code>notch.reminders.status()</code> works like the calendar's.</td><td>reminders</td></tr>
+            <tr><th scope="row"><code>notch.reminders.list()</code></th><td>Reminders due today or overdue: <code>[{ id, title, due, allDay, overdue, list, color, priority }]</code>. <code>notch.reminders.complete(id)</code> marks one done; <code>notch.reminders.add(title, due)</code> adds one to the default list, due today (all day, or at <code>due</code> in milliseconds) and returns its id; <code>notch.reminders.status()</code> works like the calendar's.</td><td>reminders</td></tr>
             <tr><th scope="row"><code>notch.system.stats()</code></th><td>CPU, memory, battery, network, disk and temperature.</td><td>system</td></tr>
             <tr><th scope="row"><code>notch.ai.usage()</code></th><td>Claude Code and Codex usage, read from logs on this Mac.</td><td>ai-usage</td></tr>
             <tr><th scope="row"><code>setTimeout</code>, <code>setInterval</code></th><td>As in the browser, with a minimum of 50 ms. The plugin redraws after each callback.</td><td></td></tr>
