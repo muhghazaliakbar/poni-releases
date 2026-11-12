@@ -333,6 +333,37 @@
       ]
     },
     {
+      "id": "app.useponi.links",
+      "name": "Quick Links",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Your most-used websites, folders, and apps, one click away in the notch.",
+      "symbol": "lucide:link",
+      "category": "Productivity",
+      "permissions": [],
+      "locales": {
+        "id": {
+          "name": "Tautan Cepat",
+          "description": "Situs, folder, dan app yang paling sering Anda buka, sekali klik dari notch.",
+          "category": "Produktivitas"
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/links/main.js",
+          "sha256": "4ce3d15aebe4c465f2f3bf3e5254314ea845cbc25dac459a88807e07daa3a058",
+          "size": 5735
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/links/manifest.json",
+          "sha256": "922233b1977123ffc17d00d572995111a7171319afd0ae2b3598467368dac28e",
+          "size": 513
+        }
+      ]
+    },
+    {
       "id": "app.useponi.notes",
       "name": "Notes",
       "version": "1.0.1",

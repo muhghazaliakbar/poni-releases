@@ -1,0 +1,19 @@
+{
+  "id": "app.useponi.links",
+  "name": "Quick Links",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Your most-used websites, folders, and apps, one click away in the notch.",
+  "category": "Productivity",
+  "symbol": "lucide:link",
+  "permissions": [],
+  "refreshInterval": 60,
+  "order": 28,
+  "locales": {
+    "id": {
+      "name": "Tautan Cepat",
+      "description": "Situs, folder, dan app yang paling sering Anda buka, sekali klik dari notch.",
+      "category": "Produktivitas"
+    }
+  }
+}
