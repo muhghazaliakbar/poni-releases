@@ -1,0 +1,19 @@
+{
+  "id": "app.useponi.calculator",
+  "name": "Calculator",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Type a sum, a percentage, or a unit conversion and get the answer right away. Click it to copy.",
+  "category": "Utilities",
+  "symbol": "lucide:calculator",
+  "permissions": ["clipboard"],
+  "refreshInterval": 60,
+  "order": 29,
+  "locales": {
+    "id": {
+      "name": "Kalkulator",
+      "description": "Ketik hitungan, persen, atau konversi satuan dan langsung dapat jawabannya. Klik untuk menyalin.",
+      "category": "Utilitas"
+    }
+  }
+}

@@ -113,6 +113,39 @@
       ]
     },
     {
+      "id": "app.useponi.calculator",
+      "name": "Calculator",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Type a sum, a percentage, or a unit conversion and get the answer right away. Click it to copy.",
+      "symbol": "lucide:calculator",
+      "category": "Utilities",
+      "permissions": [
+        "clipboard"
+      ],
+      "locales": {
+        "id": {
+          "name": "Kalkulator",
+          "description": "Ketik hitungan, persen, atau konversi satuan dan langsung dapat jawabannya. Klik untuk menyalin.",
+          "category": "Utilitas"
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/calculator/main.js",
+          "sha256": "d63a6ada031c7bbc96eaf71e296c12fd4aa6452277892b73827c4bafc0ee50f9",
+          "size": 8902
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/calculator/manifest.json",
+          "sha256": "d88374bf6381fbc0e0fea97c254067f60823b225bedd8be53785d5bca8f928bc",
+          "size": 567
+        }
+      ]
+    },
+    {
       "id": "app.useponi.clipboard",
       "name": "Clipboard",
       "version": "1.0.1",
