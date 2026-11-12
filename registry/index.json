@@ -292,6 +292,54 @@
       ]
     },
     {
+      "id": "app.useponi.gempa",
+      "name": "Earthquakes",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "The latest earthquakes in Indonesia from BMKG: magnitude, location, depth, tsunami potential, and where it was felt, with a notification for strong ones.",
+      "symbol": "lucide:activity",
+      "category": "Utilities",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Info Gempa",
+          "description": "Gempa terbaru di Indonesia dari BMKG: magnitudo, lokasi, kedalaman, potensi tsunami, dan wilayah yang merasakan, dengan notifikasi untuk gempa kuat.",
+          "category": "Utilitas",
+          "settings": {
+            "minMagnitude": {
+              "label": "Beri notifikasi mulai magnitudo",
+              "options": {
+                "4": "4,0 ke atas",
+                "5": "5,0 ke atas",
+                "6": "6,0 ke atas",
+                "99": "Hanya peringatan tsunami"
+              }
+            },
+            "beside": {
+              "label": "Tampilkan gempa kuat baru di samping notch"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/gempa/main.js",
+          "sha256": "90f7da45c7c5cc4d3cb47e807d9ca7e53a1278d983d1bfdeb6057b0a410e3a84",
+          "size": 8384
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/gempa/manifest.json",
+          "sha256": "6665f36942da1173fca45182c84c1f3d39143451983c75a38581fa54785c75fc",
+          "size": 1503
+        }
+      ]
+    },
+    {
       "id": "app.useponi.github",
       "name": "GitHub Actions",
       "version": "1.0.0",

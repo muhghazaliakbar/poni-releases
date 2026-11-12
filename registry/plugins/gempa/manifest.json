@@ -1,0 +1,41 @@
+{
+  "id": "app.useponi.gempa",
+  "name": "Earthquakes",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "The latest earthquakes in Indonesia from BMKG: magnitude, location, depth, tsunami potential, and where it was felt, with a notification for strong ones.",
+  "category": "Utilities",
+  "symbol": "lucide:activity",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 30,
+  "order": 31,
+  "settings": [
+    {
+      "key": "minMagnitude",
+      "type": "select",
+      "label": "Notify me from magnitude",
+      "default": "5",
+      "options": [
+        { "value": "4", "label": "4.0 and up" },
+        { "value": "5", "label": "5.0 and up" },
+        { "value": "6", "label": "6.0 and up" },
+        { "value": "99", "label": "Only tsunami warnings" }
+      ]
+    },
+    { "key": "beside", "type": "toggle", "label": "Show a new strong earthquake beside the notch", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Info Gempa",
+      "description": "Gempa terbaru di Indonesia dari BMKG: magnitudo, lokasi, kedalaman, potensi tsunami, dan wilayah yang merasakan, dengan notifikasi untuk gempa kuat.",
+      "category": "Utilitas",
+      "settings": {
+        "minMagnitude": {
+          "label": "Beri notifikasi mulai magnitudo",
+          "options": { "4": "4,0 ke atas", "5": "5,0 ke atas", "6": "6,0 ke atas", "99": "Hanya peringatan tsunami" }
+        },
+        "beside": { "label": "Tampilkan gempa kuat baru di samping notch" }
+      }
+    }
+  }
+}
