@@ -315,6 +315,45 @@
           "size": 1839
         }
       ]
+    },
+    {
+      "id": "app.useponi.worldclock",
+      "name": "World Clock",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "The time in the cities you work with, how far ahead or behind they are, and whether it's day or night there.",
+      "symbol": "lucide:globe",
+      "category": "Productivity",
+      "permissions": [],
+      "locales": {
+        "id": {
+          "name": "Jam Dunia",
+          "description": "Jam di kota-kota tempat Anda bekerja, selisihnya dengan waktu Anda, dan apakah di sana siang atau malam.",
+          "category": "Produktivitas",
+          "settings": {
+            "hour24": {
+              "label": "Format 24 jam"
+            },
+            "beside": {
+              "label": "Tampilkan kota pertama di samping notch"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/worldclock/main.js",
+          "sha256": "2fffa68b9b394e84941ed466076d18c1d6ba5f49ae9bc5864249c20c73247fbf",
+          "size": 8019
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/worldclock/manifest.json",
+          "sha256": "7913a679addbf95c78536cb40e3149c0b3d6898f98bf39a391f9811d1ee432a9",
+          "size": 1001
+        }
+      ]
     }
   ]
 }

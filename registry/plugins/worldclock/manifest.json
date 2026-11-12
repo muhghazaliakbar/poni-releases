@@ -1,0 +1,37 @@
+{
+  "id": "app.useponi.worldclock",
+  "name": "World Clock",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "The time in the cities you work with, how far ahead or behind they are, and whether it's day or night there.",
+  "category": "Productivity",
+  "symbol": "lucide:globe",
+  "permissions": [],
+  "refreshInterval": 1,
+  "order": 25,
+  "settings": [
+    {
+      "key": "hour24",
+      "type": "toggle",
+      "label": "24-hour clock",
+      "default": true
+    },
+    {
+      "key": "beside",
+      "type": "toggle",
+      "label": "Show the first city beside the notch",
+      "default": false
+    }
+  ],
+  "locales": {
+    "id": {
+      "name": "Jam Dunia",
+      "description": "Jam di kota-kota tempat Anda bekerja, selisihnya dengan waktu Anda, dan apakah di sana siang atau malam.",
+      "category": "Produktivitas",
+      "settings": {
+        "hour24": { "label": "Format 24 jam" },
+        "beside": { "label": "Tampilkan kota pertama di samping notch" }
+      }
+    }
+  }
+}
