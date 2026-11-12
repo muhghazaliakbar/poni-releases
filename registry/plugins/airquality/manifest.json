@@ -1,0 +1,27 @@
+{
+  "id": "app.useponi.airquality",
+  "name": "Air Quality",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "The air quality index (US AQI), PM2.5 and PM10 in your city, what it means for going outside, and the next 12 hours.",
+  "category": "Health",
+  "symbol": "lucide:wind",
+  "permissions": ["network"],
+  "refreshInterval": 30,
+  "order": 32,
+  "settings": [
+    { "key": "city", "type": "text", "label": "City", "placeholder": "Jakarta", "default": "Jakarta" },
+    { "key": "beside", "type": "toggle", "label": "Show the AQI beside the notch when the air is unhealthy", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Kualitas Udara",
+      "description": "Indeks kualitas udara (US AQI), PM2.5 dan PM10 di kota Anda, artinya untuk beraktivitas di luar, dan 12 jam ke depan.",
+      "category": "Kesehatan",
+      "settings": {
+        "city": { "label": "Kota" },
+        "beside": { "label": "Tampilkan AQI di samping notch saat udara tidak sehat" }
+      }
+    }
+  }
+}

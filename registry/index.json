@@ -2,6 +2,47 @@
   "name": "Poni Official",
   "plugins": [
     {
+      "id": "app.useponi.airquality",
+      "name": "Air Quality",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "The air quality index (US AQI), PM2.5 and PM10 in your city, what it means for going outside, and the next 12 hours.",
+      "symbol": "lucide:wind",
+      "category": "Health",
+      "permissions": [
+        "network"
+      ],
+      "locales": {
+        "id": {
+          "name": "Kualitas Udara",
+          "description": "Indeks kualitas udara (US AQI), PM2.5 dan PM10 di kota Anda, artinya untuk beraktivitas di luar, dan 12 jam ke depan.",
+          "category": "Kesehatan",
+          "settings": {
+            "city": {
+              "label": "Kota"
+            },
+            "beside": {
+              "label": "Tampilkan AQI di samping notch saat udara tidak sehat"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/airquality/main.js",
+          "sha256": "98c90394507dd55e5ba504cfcdaa215bb90ea8e68ca99a5699f76b8d97e8500e",
+          "size": 7367
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/airquality/manifest.json",
+          "sha256": "3ecbb0f3391ec5403d70b29777a509a1a5678a1614be518cfe310a35855738c9",
+          "size": 1009
+        }
+      ]
+    },
+    {
       "id": "app.useponi.aiusage",
       "name": "AI Usage",
       "version": "1.2.0",
