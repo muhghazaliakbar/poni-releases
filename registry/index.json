@@ -606,6 +606,53 @@
       ]
     },
     {
+      "id": "app.useponi.uptime",
+      "name": "Uptime",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Keeps an eye on your websites and APIs: up or down, status code, and response time, with a notification when one goes down and when it's back.",
+      "symbol": "lucide:radar",
+      "category": "Developer",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Pantau Situs",
+          "description": "Memantau situs dan API Anda: naik atau turun, kode status, dan waktu respons, dengan notifikasi saat ada yang turun dan saat pulih.",
+          "category": "Developer",
+          "settings": {
+            "every": {
+              "label": "Periksa setiap",
+              "options": {
+                "1": "1 menit",
+                "2": "2 menit",
+                "5": "5 menit"
+              }
+            },
+            "notify": {
+              "label": "Beri notifikasi saat situs turun atau pulih"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/uptime/main.js",
+          "sha256": "6d7a1d3f6bb4476034f306febef2251ed1f9740ca95726adfd4d5b29e9782b29",
+          "size": 8359
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/uptime/manifest.json",
+          "sha256": "be14a860c2359db6583430456b8e6d724475669ef4b655b8cdfe1fc9c5ab1c28",
+          "size": 1286
+        }
+      ]
+    },
+    {
       "id": "app.useponi.worldclock",
       "name": "World Clock",
       "version": "1.0.0",

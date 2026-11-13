@@ -1,0 +1,37 @@
+{
+  "id": "app.useponi.uptime",
+  "name": "Uptime",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Keeps an eye on your websites and APIs: up or down, status code, and response time, with a notification when one goes down and when it's back.",
+  "category": "Developer",
+  "symbol": "lucide:radar",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 15,
+  "order": 33,
+  "settings": [
+    {
+      "key": "every",
+      "type": "select",
+      "label": "Check every",
+      "default": "2",
+      "options": [
+        { "value": "1", "label": "1 minute" },
+        { "value": "2", "label": "2 minutes" },
+        { "value": "5", "label": "5 minutes" }
+      ]
+    },
+    { "key": "notify", "type": "toggle", "label": "Notify when a site goes down or comes back", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Pantau Situs",
+      "description": "Memantau situs dan API Anda: naik atau turun, kode status, dan waktu respons, dengan notifikasi saat ada yang turun dan saat pulih.",
+      "category": "Developer",
+      "settings": {
+        "every": { "label": "Periksa setiap", "options": { "1": "1 menit", "2": "2 menit", "5": "5 menit" } },
+        "notify": { "label": "Beri notifikasi saat situs turun atau pulih" }
+      }
+    }
+  }
+}
