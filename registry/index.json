@@ -95,6 +95,45 @@
       ]
     },
     {
+      "id": "app.useponi.ayat",
+      "name": "Daily Verse",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "One verse of the Qur'an a day: the Arabic text, a translation, and the surah. Ask for another verse or copy it. Saved for reading offline.",
+      "symbol": "lucide:book-open",
+      "category": "Religion",
+      "permissions": [
+        "network",
+        "clipboard"
+      ],
+      "locales": {
+        "id": {
+          "name": "Ayat Harian",
+          "description": "Satu ayat Al-Qur'an setiap hari: teks Arab, terjemahan, dan nama suratnya. Minta ayat lain atau salin. Tersimpan untuk dibaca offline.",
+          "category": "Agama",
+          "settings": {
+            "arabic": {
+              "label": "Tampilkan teks Arab"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/ayat/main.js",
+          "sha256": "5089d3b45aa6eec023738b673a2c95dbd39398ed66edd32c89dd1281e914f5a6",
+          "size": 8240
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/ayat/manifest.json",
+          "sha256": "f00540bd24ec753a6a98cb30e26979114ed9d31991eb6526c5cd453268bb2872",
+          "size": 845
+        }
+      ]
+    },
+    {
       "id": "app.useponi.breaks",
       "name": "Healthy Breaks",
       "version": "1.0.0",

@@ -1,0 +1,25 @@
+{
+  "id": "app.useponi.ayat",
+  "name": "Daily Verse",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "One verse of the Qur'an a day: the Arabic text, a translation, and the surah. Ask for another verse or copy it. Saved for reading offline.",
+  "category": "Religion",
+  "symbol": "lucide:book-open",
+  "permissions": ["network", "clipboard"],
+  "refreshInterval": 60,
+  "order": 34,
+  "settings": [
+    { "key": "arabic", "type": "toggle", "label": "Show the Arabic text", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Ayat Harian",
+      "description": "Satu ayat Al-Qur'an setiap hari: teks Arab, terjemahan, dan nama suratnya. Minta ayat lain atau salin. Tersimpan untuk dibaca offline.",
+      "category": "Agama",
+      "settings": {
+        "arabic": { "label": "Tampilkan teks Arab" }
+      }
+    }
+  }
+}
