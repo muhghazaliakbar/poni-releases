@@ -1,0 +1,38 @@
+{
+  "id": "app.useponi.releases",
+  "name": "Release Watch",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Watches the npm, PyPI and Homebrew packages and GitHub repositories you depend on and notifies you when a new version is out.",
+  "category": "Developer",
+  "symbol": "lucide:tag",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 30,
+  "order": 74,
+  "settings": [
+    { "key": "notify", "type": "toggle", "label": "Notify when a new version is out", "default": true },
+    { "key": "beside", "type": "toggle", "label": "Show new versions beside the notch until you open them", "default": true },
+    {
+      "key": "token",
+      "type": "text",
+      "label": "GitHub token (optional)",
+      "placeholder": "github_pat_…",
+      "help": "Without a token GitHub allows 60 checks an hour, which is plenty for a few repositories. A fine-grained token with no extra permissions raises the limit. Saved in Poni's settings on this Mac and only sent to api.github.com."
+    }
+  ],
+  "locales": {
+    "id": {
+      "name": "Pantau Rilis",
+      "description": "Memantau paket npm, PyPI dan Homebrew serta repositori GitHub yang Anda pakai, dan memberi tahu saat ada versi baru.",
+      "category": "Developer",
+      "settings": {
+        "notify": { "label": "Beri tahu saat ada versi baru" },
+        "beside": { "label": "Tampilkan versi baru di samping notch sampai Anda membukanya" },
+        "token": {
+          "label": "Token GitHub (opsional)",
+          "help": "Tanpa token GitHub mengizinkan 60 pengecekan per jam, cukup untuk beberapa repositori. Token fine-grained tanpa izin tambahan menaikkan batasnya. Disimpan di pengaturan Poni di Mac ini dan hanya dikirim ke api.github.com."
+        }
+      }
+    }
+  }
+}

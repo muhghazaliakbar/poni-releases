@@ -1,0 +1,53 @@
+{
+  "id": "app.useponi.planner",
+  "name": "Daily Planner",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Your top 3 priorities and today's time blocks, typed like \"13:30-14:00 Call Budi\", with the current block's progress, what's next, and a reminder before each one starts.",
+  "category": "Productivity",
+  "pro": true,
+  "symbol": "lucide:calendar-clock",
+  "permissions": ["notifications"],
+  "refreshInterval": 5,
+  "order": 76,
+  "settings": [
+    {
+      "key": "remind",
+      "type": "select",
+      "label": "Remind me before a block",
+      "default": "5",
+      "options": [
+        { "value": "0", "label": "Off" },
+        { "value": "5", "label": "5 minutes before" },
+        { "value": "10", "label": "10 minutes before" },
+        { "value": "15", "label": "15 minutes before" }
+      ]
+    },
+    {
+      "key": "length",
+      "type": "number",
+      "label": "Default block length (minutes)",
+      "default": 30,
+      "min": 5,
+      "max": 240,
+      "step": 5,
+      "help": "Used when you type only a start time, like \"09:00 Deep work\"."
+    },
+    { "key": "beside", "type": "toggle", "label": "Show the current or next block beside the notch", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Rencana Harian",
+      "description": "Tiga prioritas utama dan blok waktu hari ini, diketik seperti \"13:30-14:00 Telepon Budi\", lengkap dengan progres blok yang sedang berjalan, apa berikutnya, dan pengingat sebelum tiap blok dimulai.",
+      "category": "Produktivitas",
+      "settings": {
+        "remind": {
+          "label": "Ingatkan sebelum blok dimulai",
+          "options": { "0": "Mati", "5": "5 menit sebelumnya", "10": "10 menit sebelumnya", "15": "15 menit sebelumnya" }
+        },
+        "length": { "label": "Panjang blok bawaan (menit)", "help": "Dipakai bila Anda hanya mengetik jam mulai, seperti \"09:00 Kerja fokus\"." },
+        "beside": { "label": "Tampilkan blok saat ini atau berikutnya di samping notch" }
+      }
+    }
+  }
+}

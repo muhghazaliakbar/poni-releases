@@ -1,0 +1,47 @@
+{
+  "id": "app.useponi.stocks",
+  "name": "Stock Watchlist",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Up to 10 IDX and US stocks, indices like IHSG, and currency pairs with today's change, an intraday chart, and alerts when a price crosses your target.",
+  "category": "Finance",
+  "pro": true,
+  "symbol": "lucide:chart-candlestick",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 15,
+  "order": 89,
+  "settings": [
+    {
+      "key": "market",
+      "type": "select",
+      "label": "Codes without a suffix are",
+      "default": "idx",
+      "options": [
+        { "value": "idx", "label": "IDX stocks (BBCA → BBCA.JK)" },
+        { "value": "us", "label": "US stocks (AAPL)" }
+      ]
+    },
+    {
+      "key": "beside",
+      "type": "select",
+      "label": "Beside the notch",
+      "default": "first",
+      "options": [
+        { "value": "none", "label": "Nothing" },
+        { "value": "first", "label": "The first ticker" },
+        { "value": "mover", "label": "The biggest mover" }
+      ]
+    }
+  ],
+  "locales": {
+    "id": {
+      "name": "Pantau Saham",
+      "description": "Hingga 10 saham BEI dan AS, indeks seperti IHSG, dan pasangan mata uang dengan perubahan hari ini, grafik intraday, dan alert saat harga melewati target Anda.",
+      "category": "Keuangan",
+      "settings": {
+        "market": { "label": "Kode tanpa akhiran dibaca sebagai", "options": { "idx": "Saham BEI (BBCA → BBCA.JK)", "us": "Saham AS (AAPL)" } },
+        "beside": { "label": "Di samping notch", "options": { "none": "Tidak ada", "first": "Kode pertama", "mover": "Pergerakan terbesar" } }
+      }
+    }
+  }
+}

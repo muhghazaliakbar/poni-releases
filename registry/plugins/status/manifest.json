@@ -1,0 +1,26 @@
+{
+  "id": "app.useponi.status",
+  "name": "Service Status",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Live status of GitHub, Vercel, Cloudflare, OpenAI, Anthropic and 10 more services you rely on, with a notification when an incident starts and when it's resolved.",
+  "category": "Developer",
+  "pro": true,
+  "symbol": "lucide:activity",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 30,
+  "order": 90,
+  "settings": [
+    { "key": "notify", "type": "toggle", "label": "Notify when an incident starts and when it's resolved", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Status Layanan",
+      "description": "Status terkini GitHub, Vercel, Cloudflare, OpenAI, Anthropic, dan 10 layanan lain yang Anda andalkan, dengan notifikasi saat insiden dimulai dan saat pulih.",
+      "category": "Developer",
+      "settings": {
+        "notify": { "label": "Beri notifikasi saat insiden dimulai dan saat pulih" }
+      }
+    }
+  }
+}

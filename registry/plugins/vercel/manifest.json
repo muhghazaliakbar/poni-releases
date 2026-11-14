@@ -1,0 +1,65 @@
+{
+  "id": "app.useponi.vercel",
+  "name": "Vercel Deploys",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Your Vercel deployments beside the notch while they build, green or red when they finish, with branch, commit and build time for the recent ones.",
+  "category": "Developer",
+  "pro": true,
+  "symbol": "lucide:triangle",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 5,
+  "order": 113,
+  "settings": [
+    {
+      "key": "token",
+      "type": "text",
+      "label": "Vercel token",
+      "placeholder": "vercel_…",
+      "help": "Create one at vercel.com/account/tokens, scoped to just the account or team that owns these projects, with an expiry date. Saved in Poni's settings on this Mac and only sent to api.vercel.com."
+    },
+    {
+      "key": "team",
+      "type": "text",
+      "label": "Team",
+      "placeholder": "team_… or my-team",
+      "help": "Optional. The team ID or slug from the team's settings page; leave empty for your personal account."
+    },
+    {
+      "key": "projects",
+      "type": "text",
+      "label": "Projects",
+      "placeholder": "web, docs",
+      "help": "Optional. Comma-separated project names; leave empty to see every project."
+    },
+    {
+      "key": "notify",
+      "type": "toggle",
+      "label": "Notify when a deployment finishes",
+      "default": true
+    }
+  ],
+  "locales": {
+    "id": {
+      "name": "Deploy Vercel",
+      "description": "Deployment Vercel Anda di samping notch selama build, hijau atau merah saat selesai, lengkap dengan branch, commit, dan lama build untuk yang terbaru.",
+      "category": "Developer",
+      "settings": {
+        "token": {
+          "label": "Token Vercel",
+          "help": "Buat di vercel.com/account/tokens, dengan cakupan hanya akun atau tim pemilik proyek ini, dan beri tanggal kedaluwarsa. Disimpan di pengaturan Poni di Mac ini dan hanya dikirim ke api.vercel.com."
+        },
+        "team": {
+          "label": "Tim",
+          "placeholder": "team_… atau tim-saya",
+          "help": "Opsional. ID atau slug tim dari halaman pengaturan tim; kosongkan untuk akun pribadi."
+        },
+        "projects": {
+          "label": "Proyek",
+          "help": "Opsional. Nama proyek dipisah koma; kosongkan untuk melihat semua proyek."
+        },
+        "notify": { "label": "Beri tahu saat deployment selesai" }
+      }
+    }
+  }
+}

@@ -372,6 +372,101 @@
       ]
     },
     {
+      "id": "app.useponi.domains",
+      "name": "Domain Expiry",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "When each of your domains expires, straight from the registry, sorted by days left, with reminders 30, 7 and 1 day before and a button to renew.",
+      "symbol": "lucide:globe-lock",
+      "category": "Developer",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Masa Aktif Domain",
+          "description": "Kapan tiap domain Anda kedaluwarsa, langsung dari registry, diurutkan menurut sisa hari, dengan pengingat 30, 7, dan 1 hari sebelumnya serta tombol perpanjang.",
+          "category": "Developer",
+          "settings": {
+            "notify": {
+              "label": "Beri notifikasi 30, 7, dan 1 hari sebelum domain kedaluwarsa"
+            },
+            "beside": {
+              "label": "Tampilkan domain di samping notch saat berakhir dalam 7 hari"
+            }
+          }
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/domains/main.js",
+          "sha256": "317988d401069096720e207e0233f813cd5b9f006f330da334df18a3c9337d03",
+          "size": 12054
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/domains/manifest.json",
+          "sha256": "94ff1805b1e6ef607396877cbdfb11540832f8cd8acf19607b4ea29d7d861794",
+          "size": 1207
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.expenses",
+      "name": "Spending",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Log what you spend in one line like “kopi 25rb” and see today's total, this month against your budget, and where the money went.",
+      "symbol": "lucide:wallet",
+      "category": "Finance",
+      "permissions": [
+        "clipboard"
+      ],
+      "locales": {
+        "id": {
+          "name": "Pengeluaran",
+          "description": "Catat pengeluaran dalam satu baris seperti “kopi 25rb”, lalu lihat total hari ini, bulan ini dibanding anggaran, dan ke mana uangnya pergi.",
+          "category": "Keuangan",
+          "settings": {
+            "currency": {
+              "label": "Mata uang",
+              "options": {
+                "IDR": "Rupiah (Rp)",
+                "USD": "Dolar AS ($)",
+                "MYR": "Ringgit Malaysia (RM)",
+                "SGD": "Dolar Singapura (S$)",
+                "EUR": "Euro (€)"
+              }
+            },
+            "budget": {
+              "label": "Anggaran bulanan",
+              "help": "Biarkan 0 bila tanpa anggaran."
+            },
+            "beside": {
+              "label": "Tampilkan pengeluaran hari ini di samping notch"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/expenses/main.js",
+          "sha256": "b79d23f38c66118dc74908f7f6210947409d823229db35586cb3a0d72418a16c",
+          "size": 11278
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/expenses/manifest.json",
+          "sha256": "c01e42c6eccc939f83c2c5e3879efe9074154afe0a89c71a4a95dad718f60856",
+          "size": 1850
+        }
+      ]
+    },
+    {
       "id": "app.useponi.gempa",
       "name": "Earthquakes",
       "version": "1.0.0",
@@ -466,6 +561,58 @@
       ]
     },
     {
+      "id": "app.useponi.gold",
+      "name": "Gold Price",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Today's gold and silver price per gram in your currency, the change since yesterday, the last 7 days, and what your own gold is worth.",
+      "symbol": "lucide:coins",
+      "category": "Finance",
+      "permissions": [
+        "network"
+      ],
+      "locales": {
+        "id": {
+          "name": "Harga Emas",
+          "description": "Harga emas dan perak per gram hari ini dalam mata uang Anda, perubahannya sejak kemarin, 7 hari terakhir, dan nilai emas yang Anda punya.",
+          "category": "Keuangan",
+          "settings": {
+            "currency": {
+              "label": "Mata uang",
+              "options": {
+                "IDR": "Rupiah (Rp)",
+                "USD": "Dolar AS ($)",
+                "MYR": "Ringgit Malaysia (RM)",
+                "SGD": "Dolar Singapura (S$)",
+                "EUR": "Euro (€)"
+              }
+            },
+            "grams": {
+              "label": "Emas yang saya punya (gram)",
+              "help": "Menampilkan nilainya dengan harga spot hari ini. Biarkan 0 untuk menyembunyikan."
+            },
+            "beside": {
+              "label": "Tampilkan harga per gram di samping notch"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/gold/main.js",
+          "sha256": "5cedb23a2270ea7cee5c1f5ff426f7a455038ce61e1aa1d60f12455f7f0ee1c1",
+          "size": 8947
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/gold/manifest.json",
+          "sha256": "acb9f5695c2d1834986ec92e578a859cb427317dcc727289aedce0ce10411821",
+          "size": 1950
+        }
+      ]
+    },
+    {
       "id": "app.useponi.habits",
       "name": "Habits",
       "version": "1.0.0",
@@ -498,6 +645,54 @@
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/habits/manifest.json",
           "sha256": "796352719c6cb9d464e651c279b311a2f13585b45c7d16dbff1e4f7cd4a403f5",
           "size": 761
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.holidays",
+      "name": "Public Holidays",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "The next public holidays and collective leave days in your country, which ones make a long weekend, and which single day off turns one into a longer break.",
+      "symbol": "lucide:party-popper",
+      "category": "Productivity",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Hari Libur",
+          "description": "Hari libur nasional dan cuti bersama berikutnya di negara Anda, mana yang jadi long weekend, dan cuti satu hari mana yang membuatnya lebih panjang.",
+          "category": "Produktivitas",
+          "settings": {
+            "country": {
+              "label": "Negara"
+            },
+            "observances": {
+              "label": "Tampilkan juga perayaan yang bukan hari libur"
+            },
+            "remind": {
+              "label": "Beri notifikasi malam sebelum hari libur"
+            },
+            "beside": {
+              "label": "Tampilkan libur berikutnya di samping notch saat tinggal 3 hari atau kurang"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/holidays/main.js",
+          "sha256": "77f3010ca3b1b318f43bdf54d70314d02be56639fd11c7f26e26861378dc9fbb",
+          "size": 9738
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/holidays/manifest.json",
+          "sha256": "1122942896606175901f36f17a6b4139047e08f26bd6eb15d7c3dbc197e8bf51",
+          "size": 2134
         }
       ]
     },
@@ -535,6 +730,51 @@
       ]
     },
     {
+      "id": "app.useponi.linear",
+      "name": "Linear Issues",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Your open Linear issues grouped by In progress, Todo and Backlog, with priority, due-date warnings and a notification when something new is assigned to you.",
+      "symbol": "lucide:square-kanban",
+      "category": "Developer",
+      "permissions": [
+        "network",
+        "notifications",
+        "clipboard"
+      ],
+      "locales": {
+        "id": {
+          "name": "Issue Linear",
+          "description": "Issue Linear Anda yang masih terbuka, dikelompokkan jadi Dikerjakan, Todo, dan Backlog, lengkap dengan prioritas, peringatan tenggat, dan notifikasi saat ada issue baru untuk Anda.",
+          "category": "Developer",
+          "settings": {
+            "key": {
+              "label": "Personal API key",
+              "help": "Buat di Linear → Settings → Security & access → Personal API keys, dengan akses Read saja. Disimpan di pengaturan Poni di Mac ini dan hanya dikirim ke api.linear.app."
+            },
+            "notify": {
+              "label": "Beri tahu saat ada issue baru untuk saya"
+            }
+          }
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/linear/main.js",
+          "sha256": "b3a5215067328fd830d15789c3f429a0c409e2bc422021783078f42a385ce7fe",
+          "size": 11955
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/linear/manifest.json",
+          "sha256": "5abd3b7e026f4215ccebaf12eae9d39c0d61ff8f4cbec73e5a9ebeb9b170028c",
+          "size": 1597
+        }
+      ]
+    },
+    {
       "id": "app.useponi.links",
       "name": "Quick Links",
       "version": "1.0.0",
@@ -566,6 +806,132 @@
       ]
     },
     {
+      "id": "app.useponi.meetings",
+      "name": "Meeting Insights",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "How much of today is meetings, the free blocks you still have for focused work, back-to-back warnings, this week's meeting hours by day, and a join button for the next call.",
+      "symbol": "lucide:chart-column",
+      "category": "Productivity",
+      "permissions": [
+        "calendar",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Wawasan Rapat",
+          "description": "Berapa banyak hari ini habis untuk rapat, blok waktu kosong yang tersisa untuk kerja fokus, peringatan rapat beruntun, jam rapat minggu ini per hari, dan tombol gabung untuk panggilan berikutnya.",
+          "category": "Produktivitas",
+          "settings": {
+            "workStart": {
+              "label": "Jam kerja mulai",
+              "options": {
+                "6": "06.00",
+                "7": "07.00",
+                "8": "08.00",
+                "9": "09.00",
+                "10": "10.00",
+                "11": "11.00",
+                "12": "12.00"
+              }
+            },
+            "workEnd": {
+              "label": "Jam kerja selesai",
+              "options": {
+                "14": "14.00",
+                "15": "15.00",
+                "16": "16.00",
+                "17": "17.00",
+                "18": "18.00",
+                "19": "19.00",
+                "20": "20.00",
+                "21": "21.00",
+                "22": "22.00"
+              }
+            },
+            "minFocus": {
+              "label": "Blok fokus terpendek",
+              "options": {
+                "30": "30 menit",
+                "60": "1 jam",
+                "90": "1,5 jam"
+              },
+              "help": "Waktu kosong yang lebih pendek dari ini tidak dihitung sebagai blok fokus."
+            },
+            "remind": {
+              "label": "Beri tahu 2 menit sebelum panggilan yang punya tautan gabung"
+            }
+          }
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/meetings/main.js",
+          "sha256": "e32cfd84d192cd7544e9f1aca639fb5a417936902f3a21d671c99243e368a5a3",
+          "size": 15294
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/meetings/manifest.json",
+          "sha256": "fd5f921ce7c69c3b80faa5f97c710d27524993586cd1aa26479438b4e3a64630",
+          "size": 3939
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.nethealth",
+      "name": "Internet Health",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Checks your connection every 30 seconds: latency, jitter and packet loss, whether it's good enough for a video call, today's uptime, and a log of every outage.",
+      "symbol": "lucide:wifi",
+      "category": "Utilities",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Kesehatan Internet",
+          "description": "Memeriksa koneksi Anda tiap 30 detik: latensi, jitter, dan paket hilang, apakah cukup untuk video call, uptime hari ini, dan catatan setiap gangguan.",
+          "category": "Utilitas",
+          "settings": {
+            "slow": {
+              "label": "Anggap koneksi lambat di atas",
+              "options": {
+                "150": "150 ms",
+                "250": "250 ms",
+                "400": "400 ms"
+              }
+            },
+            "notify": {
+              "label": "Beri notifikasi saat koneksi terputus dan saat pulih"
+            },
+            "beside": {
+              "label": "Tampilkan status di samping notch saat offline atau lambat"
+            }
+          }
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/nethealth/main.js",
+          "sha256": "a86f2606ba3941a5eca9e8a757df8ec52d0ff8394d7f3014ab3966d8c3a03edf",
+          "size": 15399
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/nethealth/manifest.json",
+          "sha256": "473b9f8315cad8cb717af0391b5c75b32e4877331e3be705c9bb5a6aeb757506",
+          "size": 1624
+        }
+      ]
+    },
+    {
       "id": "app.useponi.notes",
       "name": "Notes",
       "version": "1.0.1",
@@ -593,6 +959,342 @@
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/notes/manifest.json",
           "sha256": "ed0676a4c9c73398ba6b4f2a67754f60bf1261fef39527922328c1e8ff0e2662",
           "size": 482
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.planner",
+      "name": "Daily Planner",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Your top 3 priorities and today's time blocks, typed like \"13:30-14:00 Call Budi\", with the current block's progress, what's next, and a reminder before each one starts.",
+      "symbol": "lucide:calendar-clock",
+      "category": "Productivity",
+      "permissions": [
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Rencana Harian",
+          "description": "Tiga prioritas utama dan blok waktu hari ini, diketik seperti \"13:30-14:00 Telepon Budi\", lengkap dengan progres blok yang sedang berjalan, apa berikutnya, dan pengingat sebelum tiap blok dimulai.",
+          "category": "Produktivitas",
+          "settings": {
+            "remind": {
+              "label": "Ingatkan sebelum blok dimulai",
+              "options": {
+                "0": "Mati",
+                "5": "5 menit sebelumnya",
+                "10": "10 menit sebelumnya",
+                "15": "15 menit sebelumnya"
+              }
+            },
+            "length": {
+              "label": "Panjang blok bawaan (menit)",
+              "help": "Dipakai bila Anda hanya mengetik jam mulai, seperti \"09:00 Kerja fokus\"."
+            },
+            "beside": {
+              "label": "Tampilkan blok saat ini atau berikutnya di samping notch"
+            }
+          }
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/planner/main.js",
+          "sha256": "5403f50c1980429ffdb2b7e500501341e5aaca07ac1805a6e3a81f8c17ce648b",
+          "size": 14134
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/planner/manifest.json",
+          "sha256": "18ba7d45f1f3e7cf65acdd289e1f989c2f311596faab2704fc3f8db0ee54be3b",
+          "size": 2014
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.releases",
+      "name": "Release Watch",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Watches the npm, PyPI and Homebrew packages and GitHub repositories you depend on and notifies you when a new version is out.",
+      "symbol": "lucide:tag",
+      "category": "Developer",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Pantau Rilis",
+          "description": "Memantau paket npm, PyPI dan Homebrew serta repositori GitHub yang Anda pakai, dan memberi tahu saat ada versi baru.",
+          "category": "Developer",
+          "settings": {
+            "notify": {
+              "label": "Beri tahu saat ada versi baru"
+            },
+            "beside": {
+              "label": "Tampilkan versi baru di samping notch sampai Anda membukanya"
+            },
+            "token": {
+              "label": "Token GitHub (opsional)",
+              "help": "Tanpa token GitHub mengizinkan 60 pengecekan per jam, cukup untuk beberapa repositori. Token fine-grained tanpa izin tambahan menaikkan batasnya. Disimpan di pengaturan Poni di Mac ini dan hanya dikirim ke api.github.com."
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/releases/main.js",
+          "sha256": "0f86ac67d9f01edc153e975e104fce907d4a93d6139e19b81769745bec8fdbf6",
+          "size": 11270
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/releases/manifest.json",
+          "sha256": "3995a1c736dc899ef9c1db2fb498d2dee16e55b65333c0f55da2b1f2b9f5c866",
+          "size": 1764
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.snippets",
+      "name": "Snippets",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Text you type again and again, copied with one click, with today's date, the time, your clipboard or a fresh UUID filled in for you.",
+      "symbol": "lucide:text-quote",
+      "category": "Productivity",
+      "permissions": [
+        "clipboard"
+      ],
+      "locales": {
+        "id": {
+          "name": "Snippet",
+          "description": "Teks yang sering Anda ketik ulang, tersalin dengan sekali klik, lengkap dengan tanggal hari ini, jam, isi clipboard atau UUID baru yang terisi otomatis.",
+          "category": "Produktivitas"
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/snippets/main.js",
+          "sha256": "047c54450615e6a09b09eb5e6ff6d0eca33b151d65c6d3f5741cda4b11fd8b7d",
+          "size": 9693
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/snippets/manifest.json",
+          "sha256": "9dd34e8bf473973df6146f71e8aadf0125e41a2da7ded86a82fc70ea11b253a7",
+          "size": 676
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.status",
+      "name": "Service Status",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Live status of GitHub, Vercel, Cloudflare, OpenAI, Anthropic and 10 more services you rely on, with a notification when an incident starts and when it's resolved.",
+      "symbol": "lucide:activity",
+      "category": "Developer",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Status Layanan",
+          "description": "Status terkini GitHub, Vercel, Cloudflare, OpenAI, Anthropic, dan 10 layanan lain yang Anda andalkan, dengan notifikasi saat insiden dimulai dan saat pulih.",
+          "category": "Developer",
+          "settings": {
+            "notify": {
+              "label": "Beri notifikasi saat insiden dimulai dan saat pulih"
+            }
+          }
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/status/main.js",
+          "sha256": "609f6849c9dcaecd3ad52a294e5329301803e3b2d18f1db67c8eed80c6b1249f",
+          "size": 16032
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/status/manifest.json",
+          "sha256": "9335f8aaf1fb23d385f9f453bfb7b1024b597a1a7c0f0a2ac44751c4483afe70",
+          "size": 987
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.stocks",
+      "name": "Stock Watchlist",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Up to 10 IDX and US stocks, indices like IHSG, and currency pairs with today's change, an intraday chart, and alerts when a price crosses your target.",
+      "symbol": "lucide:chart-candlestick",
+      "category": "Finance",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Pantau Saham",
+          "description": "Hingga 10 saham BEI dan AS, indeks seperti IHSG, dan pasangan mata uang dengan perubahan hari ini, grafik intraday, dan alert saat harga melewati target Anda.",
+          "category": "Keuangan",
+          "settings": {
+            "market": {
+              "label": "Kode tanpa akhiran dibaca sebagai",
+              "options": {
+                "idx": "Saham BEI (BBCA → BBCA.JK)",
+                "us": "Saham AS (AAPL)"
+              }
+            },
+            "beside": {
+              "label": "Di samping notch",
+              "options": {
+                "none": "Tidak ada",
+                "first": "Kode pertama",
+                "mover": "Pergerakan terbesar"
+              }
+            }
+          }
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/stocks/main.js",
+          "sha256": "d2b790d92f7a12745d4badc6487d928561621a8bf868517c5da4bdadb72f047b",
+          "size": 16128
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/stocks/manifest.json",
+          "sha256": "94210c86310bc5b557d38142018ff49d993209edc75da322008850306be025b6",
+          "size": 1657
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.subscriptions",
+      "name": "Subscriptions",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "What your subscriptions cost per month and per year, which ones renew in the next two weeks, and a reminder a few days before each charge.",
+      "symbol": "lucide:calendar-sync",
+      "category": "Finance",
+      "permissions": [
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Langganan",
+          "description": "Total biaya langganan Anda per bulan dan per tahun, mana yang diperpanjang dua minggu ke depan, dan pengingat beberapa hari sebelum tiap tagihan.",
+          "category": "Keuangan",
+          "settings": {
+            "currency": {
+              "label": "Mata uang",
+              "options": {
+                "IDR": "Rupiah (Rp)",
+                "USD": "Dolar AS ($)",
+                "EUR": "Euro (€)",
+                "GBP": "Pound Inggris (£)",
+                "SGD": "Dolar Singapura (S$)",
+                "MYR": "Ringgit Malaysia (RM)",
+                "AUD": "Dolar Australia (A$)",
+                "JPY": "Yen Jepang (¥)"
+              }
+            },
+            "remind": {
+              "label": "Ingatkan sebelum perpanjangan",
+              "options": {
+                "0": "Mati",
+                "1": "1 hari sebelumnya",
+                "2": "2 hari sebelumnya",
+                "3": "3 hari sebelumnya",
+                "7": "Seminggu sebelumnya"
+              }
+            }
+          }
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/subscriptions/main.js",
+          "sha256": "ff8d596d953864d7b8d1fe6b3b80d4fa850f5c076318cbe2421b69d500e03ef5",
+          "size": 14590
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/subscriptions/manifest.json",
+          "sha256": "827c24f306e74eb0bb9c51e36733e83d0d61eb77c60083cb0dfd308234d5e4c6",
+          "size": 2311
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.sunnah",
+      "name": "Hijri & Sunnah Fasts",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Today's Hijri date and the sunnah fasts coming up in the next 30 days, with a reminder the evening before so you don't miss suhoor.",
+      "symbol": "lucide:moon-star",
+      "category": "Religion",
+      "permissions": [
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Hijriah & Puasa Sunnah",
+          "description": "Tanggal Hijriah hari ini dan puasa sunnah dalam 30 hari ke depan, dengan pengingat malam sebelumnya supaya tidak lupa sahur.",
+          "category": "Agama",
+          "settings": {
+            "offset": {
+              "label": "Sesuaikan tanggal Hijriah",
+              "help": "Bila awal bulan di negara Anda jatuh sehari lebih lambat setelah rukyat, pilih −1 hari.",
+              "options": {
+                "-1": "−1 hari",
+                "0": "Sesuai perhitungan (Umm al-Qura)",
+                "1": "+1 hari"
+              }
+            },
+            "monThu": {
+              "label": "Sertakan puasa Senin dan Kamis"
+            },
+            "remind": {
+              "label": "Ingatkan malam sebelum puasa"
+            },
+            "remindAt": {
+              "label": "Jam pengingat"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/sunnah/main.js",
+          "sha256": "9f0befa570f02410583e22c6e889904ab4afe831269d01e67730fd38613f5c21",
+          "size": 8683
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/sunnah/manifest.json",
+          "sha256": "4346ce2d9fab6f8dee8ebec980c3fc5f794d5c2031f5b776290d41e7fb320413",
+          "size": 2110
         }
       ]
     },
@@ -645,6 +1347,49 @@
       ]
     },
     {
+      "id": "app.useponi.timetrack",
+      "name": "Time Tracker",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "One tap starts a timer on a project, so you can see today's hours per project and this week's total, then copy a timesheet summary.",
+      "symbol": "lucide:timer",
+      "category": "Productivity",
+      "permissions": [
+        "clipboard",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Catat Waktu",
+          "description": "Sekali ketuk memulai timer untuk sebuah proyek, jadi Anda bisa melihat jam kerja hari ini per proyek dan total minggu ini, lalu menyalin ringkasannya untuk timesheet.",
+          "category": "Produktivitas",
+          "settings": {
+            "idle": {
+              "label": "Tanya setelah (jam)",
+              "help": "Bila timer berjalan lebih lama dari ini, Anda mendapat satu notifikasi yang menanyakan apakah masih mengerjakannya. 0 untuk mematikan."
+            },
+            "beside": {
+              "label": "Tampilkan timer yang berjalan di samping notch"
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/timetrack/main.js",
+          "sha256": "c20e38f2c5e4b9f17d5f6ca014f1339ae35cf98ebb8acbfd18b693c0083ec96b",
+          "size": 9158
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/timetrack/manifest.json",
+          "sha256": "323903231655ce4b31e1e877a0fea88983351974dec965e6607252ead4e68c60",
+          "size": 1451
+        }
+      ]
+    },
+    {
       "id": "app.useponi.uptime",
       "name": "Uptime",
       "version": "1.0.0",
@@ -688,6 +1433,59 @@
           "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/uptime/manifest.json",
           "sha256": "be14a860c2359db6583430456b8e6d724475669ef4b655b8cdfe1fc9c5ab1c28",
           "size": 1286
+        }
+      ]
+    },
+    {
+      "id": "app.useponi.vercel",
+      "name": "Vercel Deploys",
+      "version": "1.0.0",
+      "author": "Poni",
+      "description": "Your Vercel deployments beside the notch while they build, green or red when they finish, with branch, commit and build time for the recent ones.",
+      "symbol": "lucide:triangle",
+      "category": "Developer",
+      "permissions": [
+        "network",
+        "notifications"
+      ],
+      "locales": {
+        "id": {
+          "name": "Deploy Vercel",
+          "description": "Deployment Vercel Anda di samping notch selama build, hijau atau merah saat selesai, lengkap dengan branch, commit, dan lama build untuk yang terbaru.",
+          "category": "Developer",
+          "settings": {
+            "token": {
+              "label": "Token Vercel",
+              "help": "Buat di vercel.com/account/tokens, dengan cakupan hanya akun atau tim pemilik proyek ini, dan beri tanggal kedaluwarsa. Disimpan di pengaturan Poni di Mac ini dan hanya dikirim ke api.vercel.com."
+            },
+            "team": {
+              "label": "Tim",
+              "placeholder": "team_… atau tim-saya",
+              "help": "Opsional. ID atau slug tim dari halaman pengaturan tim; kosongkan untuk akun pribadi."
+            },
+            "projects": {
+              "label": "Proyek",
+              "help": "Opsional. Nama proyek dipisah koma; kosongkan untuk melihat semua proyek."
+            },
+            "notify": {
+              "label": "Beri tahu saat deployment selesai"
+            }
+          }
+        }
+      },
+      "pro": true,
+      "files": [
+        {
+          "path": "main.js",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/vercel/main.js",
+          "sha256": "e405d8de87f19ee656f6c0b3bf507ac126dd3eed4d6f89472a5346cf2dfab7c8",
+          "size": 13425
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://raw.githubusercontent.com/muhghazaliakbar/poni-releases/main/registry/plugins/vercel/manifest.json",
+          "sha256": "d4a16604a5852ee206ec9c1bbda208b34a28f4eae96fc605bc5723a4c785c9cd",
+          "size": 2385
         }
       ]
     },

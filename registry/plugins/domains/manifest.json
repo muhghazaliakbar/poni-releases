@@ -1,0 +1,28 @@
+{
+  "id": "app.useponi.domains",
+  "name": "Domain Expiry",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "When each of your domains expires, straight from the registry, sorted by days left, with reminders 30, 7 and 1 day before and a button to renew.",
+  "category": "Developer",
+  "pro": true,
+  "symbol": "lucide:globe-lock",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 60,
+  "order": 91,
+  "settings": [
+    { "key": "notify", "type": "toggle", "label": "Notify 30, 7 and 1 day before a domain expires", "default": true },
+    { "key": "beside", "type": "toggle", "label": "Show a domain beside the notch when it expires within 7 days", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Masa Aktif Domain",
+      "description": "Kapan tiap domain Anda kedaluwarsa, langsung dari registry, diurutkan menurut sisa hari, dengan pengingat 30, 7, dan 1 hari sebelumnya serta tombol perpanjang.",
+      "category": "Developer",
+      "settings": {
+        "notify": { "label": "Beri notifikasi 30, 7, dan 1 hari sebelum domain kedaluwarsa" },
+        "beside": { "label": "Tampilkan domain di samping notch saat berakhir dalam 7 hari" }
+      }
+    }
+  }
+}

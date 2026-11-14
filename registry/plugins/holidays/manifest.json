@@ -1,0 +1,48 @@
+{
+  "id": "app.useponi.holidays",
+  "name": "Public Holidays",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "The next public holidays and collective leave days in your country, which ones make a long weekend, and which single day off turns one into a longer break.",
+  "category": "Productivity",
+  "symbol": "lucide:party-popper",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 60,
+  "order": 35,
+  "settings": [
+    {
+      "key": "country",
+      "type": "select",
+      "label": "Country",
+      "default": "indonesian",
+      "options": [
+        { "value": "indonesian", "label": "Indonesia" },
+        { "value": "malaysia", "label": "Malaysia" },
+        { "value": "singapore", "label": "Singapore" },
+        { "value": "philippines", "label": "Philippines" },
+        { "value": "saudiarabian", "label": "Saudi Arabia" },
+        { "value": "indian", "label": "India" },
+        { "value": "japanese", "label": "Japan" },
+        { "value": "australian", "label": "Australia" },
+        { "value": "uk", "label": "United Kingdom" },
+        { "value": "usa", "label": "United States" }
+      ]
+    },
+    { "key": "observances", "type": "toggle", "label": "Also show observances that aren't days off", "default": false },
+    { "key": "remind", "type": "toggle", "label": "Notify the evening before a day off", "default": true },
+    { "key": "beside", "type": "toggle", "label": "Show the next day off beside the notch when it's 3 days away or less", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Hari Libur",
+      "description": "Hari libur nasional dan cuti bersama berikutnya di negara Anda, mana yang jadi long weekend, dan cuti satu hari mana yang membuatnya lebih panjang.",
+      "category": "Produktivitas",
+      "settings": {
+        "country": { "label": "Negara" },
+        "observances": { "label": "Tampilkan juga perayaan yang bukan hari libur" },
+        "remind": { "label": "Beri notifikasi malam sebelum hari libur" },
+        "beside": { "label": "Tampilkan libur berikutnya di samping notch saat tinggal 3 hari atau kurang" }
+      }
+    }
+  }
+}

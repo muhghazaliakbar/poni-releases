@@ -1,0 +1,39 @@
+{
+  "id": "app.useponi.timetrack",
+  "name": "Time Tracker",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "One tap starts a timer on a project, so you can see today's hours per project and this week's total, then copy a timesheet summary.",
+  "category": "Productivity",
+  "symbol": "lucide:timer",
+  "permissions": ["clipboard", "notifications"],
+  "refreshInterval": 1,
+  "order": 73,
+  "settings": [
+    {
+      "key": "idle",
+      "type": "number",
+      "label": "Check in after (hours)",
+      "default": 3,
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "help": "If a timer runs longer than this, you get one notification asking if you're still on it. 0 turns it off."
+    },
+    { "key": "beside", "type": "toggle", "label": "Show the running timer beside the notch", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Catat Waktu",
+      "description": "Sekali ketuk memulai timer untuk sebuah proyek, jadi Anda bisa melihat jam kerja hari ini per proyek dan total minggu ini, lalu menyalin ringkasannya untuk timesheet.",
+      "category": "Produktivitas",
+      "settings": {
+        "idle": {
+          "label": "Tanya setelah (jam)",
+          "help": "Bila timer berjalan lebih lama dari ini, Anda mendapat satu notifikasi yang menanyakan apakah masih mengerjakannya. 0 untuk mematikan."
+        },
+        "beside": { "label": "Tampilkan timer yang berjalan di samping notch" }
+      }
+    }
+  }
+}

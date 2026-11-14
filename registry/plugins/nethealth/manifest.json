@@ -1,0 +1,40 @@
+{
+  "id": "app.useponi.nethealth",
+  "name": "Internet Health",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Checks your connection every 30 seconds: latency, jitter and packet loss, whether it's good enough for a video call, today's uptime, and a log of every outage.",
+  "category": "Utilities",
+  "pro": true,
+  "symbol": "lucide:wifi",
+  "permissions": ["network", "notifications"],
+  "refreshInterval": 5,
+  "order": 92,
+  "settings": [
+    {
+      "key": "slow",
+      "type": "select",
+      "label": "Call the connection slow above",
+      "default": "250",
+      "options": [
+        { "value": "150", "label": "150 ms" },
+        { "value": "250", "label": "250 ms" },
+        { "value": "400", "label": "400 ms" }
+      ]
+    },
+    { "key": "notify", "type": "toggle", "label": "Notify when the connection drops and when it's back", "default": true },
+    { "key": "beside", "type": "toggle", "label": "Show the status beside the notch while offline or slow", "default": true }
+  ],
+  "locales": {
+    "id": {
+      "name": "Kesehatan Internet",
+      "description": "Memeriksa koneksi Anda tiap 30 detik: latensi, jitter, dan paket hilang, apakah cukup untuk video call, uptime hari ini, dan catatan setiap gangguan.",
+      "category": "Utilitas",
+      "settings": {
+        "slow": { "label": "Anggap koneksi lambat di atas", "options": { "150": "150 ms", "250": "250 ms", "400": "400 ms" } },
+        "notify": { "label": "Beri notifikasi saat koneksi terputus dan saat pulih" },
+        "beside": { "label": "Tampilkan status di samping notch saat offline atau lambat" }
+      }
+    }
+  }
+}

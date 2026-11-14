@@ -1,0 +1,51 @@
+{
+  "id": "app.useponi.expenses",
+  "name": "Spending",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Log what you spend in one line like “kopi 25rb” and see today's total, this month against your budget, and where the money went.",
+  "category": "Finance",
+  "symbol": "lucide:wallet",
+  "permissions": ["clipboard"],
+  "refreshInterval": 60,
+  "order": 43,
+  "settings": [
+    {
+      "key": "currency",
+      "type": "select",
+      "label": "Currency",
+      "default": "IDR",
+      "options": [
+        { "value": "IDR", "label": "Indonesian rupiah (Rp)" },
+        { "value": "USD", "label": "US dollar ($)" },
+        { "value": "MYR", "label": "Malaysian ringgit (RM)" },
+        { "value": "SGD", "label": "Singapore dollar (S$)" },
+        { "value": "EUR", "label": "Euro (€)" }
+      ]
+    },
+    { "key": "budget", "type": "number", "label": "Monthly budget", "default": 0, "min": 0, "step": 100000,
+      "help": "Leave at 0 for no budget." },
+    { "key": "beside", "type": "toggle", "label": "Show today's spending beside the notch", "default": false }
+  ],
+  "locales": {
+    "id": {
+      "name": "Pengeluaran",
+      "description": "Catat pengeluaran dalam satu baris seperti “kopi 25rb”, lalu lihat total hari ini, bulan ini dibanding anggaran, dan ke mana uangnya pergi.",
+      "category": "Keuangan",
+      "settings": {
+        "currency": {
+          "label": "Mata uang",
+          "options": {
+            "IDR": "Rupiah (Rp)",
+            "USD": "Dolar AS ($)",
+            "MYR": "Ringgit Malaysia (RM)",
+            "SGD": "Dolar Singapura (S$)",
+            "EUR": "Euro (€)"
+          }
+        },
+        "budget": { "label": "Anggaran bulanan", "help": "Biarkan 0 bila tanpa anggaran." },
+        "beside": { "label": "Tampilkan pengeluaran hari ini di samping notch" }
+      }
+    }
+  }
+}

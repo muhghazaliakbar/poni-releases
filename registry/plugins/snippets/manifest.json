@@ -1,0 +1,20 @@
+{
+  "id": "app.useponi.snippets",
+  "name": "Snippets",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Text you type again and again, copied with one click, with today's date, the time, your clipboard or a fresh UUID filled in for you.",
+  "category": "Productivity",
+  "pro": true,
+  "symbol": "lucide:text-quote",
+  "permissions": ["clipboard"],
+  "refreshInterval": 60,
+  "order": 75,
+  "locales": {
+    "id": {
+      "name": "Snippet",
+      "description": "Teks yang sering Anda ketik ulang, tersalin dengan sekali klik, lengkap dengan tanggal hari ini, jam, isi clipboard atau UUID baru yang terisi otomatis.",
+      "category": "Produktivitas"
+    }
+  }
+}

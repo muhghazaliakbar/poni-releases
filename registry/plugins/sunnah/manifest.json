@@ -1,0 +1,57 @@
+{
+  "id": "app.useponi.sunnah",
+  "name": "Hijri & Sunnah Fasts",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Today's Hijri date and the sunnah fasts coming up in the next 30 days, with a reminder the evening before so you don't miss suhoor.",
+  "category": "Religion",
+  "symbol": "lucide:moon-star",
+  "permissions": ["notifications"],
+  "refreshInterval": 60,
+  "order": 42,
+  "settings": [
+    {
+      "key": "offset",
+      "type": "select",
+      "label": "Adjust the Hijri date",
+      "default": "0",
+      "help": "If your country starts the month a day later after the moon sighting, pick −1 day.",
+      "options": [
+        { "value": "-1", "label": "−1 day" },
+        { "value": "0", "label": "As calculated (Umm al-Qura)" },
+        { "value": "1", "label": "+1 day" }
+      ]
+    },
+    { "key": "monThu", "type": "toggle", "label": "Include Monday and Thursday fasts", "default": true },
+    { "key": "remind", "type": "toggle", "label": "Remind me the evening before a fast", "default": true },
+    {
+      "key": "remindAt",
+      "type": "select",
+      "label": "Reminder time",
+      "default": "21",
+      "options": [
+        { "value": "19", "label": "19:00" },
+        { "value": "20", "label": "20:00" },
+        { "value": "21", "label": "21:00" },
+        { "value": "22", "label": "22:00" }
+      ]
+    }
+  ],
+  "locales": {
+    "id": {
+      "name": "Hijriah & Puasa Sunnah",
+      "description": "Tanggal Hijriah hari ini dan puasa sunnah dalam 30 hari ke depan, dengan pengingat malam sebelumnya supaya tidak lupa sahur.",
+      "category": "Agama",
+      "settings": {
+        "offset": {
+          "label": "Sesuaikan tanggal Hijriah",
+          "help": "Bila awal bulan di negara Anda jatuh sehari lebih lambat setelah rukyat, pilih −1 hari.",
+          "options": { "-1": "−1 hari", "0": "Sesuai perhitungan (Umm al-Qura)", "1": "+1 hari" }
+        },
+        "monThu": { "label": "Sertakan puasa Senin dan Kamis" },
+        "remind": { "label": "Ingatkan malam sebelum puasa" },
+        "remindAt": { "label": "Jam pengingat" }
+      }
+    }
+  }
+}

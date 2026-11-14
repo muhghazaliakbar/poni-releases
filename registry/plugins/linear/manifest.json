@@ -1,0 +1,42 @@
+{
+  "id": "app.useponi.linear",
+  "name": "Linear Issues",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Your open Linear issues grouped by In progress, Todo and Backlog, with priority, due-date warnings and a notification when something new is assigned to you.",
+  "category": "Developer",
+  "pro": true,
+  "symbol": "lucide:square-kanban",
+  "permissions": ["network", "notifications", "clipboard"],
+  "refreshInterval": 15,
+  "order": 114,
+  "settings": [
+    {
+      "key": "key",
+      "type": "text",
+      "label": "Personal API key",
+      "placeholder": "lin_api_…",
+      "help": "Create one in Linear → Settings → Security & access → Personal API keys, with Read access only. Saved in Poni's settings on this Mac and only sent to api.linear.app."
+    },
+    {
+      "key": "notify",
+      "type": "toggle",
+      "label": "Notify when an issue is assigned to me",
+      "default": true
+    }
+  ],
+  "locales": {
+    "id": {
+      "name": "Issue Linear",
+      "description": "Issue Linear Anda yang masih terbuka, dikelompokkan jadi Dikerjakan, Todo, dan Backlog, lengkap dengan prioritas, peringatan tenggat, dan notifikasi saat ada issue baru untuk Anda.",
+      "category": "Developer",
+      "settings": {
+        "key": {
+          "label": "Personal API key",
+          "help": "Buat di Linear → Settings → Security & access → Personal API keys, dengan akses Read saja. Disimpan di pengaturan Poni di Mac ini dan hanya dikirim ke api.linear.app."
+        },
+        "notify": { "label": "Beri tahu saat ada issue baru untuk saya" }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "app.useponi.gold",
+  "name": "Gold Price",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "Today's gold and silver price per gram in your currency, the change since yesterday, the last 7 days, and what your own gold is worth.",
+  "category": "Finance",
+  "symbol": "lucide:coins",
+  "permissions": ["network"],
+  "refreshInterval": 60,
+  "order": 41,
+  "settings": [
+    {
+      "key": "currency",
+      "type": "select",
+      "label": "Currency",
+      "default": "IDR",
+      "options": [
+        { "value": "IDR", "label": "Indonesian rupiah (Rp)" },
+        { "value": "USD", "label": "US dollar ($)" },
+        { "value": "MYR", "label": "Malaysian ringgit (RM)" },
+        { "value": "SGD", "label": "Singapore dollar (S$)" },
+        { "value": "EUR", "label": "Euro (€)" }
+      ]
+    },
+    { "key": "grams", "type": "number", "label": "Gold I own (grams)", "default": 0, "min": 0, "max": 100000, "step": 0.5,
+      "help": "Shows what it's worth at today's spot price. Leave at 0 to hide." },
+    { "key": "beside", "type": "toggle", "label": "Show the price per gram beside the notch", "default": false }
+  ],
+  "locales": {
+    "id": {
+      "name": "Harga Emas",
+      "description": "Harga emas dan perak per gram hari ini dalam mata uang Anda, perubahannya sejak kemarin, 7 hari terakhir, dan nilai emas yang Anda punya.",
+      "category": "Keuangan",
+      "settings": {
+        "currency": {
+          "label": "Mata uang",
+          "options": {
+            "IDR": "Rupiah (Rp)",
+            "USD": "Dolar AS ($)",
+            "MYR": "Ringgit Malaysia (RM)",
+            "SGD": "Dolar Singapura (S$)",
+            "EUR": "Euro (€)"
+          }
+        },
+        "grams": { "label": "Emas yang saya punya (gram)", "help": "Menampilkan nilainya dengan harga spot hari ini. Biarkan 0 untuk menyembunyikan." },
+        "beside": { "label": "Tampilkan harga per gram di samping notch" }
+      }
+    }
+  }
+}

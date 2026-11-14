@@ -1,0 +1,169 @@
+{
+  "id": "app.useponi.meetings",
+  "name": "Meeting Insights",
+  "version": "1.0.0",
+  "author": "Poni",
+  "description": "How much of today is meetings, the free blocks you still have for focused work, back-to-back warnings, this week's meeting hours by day, and a join button for the next call.",
+  "category": "Productivity",
+  "pro": true,
+  "symbol": "lucide:chart-column",
+  "permissions": ["calendar", "notifications"],
+  "refreshInterval": 15,
+  "order": 116,
+  "settings": [
+    {
+      "key": "workStart",
+      "type": "select",
+      "label": "Workday starts",
+      "default": "9",
+      "options": [
+        {
+          "value": "6",
+          "label": "06:00"
+        },
+        {
+          "value": "7",
+          "label": "07:00"
+        },
+        {
+          "value": "8",
+          "label": "08:00"
+        },
+        {
+          "value": "9",
+          "label": "09:00"
+        },
+        {
+          "value": "10",
+          "label": "10:00"
+        },
+        {
+          "value": "11",
+          "label": "11:00"
+        },
+        {
+          "value": "12",
+          "label": "12:00"
+        }
+      ]
+    },
+    {
+      "key": "workEnd",
+      "type": "select",
+      "label": "Workday ends",
+      "default": "17",
+      "options": [
+        {
+          "value": "14",
+          "label": "14:00"
+        },
+        {
+          "value": "15",
+          "label": "15:00"
+        },
+        {
+          "value": "16",
+          "label": "16:00"
+        },
+        {
+          "value": "17",
+          "label": "17:00"
+        },
+        {
+          "value": "18",
+          "label": "18:00"
+        },
+        {
+          "value": "19",
+          "label": "19:00"
+        },
+        {
+          "value": "20",
+          "label": "20:00"
+        },
+        {
+          "value": "21",
+          "label": "21:00"
+        },
+        {
+          "value": "22",
+          "label": "22:00"
+        }
+      ]
+    },
+    {
+      "key": "minFocus",
+      "type": "select",
+      "label": "Shortest focus block",
+      "default": "30",
+      "options": [
+        {
+          "value": "30",
+          "label": "30 minutes"
+        },
+        {
+          "value": "60",
+          "label": "1 hour"
+        },
+        {
+          "value": "90",
+          "label": "1.5 hours"
+        }
+      ],
+      "help": "Free time shorter than this isn't counted as a focus block."
+    },
+    {
+      "key": "remind",
+      "type": "toggle",
+      "label": "Notify 2 minutes before a call with a join link",
+      "default": true
+    }
+  ],
+  "locales": {
+    "id": {
+      "name": "Wawasan Rapat",
+      "description": "Berapa banyak hari ini habis untuk rapat, blok waktu kosong yang tersisa untuk kerja fokus, peringatan rapat beruntun, jam rapat minggu ini per hari, dan tombol gabung untuk panggilan berikutnya.",
+      "category": "Produktivitas",
+      "settings": {
+        "workStart": {
+          "label": "Jam kerja mulai",
+          "options": {
+            "6": "06.00",
+            "7": "07.00",
+            "8": "08.00",
+            "9": "09.00",
+            "10": "10.00",
+            "11": "11.00",
+            "12": "12.00"
+          }
+        },
+        "workEnd": {
+          "label": "Jam kerja selesai",
+          "options": {
+            "14": "14.00",
+            "15": "15.00",
+            "16": "16.00",
+            "17": "17.00",
+            "18": "18.00",
+            "19": "19.00",
+            "20": "20.00",
+            "21": "21.00",
+            "22": "22.00"
+          }
+        },
+        "minFocus": {
+          "label": "Blok fokus terpendek",
+          "options": {
+            "30": "30 menit",
+            "60": "1 jam",
+            "90": "1,5 jam"
+          },
+          "help": "Waktu kosong yang lebih pendek dari ini tidak dihitung sebagai blok fokus."
+        },
+        "remind": {
+          "label": "Beri tahu 2 menit sebelum panggilan yang punya tautan gabung"
+        }
+      }
+    }
+  }
+}
